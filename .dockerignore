@@ -1,0 +1,10 @@
+**/.dockerignore
+**/.gitignore
+**/.vs
+**/.idea
+**/bin
+**/obj
+**/out
+Dockerfile
+README.md
+.DS_Store

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+    <defs>
+        <linearGradient id="grad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#5b8af7" />
+            <stop offset="1" stop-color="#8b5cf6" />
+        </linearGradient>
+    </defs>
+    <!-- Background matching the dark theme -->
+    <rect width="64" height="64" rx="14" fill="#08080f" />
+    <!-- Three sorting bars: small, medium, large -->
+    <rect x="14" y="36" width="8" height="14" rx="3" fill="url(#grad)" />
+    <rect x="28" y="24" width="8" height="26" rx="3" fill="url(#grad)" />
+    <rect x="42" y="14" width="8" height="36" rx="3" fill="url(#grad)" />
+</svg>

@@ -471,11 +471,11 @@ function* mergeSortGen(arr) {
             }
             while (i < mid) aux[k++] = arr[i++];
             while (j < hi)  aux[k++] = arr[j++];
-            // Write back and yield swaps for visual
+            // Write back and signal each changed position
             for (let x = lo; x < hi; x++) {
                 if (arr[x] !== aux[x]) {
                     arr[x] = aux[x];
-                    yield { type: 'swap', i: x, j: x };
+                    yield { type: 'write', i: x, height: aux[x] };
                 }
             }
         }
@@ -581,31 +581,30 @@ function* shellSortGen(arr) {
 }
 
 function* countingSortGen(arr) {
-    // Values are heights as floats 8–94. Bucket into 10 visual ranges (0–9).
-    const n      = arr.length;
-    const RANGE  = 10;
-    const min    = Math.min(...arr);
-    const max    = Math.max(...arr);
-    const bucket = v => Math.min(RANGE - 1, Math.floor((v - min) / (max - min + 0.0001) * RANGE));
+    // Heights are integers 8–93; use exact value counting for a correct stable sort.
+    const n   = arr.length;
+    const min = Math.min(...arr);
+    const max = Math.max(...arr);
+    const range = max - min + 1;
 
-    const count = new Array(RANGE).fill(0);
-    for (const v of arr) count[bucket(v)]++;
+    const count = new Array(range).fill(0);
+    for (const v of arr) count[Math.round(v - min)]++;
 
     // Prefix sums
-    for (let i = 1; i < RANGE; i++) count[i] += count[i - 1];
+    for (let i = 1; i < range; i++) count[i] += count[i - 1];
 
     const output = new Array(n);
     // Highlight comparisons as we place elements
     for (let i = n - 1; i >= 0; i--) {
-        const b = bucket(arr[i]);
-        output[--count[b]] = arr[i];
-        yield { type: 'compare', i, j: Math.min(n - 1, count[b]) };
+        const pos = --count[Math.round(arr[i] - min)];
+        output[pos] = arr[i];
+        yield { type: 'compare', i, j: Math.min(n - 1, pos) };
     }
 
-    // Write back with swap yields
+    // Write back
     for (let i = 0; i < n; i++) {
         if (arr[i] !== output[i]) {
-            yield { type: 'swap', i, j: i };
+            yield { type: 'write', i, height: output[i] };
             arr[i] = output[i];
         }
     }
@@ -637,7 +636,7 @@ function* radixSortGen(arr) {
         }
         for (let i = 0; i < n; i++) {
             if (arr[i] !== output[i]) {
-                yield { type: 'swap', i, j: i };
+                yield { type: 'write', i, height: output[i] };
                 arr[i] = output[i];
             }
         }
@@ -714,7 +713,7 @@ const Engine = (() => {
         }
 
         _clearTransientStates();
-        const { type, i, j, indices } = result.value;
+        const { type, i, j, indices, height } = result.value;
 
         if (type === 'compare') {
             _comparisons++;
@@ -730,6 +729,12 @@ const Engine = (() => {
             _barEls[j].style.height = tmpH;
             _barEls[i].classList.add('vs-state-swap');
             _barEls[j].classList.add('vs-state-swap');
+
+        } else if (type === 'write') {
+            _swaps++;
+            _updateCounters();
+            _barEls[i].style.height = height + '%';
+            _barEls[i].classList.add('vs-state-swap');
 
         } else if (type === 'sorted') {
             for (const idx of (indices || [])) {

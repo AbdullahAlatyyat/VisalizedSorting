@@ -1,6 +1,5 @@
-cd /home/hellmachine/Desktop/Projects/Retro
 sudo docker buildx build \
   --platform linux/arm64 \
-  -t aalatyyat/retro:latest \
-  -f Retro/Dockerfile \
+  -t aalatyyat/visualizedsorting:latest \
+  -f Dockerfile \
   . --push

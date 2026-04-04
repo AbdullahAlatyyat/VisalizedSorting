@@ -352,10 +352,9 @@ function openVisualizer(key) {
     // Init engine (generates random bars + creates algorithm generator)
     Engine.reset(key, 30);
 
-    // Transition: hide grid, show visualizer
+    // Transition: hide grid, show visualizer — keep scroll position
     algosSection.classList.add('vs-hidden');
     vizSection.classList.remove('vs-hidden');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function closeVisualizer() {

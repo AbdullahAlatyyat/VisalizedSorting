@@ -357,11 +357,23 @@ function openVisualizer(key) {
     vizSection.classList.remove('vs-hidden');
 }
 
-function closeVisualizer() {
+function closeVisualizer(options = {}) {
+    const { scrollToGrid = false } = options;
+
     Engine.pause();
     vizSection.classList.add('vs-hidden');
     algosSection.classList.remove('vs-hidden');
     currentAlgoKey = null;
+
+    if (scrollToGrid) {
+        requestAnimationFrame(() => {
+            const nav = document.getElementById('vs-nav');
+            const navOffset = nav ? nav.offsetHeight : 0;
+            const gridTop = algoGrid.getBoundingClientRect().top + window.scrollY;
+            const targetTop = Math.max(0, gridTop - navOffset - 24);
+            window.scrollTo({ top: targetTop, behavior: 'smooth' });
+        });
+    }
 }
 
 /* ─── BARS ────────────────────────────────────────────────────────────────────── */
@@ -844,7 +856,7 @@ btnStep.addEventListener('click', () => {
     Engine.step();
 });
 
-backBtn.addEventListener('click', closeVisualizer);
+backBtn.addEventListener('click', () => closeVisualizer({ scrollToGrid: true }));
 
 /* ─── INIT ────────────────────────────────────────────────────────────────────── */
 renderHeroBars();

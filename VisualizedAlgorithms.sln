@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualizedSorting", "VisualizedSorting.csproj", "{69C14D6E-183E-1231-2B8F-A64DA2BF167C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualizedAlgorithms", "VisualizedAlgorithms.csproj", "{69C14D6E-183E-1231-2B8F-A64DA2BF167C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

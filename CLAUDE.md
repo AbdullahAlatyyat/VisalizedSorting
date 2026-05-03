@@ -5,10 +5,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-dotnet build              # Build the project
-dotnet run                # Run the dev server (default: https://localhost:5001)
-dotnet build -c Release   # Release build
-dotnet publish            # Publish for production
+dotnet build VisualizedAlgorithms.sln              # Build the project
+dotnet run --project VisualizedAlgorithms.csproj   # Run the dev server (default: https://localhost:5001)
+dotnet build VisualizedAlgorithms.sln -c Release   # Release build
+dotnet publish VisualizedAlgorithms.csproj         # Publish for production
 ```
 
 Docker build (ARM64):
@@ -18,7 +18,7 @@ Docker build (ARM64):
 
 ## Architecture
 
-**VisualizedSorting** is an ASP.NET Core 10.0 MVC app for visualizing sorting algorithms. The backend is minimal — a single `HomeController` that serves static pages. All sorting logic and visualization runs entirely client-side in JavaScript.
+**VisualizedAlgorithms** is an ASP.NET Core 10.0 MVC app for visualizing sorting algorithms. The backend is minimal — a single `HomeController` that serves static pages. All sorting logic and visualization runs entirely client-side in JavaScript.
 
 ### Key files
 
@@ -50,5 +50,4 @@ Docker build (ARM64):
 
 ## Planned work (todos)
 
-- Rebrand to "VisualisedAlgorithms"
 - Add binary search tree and other search algorithm visualizations

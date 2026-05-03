@@ -1,5 +1,5 @@
 ﻿/* ═══════════════════════════════════════════════════════════════════════════
-   VisualizedSorting — UI Shell  (Phase 1)
+   VisualizedAlgorithms — UI Shell  (Phase 1)
    Sorting engine will be added in Phase 2 after UI approval.
    ═══════════════════════════════════════════════════════════════════════════ */
 

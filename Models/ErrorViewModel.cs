@@ -1,4 +1,4 @@
-namespace VisualizedSorting.Models;
+namespace VisualizedAlgorithms.Models;
 
 public class ErrorViewModel
 {

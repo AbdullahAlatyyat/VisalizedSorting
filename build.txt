@@ -1,5 +1,5 @@
 sudo docker buildx build \
   --platform linux/arm64 \
-  -t aalatyyat/visualizedsorting:latest \
+  -t aalatyyat/visualizedalgorithms:latest \
   -f Dockerfile \
   . --push

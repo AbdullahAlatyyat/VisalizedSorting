@@ -98,6 +98,7 @@ let steps = [];
 let stepIndex = 0;
 let timerId = null;
 let playing = false;
+let pendingCommit = null;
 
 function treeSize() {
     return parseInt(refs.size.value, 10) || 11;
@@ -346,13 +347,78 @@ function createModel(key) {
     return new BinaryModel(randomKeys(size));
 }
 
-function setSteps(nextSteps) {
+function createModelFromKeys(key, keys) {
+    if (globalThis.AlgorithmCore) return globalThis.AlgorithmCore.trees.createSession(key, [...keys]);
+    if (['twoThree', 'twoThreeFour', 'btree', 'bplus'].includes(key)) {
+        const maxKeys = key === 'btree' || key === 'bplus' ? 5 : 3;
+        return new MultiwayModel([...keys], maxKeys);
+    }
+    return new BinaryModel([...keys]);
+}
+
+function modelKeys(source = model) {
+    return source && Array.isArray(source.keys) ? [...source.keys] : [];
+}
+
+function keysAfter(type, key) {
+    const keys = modelKeys();
+    if (type === 'delete') return keys.filter(k => k !== key);
+    if (type === 'search') {
+        return currentTreeKey === 'splay' && keys.includes(key) ? keys.filter(k => k !== key).concat(key) : keys;
+    }
+    if (type === 'insert') {
+        const withoutKey = keys.filter(k => k !== key);
+        if (currentTreeKey === 'splay') return withoutKey.concat(key);
+        return keys.includes(key) ? keys : keys.concat(key);
+    }
+    return keys;
+}
+
+function snapshotForKeys(keys, highlight = {}, message = 'Ready') {
+    return createModelFromKeys(currentTreeKey, keys).snapshot(highlight, message);
+}
+
+function pathFromRoot(root, key) {
+    const path = [];
+    let node = root;
+    while (node) {
+        path.push(node.key);
+        if (node.key === key) break;
+        node = key < node.key ? node.left : node.right;
+    }
+    return path;
+}
+
+function searchPath(key) {
+    const snap = model.snapshot();
+    if (snap.kind === 'binary') return pathFromRoot(snap.root, key);
+    return [key];
+}
+
+function minMaxPath(direction) {
+    const snap = model.snapshot();
+    if (snap.kind === 'multiway') return direction === 'min' ? [model.min()] : [model.max()];
+    const path = [];
+    let node = snap.root;
+    while (node) {
+        path.push(node.key);
+        node = direction === 'min' ? node.left : node.right;
+    }
+    return path;
+}
+
+function queueSteps(nextSteps, commit = null) {
     pause();
+    pendingCommit = commit;
     steps = nextSteps.length ? nextSteps : [model.snapshot({}, 'Ready')];
     stepIndex = 0;
     refs.steps.textContent = '0';
     renderSnapshot(steps[0]);
     renderLog(steps[0].message);
+}
+
+function setSteps(nextSteps) {
+    queueSteps(nextSteps);
 }
 
 function renderSnapshot(snapshot) {
@@ -443,22 +509,52 @@ function runOperation(type) {
     if (!model) return;
     refs.log.innerHTML = '';
     const key = keyValue();
-    const opSteps = model[type](key);
+    const keys = modelKeys();
+    const nextKeys = keysAfter(type, key);
+    const found = keys.includes(key);
+    const path = searchPath(key);
+    const opName = type[0].toUpperCase() + type.slice(1);
+    const opSteps = [
+        model.snapshot({}, `${opName} ${key} queued. Press Play to start.`),
+        model.snapshot({ visit: path }, type === 'delete' ? `Search path for deleting ${key}` : `Search path for ${key}`)
+    ];
+
     const advanced = ['avl', 'rb', 'splay', 'treap'].includes(currentTreeKey);
-    if (advanced && type !== 'search') {
-        opSteps.push(model.snapshot({ change: [key] }, `${TREE_DATA[currentTreeKey].name} rebalance checkpoint`));
+    if (advanced && type !== 'search' && found !== (type === 'insert')) {
+        opSteps.push(snapshotForKeys(nextKeys, { change: [key] }, `${TREE_DATA[currentTreeKey].name} rebalance checkpoint`));
     }
-    setSteps(opSteps);
+
+    const finalHighlight = type === 'search' && found ? { found: [key] } : { change: found || type === 'insert' ? [key] : path.slice(-1) };
+    const finalMessage = {
+        insert: found ? `${key} is already present` : `Inserted ${key}`,
+        delete: found ? `Deleted ${key}` : `${key} was not found`,
+        search: found ? `Found ${key}` : `${key} is not in the tree`
+    }[type];
+    opSteps.push(snapshotForKeys(nextKeys, finalHighlight, finalMessage));
+
+    queueSteps(opSteps, () => model[type](key));
 }
 
 function runQuery(label, value) {
+    if (!model) return;
+    refs.log.innerHTML = '';
+    const probe = label === 'Min' ? minMaxPath('min')
+        : label === 'Max' ? minMaxPath('max')
+        : searchPath(keyValue());
     const msg = value === undefined ? `${label} does not exist` : `${label}: ${value}`;
-    setSteps([model.snapshot(value === undefined ? {} : { found: [value] }, msg)]);
+    setSteps([
+        model.snapshot({}, `${label} queued. Press Play to start.`),
+        model.snapshot({ visit: probe.filter(v => v !== undefined) }, `Trace ${label.toLowerCase()} path`),
+        model.snapshot(value === undefined ? { change: probe.slice(-1) } : { found: [value] }, msg)
+    ]);
 }
 
 function runTraversal(type) {
     refs.log.innerHTML = '';
-    setSteps(model.traversal(type));
+    setSteps([
+        model.snapshot({}, `${type} traversal queued. Press Play to start.`),
+        ...model.traversal(type)
+    ]);
 }
 
 function delay() {
@@ -480,6 +576,10 @@ function advance() {
     refs.steps.textContent = stepIndex;
     renderSnapshot(steps[stepIndex]);
     renderLog(steps[stepIndex].message);
+    if (stepIndex === steps.length - 1 && pendingCommit) {
+        pendingCommit();
+        pendingCommit = null;
+    }
 }
 
 function play() {

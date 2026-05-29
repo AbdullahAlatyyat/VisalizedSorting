@@ -25,23 +25,23 @@
     "semantic_hash": "9524579679036debbd64803c47c6d8fe"
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/search-trees.js": {
-    "mtime": 1780094525.4645834,
-    "ast_hash": "8bce275f6a5b586c24c2930d95a64cf5",
+    "mtime": 1780094901.9441488,
+    "ast_hash": "730f4f1f68b87766d9d2af27a2413aa2",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/graphs.js": {
-    "mtime": 1780094681.8976607,
-    "ast_hash": "c7fb3682e5610edd280d661768069195",
+    "mtime": 1780094993.3467681,
+    "ast_hash": "67e54b98a8e6a2be5f6e209ceda93e29",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/textbook-sections.js": {
-    "mtime": 1780094566.6198683,
-    "ast_hash": "e15fa1f67455a9e40badca00dc03bf06",
+    "mtime": 1780095002.4998302,
+    "ast_hash": "90e1a8fdc8d563f88b45a1768b4e22cd",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/greedy.js": {
-    "mtime": 1780094515.2145119,
-    "ast_hash": "cc4a4adc007563a4532ac0f5143e8234",
+    "mtime": 1780094989.1867402,
+    "ast_hash": "5452eb6d1fed74df37abc5bee939649d",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/algorithm-core.js": {
@@ -50,8 +50,8 @@
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/dynamic-programming.js": {
-    "mtime": 1780094476.091239,
-    "ast_hash": "2f14f6718e75dfd96b84bd7a422eaa78",
+    "mtime": 1780094984.5637088,
+    "ast_hash": "e3a500fe01dc366c926de3190a9ba4ca",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/Controllers/HomeController.cs": {

@@ -133,10 +133,23 @@ function buildSteps() {
     pause();
     refs.log.innerHTML = '';
     const result = (RUNNERS[currentKey] || runFib)(problemSize(), { randomize: true });
-    steps = Array.isArray(result) ? result : result.steps;
+    const resultSteps = Array.isArray(result) ? result : result.steps;
+    steps = [queuedStep(resultSteps[0]), ...resultSteps];
     updateExample(result);
     stepIndex = 0;
     renderStep(steps[0]);
+}
+
+function queuedStep(firstStep) {
+    const table = firstStep.table;
+    return tableStep('Queued. Press Play to start.', makeTable(
+        cloneRows(table.rows),
+        table.rowLabels,
+        table.colLabels,
+        table.caption,
+        [],
+        []
+    ));
 }
 
 function makeTable(rows, rowLabels, colLabels, caption, active = [], done = []) {

@@ -306,8 +306,8 @@ function buildSteps() {
     refs.log.innerHTML = '';
     const source = refs.source.value;
     const target = refs.target.value;
-    steps = (ALGO_RUNNERS[currentKey] || runBfs)(currentGraph, source, target);
-    if (!steps.length) steps = [step('Ready')];
+    const resultSteps = (ALGO_RUNNERS[currentKey] || runBfs)(currentGraph, source, target);
+    steps = [step('Queued. Press Play to start.'), ...(resultSteps.length ? resultSteps : [step('Ready')])];
     stepIndex = 0;
     renderStep(steps[0]);
 }

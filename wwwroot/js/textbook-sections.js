@@ -168,6 +168,7 @@ function buildSteps() {
             items: steps[steps.length - 1].items.map(item => ({ ...item, state: item.state === 'bad' ? 'bad' : 'good' })),
             caption: String(result.answer)
         });
+        steps = [queuedStep(steps[0]), ...steps];
         document.getElementById('topic-cp-result').textContent = formatAnswer(result.answer);
         stepIndex = 0;
         renderStep(steps[0]);
@@ -188,8 +189,17 @@ function buildSteps() {
         items: base.map(item => ({ ...item, state: 'good' })),
         caption: current.result
     });
+    steps = [queuedStep(steps[0]), ...steps];
     stepIndex = 0;
     renderStep(steps[0]);
+}
+
+function queuedStep(firstStep) {
+    return {
+        message: 'Queued. Press Play to start.',
+        items: firstStep.items.map(item => ({ ...item, state: '' })),
+        caption: firstStep.caption
+    };
 }
 
 function formatAnswer(answer) {

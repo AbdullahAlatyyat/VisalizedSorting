@@ -137,10 +137,15 @@ function buildSteps() {
     pause();
     refs.log.innerHTML = '';
     const result = (RUNNERS[currentKey] || runActivity)(itemCount(), { randomize: true });
-    steps = Array.isArray(result) ? result : result.steps;
+    const resultSteps = Array.isArray(result) ? result : result.steps;
+    steps = [queuedStep(resultSteps[0]), ...resultSteps];
     updateResult(result);
     stepIndex = 0;
     renderStep(steps[0]);
+}
+
+function queuedStep(firstStep) {
+    return snapshot('Queued. Press Play to start.', firstStep.items.map(item => ({ ...item, state: '' })), firstStep.caption);
 }
 
 function snapshot(message, items, caption = '') {

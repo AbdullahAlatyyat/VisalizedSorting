@@ -1,1 +1,70 @@
-{"nodes": [{"id": "greedy_algorithm_catalog", "label": "Greedy Algorithm Catalog", "file_type": "code", "source_file": "wwwroot/js/greedy.js", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "greedy_visualization_flow", "label": "Greedy Visualization Flow", "file_type": "code", "source_file": "wwwroot/js/greedy.js", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "greedy_local_runners", "label": "Greedy Local Runners", "file_type": "code", "source_file": "wwwroot/js/greedy.js", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "greedy_visualization_flow", "target": "greedy_algorithm_catalog", "relation": "shares_data_with", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "wwwroot/js/greedy.js", "source_location": null, "weight": 1.0}, {"source": "greedy_visualization_flow", "target": "greedy_local_runners", "relation": "calls", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "wwwroot/js/greedy.js", "source_location": null, "weight": 1.0}, {"source": "greedy_local_runners", "target": "algorithm_core_greedy_runners", "relation": "semantically_similar_to", "confidence": "INFERRED", "confidence_score": 0.9, "source_file": "wwwroot/js/greedy.js", "source_location": null, "weight": 1.0}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "greedy_algorithm_catalog",
+      "label": "Greedy Algorithm Catalog",
+      "file_type": "code",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "greedy_visualization_flow",
+      "label": "Greedy Visualization Flow",
+      "file_type": "code",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "greedy_local_runners",
+      "label": "Greedy Local Runners",
+      "file_type": "code",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "greedy_visualization_flow",
+      "target": "greedy_algorithm_catalog",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "greedy_visualization_flow",
+      "target": "greedy_local_runners",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "greedy_local_runners",
+      "target": "algorithm_core_greedy_runners",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": []
+}

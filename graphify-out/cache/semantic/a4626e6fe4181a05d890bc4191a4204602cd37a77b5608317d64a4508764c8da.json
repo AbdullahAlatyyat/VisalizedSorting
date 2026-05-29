@@ -1,1 +1,81 @@
-{"nodes": [{"id": "homecontroller_home_controller", "label": "HomeController", "file_type": "code", "source_file": "Controllers/HomeController.cs", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "homecontroller_index_action", "label": "Index Action", "file_type": "code", "source_file": "Controllers/HomeController.cs", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "homecontroller_algorithm_page_actions", "label": "Algorithm Page Actions", "file_type": "code", "source_file": "Controllers/HomeController.cs", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "homecontroller_error_action", "label": "Error Action", "file_type": "code", "source_file": "Controllers/HomeController.cs", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "homecontroller_home_controller", "target": "homecontroller_index_action", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "Controllers/HomeController.cs", "source_location": null, "weight": 1.0}, {"source": "homecontroller_home_controller", "target": "homecontroller_algorithm_page_actions", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "Controllers/HomeController.cs", "source_location": null, "weight": 1.0}, {"source": "homecontroller_error_action", "target": "errorviewmodel_error_view_model", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "Controllers/HomeController.cs", "source_location": null, "weight": 1.0}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "homecontroller_home_controller",
+      "label": "HomeController",
+      "file_type": "code",
+      "source_file": "Controllers/HomeController.cs",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "homecontroller_index_action",
+      "label": "Index Action",
+      "file_type": "code",
+      "source_file": "Controllers/HomeController.cs",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "homecontroller_algorithm_page_actions",
+      "label": "Algorithm Page Actions",
+      "file_type": "code",
+      "source_file": "Controllers/HomeController.cs",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "homecontroller_error_action",
+      "label": "Error Action",
+      "file_type": "code",
+      "source_file": "Controllers/HomeController.cs",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "homecontroller_home_controller",
+      "target": "homecontroller_index_action",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Controllers/HomeController.cs",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "homecontroller_home_controller",
+      "target": "homecontroller_algorithm_page_actions",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Controllers/HomeController.cs",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "homecontroller_error_action",
+      "target": "errorviewmodel_error_view_model",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Controllers/HomeController.cs",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": []
+}

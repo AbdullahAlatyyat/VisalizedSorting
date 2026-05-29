@@ -1,16 +1,16 @@
 # Graph Report - VisalizedSorting  (2026-05-29)
 
 ## Corpus Check
-- 18 files · ~33,112 words
+- 19 files · ~38,208 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 508 nodes · 795 edges · 24 communities (20 shown, 4 thin omitted)
+- 562 nodes · 907 edges · 25 communities (21 shown, 4 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `5b566343`
+- Built from commit: `4665554b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -38,16 +38,17 @@
 - [[_COMMUNITY_Community 21|Community 21]]
 - [[_COMMUNITY_Community 22|Community 22]]
 - [[_COMMUNITY_Community 23|Community 23]]
+- [[_COMMUNITY_Community 24|Community 24]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `BinaryModel` - 16 edges
-2. `MultiwayModel` - 15 edges
-3. `HomeController` - 14 edges
-4. `/graphify` - 14 edges
-5. `What You Must Do When Invoked` - 14 edges
-6. `step()` - 13 edges
-7. `nodeIds()` - 11 edges
-8. `runTopic()` - 11 edges
+2. `runTopic()` - 16 edges
+3. `MultiwayModel` - 15 edges
+4. `HomeController` - 14 edges
+5. `/graphify` - 14 edges
+6. `What You Must Do When Invoked` - 14 edges
+7. `step()` - 13 edges
+8. `nodeIds()` - 11 edges
 9. `setSteps()` - 10 edges
 10. `edgeId()` - 10 edges
 
@@ -68,7 +69,7 @@
 - **Algorithm Catalog to Runner Pattern** — site_sorting_algorithm_catalog, site_sort_generators, dynamic_programming_dp_catalog, greedy_algorithm_catalog, graphs_graph_algorithm_catalog, search_trees_tree_catalog, textbook_sections_topic_catalog [INFERRED 0.84]
 - **AlgorithmCore Test Contracts** — algorithm_core_tests_contract_suite, algorithm_core_run_sort, algorithm_core_dynamic_programming_runners, algorithm_core_greedy_runners, algorithm_core_graph_runners, algorithm_core_tree_sessions, algorithm_core_topic_runners [EXTRACTED 1.00]
 
-## Communities (24 total, 4 thin omitted)
+## Communities (25 total, 4 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.06
@@ -79,8 +80,8 @@ Cohesion: 0.11
 Nodes (46): advance(), ALGO_RUNNERS, buildSteps(), cloneGraph(), delay(), e(), edgeId(), fillSelectors() (+38 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.09
-Nodes (44): AlgorithmCore, buildBinary(), buildMultiway(), createTreeSession(), dp, dsu(), edgeExists(), edgeKey() (+36 more)
+Cohesion: 0.08
+Nodes (50): AlgorithmCore, arrayOption(), buildBinary(), buildMultiway(), clone(), createTreeSession(), dp, dsu() (+42 more)
 
 ### Community 3 - "Community 3"
 Cohesion: 0.06
@@ -91,16 +92,16 @@ Cohesion: 0.09
 Nodes (29): Dynamic Programming Runners, AlgorithmCore Facade, Graph Algorithm Runners, Canonical Graph Samples, Greedy Runners, runSort, AlgorithmCore Contract Test Suite, Graph Expected Results (+21 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.15
-Nodes (30): advance(), buildSteps(), cloneRows(), coreDp(), delay(), DP_ALGORITHMS, emptyRows(), makeTable() (+22 more)
+Cohesion: 0.11
+Nodes (40): advance(), boundedNumber(), buildSteps(), cloneRows(), collectManualOptions(), coreDp(), delay(), DP_ALGORITHMS (+32 more)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.12
-Nodes (27): advance(), buildSteps(), delay(), GREEDY_ALGORITHMS, GREEDY_DEFAULT_SIZES, itemCount(), openGreedy(), pause() (+19 more)
+Cohesion: 0.09
+Nodes (36): advance(), boundedNumber(), buildSteps(), collectManualOptions(), delay(), ensureInputPanel(), GREEDY_ALGORITHMS, GREEDY_DEFAULT_SIZES (+28 more)
 
 ### Community 7 - "Community 7"
-Cohesion: 0.16
-Nodes (17): advance(), buildSteps(), delay(), formatAnswer(), makeItems(), openAlgorithm(), pause(), play() (+9 more)
+Cohesion: 0.09
+Nodes (40): advance(), buildSteps(), collectDivideOptions(), collectGeometryOptions(), collectHeapOptions(), collectManualOptions(), collectSearchOptions(), collectStringOptions() (+32 more)
 
 ### Community 8 - "Community 8"
 Cohesion: 0.14
@@ -112,7 +113,7 @@ Nodes (15): ASPNETCORE_ENVIRONMENT, applicationUrl, commandName, dotnetRunMessag
 
 ### Community 10 - "Community 10"
 Cohesion: 0.07
-Nodes (22): activity, AlgorithmCore, assert, coin, cycleGraph, expected, fib, graph (+14 more)
+Nodes (23): activity, AlgorithmCore, assert, coin, cycleGraph, expected, fib, fractional (+15 more)
 
 ### Community 12 - "Community 12"
 Cohesion: 0.33
@@ -146,8 +147,12 @@ Nodes (8): Adding a new algorithm, Architecture, code:bash (dotnet build Visuali
 Cohesion: 0.50
 Nodes (3): Git workflow, graphify, Responsive design
 
+### Community 24 - "Community 24"
+Cohesion: 0.83
+Nodes (3): deploy.sh script, die(), step()
+
 ## Knowledge Gaps
-- **164 isolated node(s):** `Default`, `Microsoft.AspNetCore`, `AllowedHosts`, `$schema`, `commandName` (+159 more)
+- **168 isolated node(s):** `Default`, `Microsoft.AspNetCore`, `AllowedHosts`, `$schema`, `commandName` (+163 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -155,16 +160,16 @@ Nodes (3): Git workflow, graphify, Responsive design
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `runGraph()` connect `Community 2` to `Community 1`?**
-  _High betweenness centrality (0.028) - this node is a cross-community bridge._
+  _High betweenness centrality (0.026) - this node is a cross-community bridge._
 - **Why does `weight()` connect `Community 1` to `Community 2`?**
-  _High betweenness centrality (0.028) - this node is a cross-community bridge._
+  _High betweenness centrality (0.025) - this node is a cross-community bridge._
 - **Why does `What You Must Do When Invoked` connect `Community 20` to `Community 19`?**
-  _High betweenness centrality (0.017) - this node is a cross-community bridge._
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **What connects `Default`, `Microsoft.AspNetCore`, `AllowedHosts` to the rest of the system?**
-  _164 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _168 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.06105834464043419 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.10815602836879433 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
-  _Cohesion score 0.09268707482993198 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08246753246753247 - nodes in this community are weakly interconnected._

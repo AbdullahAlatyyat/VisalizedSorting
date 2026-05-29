@@ -1,1 +1,70 @@
-{"nodes": [{"id": "program_aspnet_core_bootstrap", "label": "ASP.NET Core MVC Bootstrap", "file_type": "code", "source_file": "Program.cs", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "program_default_controller_route", "label": "Default Controller Route", "file_type": "code", "source_file": "Program.cs", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "program_production_error_pipeline", "label": "Production Error Pipeline", "file_type": "code", "source_file": "Program.cs", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "program_aspnet_core_bootstrap", "target": "program_default_controller_route", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "Program.cs", "source_location": null, "weight": 1.0}, {"source": "program_default_controller_route", "target": "homecontroller_index_action", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "Program.cs", "source_location": null, "weight": 1.0}, {"source": "program_production_error_pipeline", "target": "homecontroller_error_action", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "Program.cs", "source_location": null, "weight": 1.0}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "program_aspnet_core_bootstrap",
+      "label": "ASP.NET Core MVC Bootstrap",
+      "file_type": "code",
+      "source_file": "Program.cs",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "program_default_controller_route",
+      "label": "Default Controller Route",
+      "file_type": "code",
+      "source_file": "Program.cs",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "program_production_error_pipeline",
+      "label": "Production Error Pipeline",
+      "file_type": "code",
+      "source_file": "Program.cs",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "program_aspnet_core_bootstrap",
+      "target": "program_default_controller_route",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Program.cs",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "program_default_controller_route",
+      "target": "homecontroller_index_action",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Program.cs",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "program_production_error_pipeline",
+      "target": "homecontroller_error_action",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "Program.cs",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": []
+}

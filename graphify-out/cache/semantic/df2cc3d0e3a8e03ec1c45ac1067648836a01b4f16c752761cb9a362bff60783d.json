@@ -1,1 +1,122 @@
-{"nodes": [{"id": "search_trees_tree_catalog", "label": "Search Tree Catalog", "file_type": "code", "source_file": "wwwroot/js/search-trees.js", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "search_trees_binary_model", "label": "BinaryModel", "file_type": "code", "source_file": "wwwroot/js/search-trees.js", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "search_trees_multiway_model", "label": "MultiwayModel", "file_type": "code", "source_file": "wwwroot/js/search-trees.js", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "search_trees_create_model", "label": "Tree Model Creation", "file_type": "code", "source_file": "wwwroot/js/search-trees.js", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "search_trees_tree_interaction_flow", "label": "Tree Interaction Flow", "file_type": "code", "source_file": "wwwroot/js/search-trees.js", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "search_trees_create_model", "target": "algorithm_core_tree_sessions", "relation": "calls", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "wwwroot/js/search-trees.js", "source_location": null, "weight": 1.0}, {"source": "search_trees_create_model", "target": "search_trees_binary_model", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "wwwroot/js/search-trees.js", "source_location": null, "weight": 1.0}, {"source": "search_trees_create_model", "target": "search_trees_multiway_model", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "wwwroot/js/search-trees.js", "source_location": null, "weight": 1.0}, {"source": "search_trees_tree_interaction_flow", "target": "search_trees_create_model", "relation": "calls", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "wwwroot/js/search-trees.js", "source_location": null, "weight": 1.0}, {"source": "search_trees_tree_interaction_flow", "target": "search_trees_tree_catalog", "relation": "shares_data_with", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "wwwroot/js/search-trees.js", "source_location": null, "weight": 1.0}, {"source": "search_trees_binary_model", "target": "search_trees_multiway_model", "relation": "semantically_similar_to", "confidence": "INFERRED", "confidence_score": 0.78, "source_file": "wwwroot/js/search-trees.js", "source_location": null, "weight": 1.0}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "search_trees_tree_catalog",
+      "label": "Search Tree Catalog",
+      "file_type": "code",
+      "source_file": "wwwroot/js/search-trees.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "search_trees_binary_model",
+      "label": "BinaryModel",
+      "file_type": "code",
+      "source_file": "wwwroot/js/search-trees.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "search_trees_multiway_model",
+      "label": "MultiwayModel",
+      "file_type": "code",
+      "source_file": "wwwroot/js/search-trees.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "search_trees_create_model",
+      "label": "Tree Model Creation",
+      "file_type": "code",
+      "source_file": "wwwroot/js/search-trees.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "search_trees_tree_interaction_flow",
+      "label": "Tree Interaction Flow",
+      "file_type": "code",
+      "source_file": "wwwroot/js/search-trees.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "search_trees_create_model",
+      "target": "algorithm_core_tree_sessions",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wwwroot/js/search-trees.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "search_trees_create_model",
+      "target": "search_trees_binary_model",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wwwroot/js/search-trees.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "search_trees_create_model",
+      "target": "search_trees_multiway_model",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wwwroot/js/search-trees.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "search_trees_tree_interaction_flow",
+      "target": "search_trees_create_model",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wwwroot/js/search-trees.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "search_trees_tree_interaction_flow",
+      "target": "search_trees_tree_catalog",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wwwroot/js/search-trees.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "search_trees_binary_model",
+      "target": "search_trees_multiway_model",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.78,
+      "source_file": "wwwroot/js/search-trees.js",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": []
+}

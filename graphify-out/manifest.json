@@ -1,8 +1,8 @@
 {
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/Program.cs": {
-    "mtime": 1777831446.9970083,
-    "ast_hash": "4166ad80cd0b55ca9c280d8c572a42b1",
-    "semantic_hash": "4166ad80cd0b55ca9c280d8c572a42b1"
+    "mtime": 1780097826.1015093,
+    "ast_hash": "6349bc9ad2a726b0f5f91a3d90db553c",
+    "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/appsettings.json": {
     "mtime": 1777831446.997675,
@@ -15,43 +15,43 @@
     "semantic_hash": "f6b83d76b4bfc6b13b5186ad9ba626fa"
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/.claude/settings.local.json": {
-    "mtime": 1777838766.8556411,
-    "ast_hash": "5979960a0e4836ba4d75ad0227a5a163",
-    "semantic_hash": "5979960a0e4836ba4d75ad0227a5a163"
+    "mtime": 1780097822.4924872,
+    "ast_hash": "98480b7d9399015adc0fb3da98b87e35",
+    "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/site.js": {
-    "mtime": 1780076064.6070206,
-    "ast_hash": "9524579679036debbd64803c47c6d8fe",
-    "semantic_hash": "9524579679036debbd64803c47c6d8fe"
+    "mtime": 1780097823.5944939,
+    "ast_hash": "2911cc96bc039f3a5527d1f8c6e6fcad",
+    "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/search-trees.js": {
-    "mtime": 1780094901.9441488,
-    "ast_hash": "730f4f1f68b87766d9d2af27a2413aa2",
+    "mtime": 1780097823.5574937,
+    "ast_hash": "e6f7b585245836a5fb4ef905e22c12d3",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/graphs.js": {
-    "mtime": 1780094993.3467681,
-    "ast_hash": "67e54b98a8e6a2be5f6e209ceda93e29",
+    "mtime": 1780097823.4959912,
+    "ast_hash": "9b811d3e93e44f2a746ead947516bd05",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/textbook-sections.js": {
-    "mtime": 1780095002.4998302,
-    "ast_hash": "90e1a8fdc8d563f88b45a1768b4e22cd",
+    "mtime": 1780097823.6198347,
+    "ast_hash": "36288eeb3ef57f66cb2618ba1f13b3b6",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/greedy.js": {
-    "mtime": 1780094989.1867402,
-    "ast_hash": "5452eb6d1fed74df37abc5bee939649d",
+    "mtime": 1780097823.531028,
+    "ast_hash": "a1920a336fb4150570d76ddbf0e915a4",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/algorithm-core.js": {
-    "mtime": 1780094679.3516433,
-    "ast_hash": "21b6bdb285764ccb3e9ff12cca2ff010",
+    "mtime": 1780097823.436714,
+    "ast_hash": "efeb4acb11ad8178375c99fe08d87ddc",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/dynamic-programming.js": {
-    "mtime": 1780095885.2428539,
-    "ast_hash": "fdcd5fea913c1ebd35accd91b6e420d7",
+    "mtime": 1780097823.4644933,
+    "ast_hash": "1c0bad172b2559d313a3e3f1cbc38938",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/Controllers/HomeController.cs": {
@@ -60,8 +60,8 @@
     "semantic_hash": "0a381cebb3f1f3766593205e139a1b06"
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/test/algorithm-core.test.js": {
-    "mtime": 1780094688.2477036,
-    "ast_hash": "28d7e5d212004571a26dd800aaf35896",
+    "mtime": 1780097823.2471218,
+    "ast_hash": "2a2ffe9911556df054cdfb677a50dc81",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/Models/ErrorViewModel.cs": {
@@ -70,9 +70,9 @@
     "semantic_hash": "526e7d3aa791e61f0caec6da82696ff5"
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/.codex/hooks.json": {
-    "mtime": 1780077140.0757287,
-    "ast_hash": "4085685248e9e6956f733758e4f6d64b",
-    "semantic_hash": "4085685248e9e6956f733758e4f6d64b"
+    "mtime": 1780097822.496852,
+    "ast_hash": "5eb816ef1f6bfaa74ef9c6f211f7e820",
+    "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/build.txt": {
     "mtime": 1780076650.9670568,
@@ -80,14 +80,14 @@
     "semantic_hash": "cb4cde01d9e3cf4b928f408d362c9266"
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/AGENTS.md": {
-    "mtime": 1780095370.6133273,
-    "ast_hash": "33d2a9369d6d6a9ec4460c4688386f29",
+    "mtime": 1780097822.50889,
+    "ast_hash": "52f016ea11d248093b8c75ab85a74a87",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/.agents/skills/graphify/SKILL.md": {
-    "mtime": 1780077140.074469,
-    "ast_hash": "8a98d44ea5c92ab83d0c18efb43b57de",
-    "semantic_hash": "8a98d44ea5c92ab83d0c18efb43b57de"
+    "mtime": 1780097822.4854872,
+    "ast_hash": "8cca686189d57a48d055b02701220828",
+    "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/favicon.svg": {
     "mtime": 1777831446.9978635,
@@ -95,8 +95,13 @@
     "semantic_hash": "a3abc020d1410f4b996d00a55dbc5871"
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/site-shell.js": {
-    "mtime": 1780095654.0794644,
-    "ast_hash": "8de99f7b3deb5ece6f3c17e6fd782265",
+    "mtime": 1780097823.561609,
+    "ast_hash": "b403976cf8793a6a7a88b8d8b7ce7e4a",
+    "semantic_hash": ""
+  },
+  "/home/hellmachine/Desktop/Projects/VisalizedSorting/deploy.sh": {
+    "mtime": 1780096407.6554186,
+    "ast_hash": "ce2731ba30ae17a01cee024b1f9cece7",
     "semantic_hash": ""
   }
 }

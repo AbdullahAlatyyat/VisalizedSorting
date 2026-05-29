@@ -1,1 +1,59 @@
-{"nodes": [{"id": "textbook_sections_topic_catalog", "label": "Textbook Topic Catalog", "file_type": "code", "source_file": "wwwroot/js/textbook-sections.js", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "textbook_sections_topic_visualization_flow", "label": "Topic Visualization Flow", "file_type": "code", "source_file": "wwwroot/js/textbook-sections.js", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "textbook_sections_topic_visualization_flow", "target": "textbook_sections_topic_catalog", "relation": "shares_data_with", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "wwwroot/js/textbook-sections.js", "source_location": null, "weight": 1.0}, {"source": "textbook_sections_topic_visualization_flow", "target": "algorithm_core_topic_runners", "relation": "calls", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "wwwroot/js/textbook-sections.js", "source_location": null, "weight": 1.0}, {"source": "textbook_sections_topic_catalog", "target": "algorithm_core_topic_runners", "relation": "shares_data_with", "confidence": "INFERRED", "confidence_score": 0.88, "source_file": "wwwroot/js/textbook-sections.js", "source_location": null, "weight": 1.0}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "textbook_sections_topic_catalog",
+      "label": "Textbook Topic Catalog",
+      "file_type": "code",
+      "source_file": "wwwroot/js/textbook-sections.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "textbook_sections_topic_visualization_flow",
+      "label": "Topic Visualization Flow",
+      "file_type": "code",
+      "source_file": "wwwroot/js/textbook-sections.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "textbook_sections_topic_visualization_flow",
+      "target": "textbook_sections_topic_catalog",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wwwroot/js/textbook-sections.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "textbook_sections_topic_visualization_flow",
+      "target": "algorithm_core_topic_runners",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wwwroot/js/textbook-sections.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "textbook_sections_topic_catalog",
+      "target": "algorithm_core_topic_runners",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.88,
+      "source_file": "wwwroot/js/textbook-sections.js",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": []
+}

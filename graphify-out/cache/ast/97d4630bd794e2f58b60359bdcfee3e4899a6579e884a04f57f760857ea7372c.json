@@ -1,1 +1,159 @@
-{"nodes": [{"id": "home_hellmachine_desktop_projects_visalizedsorting_claude_md", "label": "CLAUDE.md", "file_type": "document", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L1"}, {"id": "visalizedsorting_claude_claude_md", "label": "CLAUDE.md", "file_type": "document", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L1"}, {"id": "visalizedsorting_claude_commands", "label": "Commands", "file_type": "document", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L5"}, {"id": "visalizedsorting_claude_codeblock_1", "label": "code:bash (dotnet build VisualizedAlgorithms.sln              # Build t)", "file_type": "document", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L7"}, {"id": "visalizedsorting_claude_codeblock_2", "label": "code:bash (# See build.txt for the exact docker buildx command used)", "file_type": "document", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L15"}, {"id": "visalizedsorting_claude_architecture", "label": "Architecture", "file_type": "document", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L19"}, {"id": "visalizedsorting_claude_key_files", "label": "Key files", "file_type": "document", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L23"}, {"id": "visalizedsorting_claude_data_flow", "label": "Data flow", "file_type": "document", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L37"}, {"id": "visalizedsorting_claude_adding_a_new_algorithm", "label": "Adding a new algorithm", "file_type": "document", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L45"}, {"id": "visalizedsorting_claude_planned_work_todos", "label": "Planned work (todos)", "file_type": "document", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L51"}], "edges": [{"source": "home_hellmachine_desktop_projects_visalizedsorting_claude_md", "target": "visalizedsorting_claude_claude_md", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L1", "weight": 1.0}, {"source": "visalizedsorting_claude_claude_md", "target": "visalizedsorting_claude_commands", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L5", "weight": 1.0}, {"source": "visalizedsorting_claude_commands", "target": "visalizedsorting_claude_codeblock_1", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L7", "weight": 1.0}, {"source": "visalizedsorting_claude_commands", "target": "visalizedsorting_claude_codeblock_2", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L15", "weight": 1.0}, {"source": "visalizedsorting_claude_claude_md", "target": "visalizedsorting_claude_architecture", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L19", "weight": 1.0}, {"source": "visalizedsorting_claude_architecture", "target": "visalizedsorting_claude_key_files", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L23", "weight": 1.0}, {"source": "visalizedsorting_claude_architecture", "target": "visalizedsorting_claude_data_flow", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L37", "weight": 1.0}, {"source": "visalizedsorting_claude_architecture", "target": "visalizedsorting_claude_adding_a_new_algorithm", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L45", "weight": 1.0}, {"source": "visalizedsorting_claude_claude_md", "target": "visalizedsorting_claude_planned_work_todos", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md", "source_location": "L51", "weight": 1.0}], "input_tokens": 0, "output_tokens": 0}
+{
+  "nodes": [
+    {
+      "id": "home_hellmachine_desktop_projects_visalizedsorting_claude_md",
+      "label": "CLAUDE.md",
+      "file_type": "document",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "visalizedsorting_claude_claude_md",
+      "label": "CLAUDE.md",
+      "file_type": "document",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "visalizedsorting_claude_commands",
+      "label": "Commands",
+      "file_type": "document",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L5"
+    },
+    {
+      "id": "visalizedsorting_claude_codeblock_1",
+      "label": "code:bash (dotnet build VisualizedAlgorithms.sln              # Build t)",
+      "file_type": "document",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L7"
+    },
+    {
+      "id": "visalizedsorting_claude_codeblock_2",
+      "label": "code:bash (# See build.txt for the exact docker buildx command used)",
+      "file_type": "document",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L15"
+    },
+    {
+      "id": "visalizedsorting_claude_architecture",
+      "label": "Architecture",
+      "file_type": "document",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L19"
+    },
+    {
+      "id": "visalizedsorting_claude_key_files",
+      "label": "Key files",
+      "file_type": "document",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L23"
+    },
+    {
+      "id": "visalizedsorting_claude_data_flow",
+      "label": "Data flow",
+      "file_type": "document",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L37"
+    },
+    {
+      "id": "visalizedsorting_claude_adding_a_new_algorithm",
+      "label": "Adding a new algorithm",
+      "file_type": "document",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L45"
+    },
+    {
+      "id": "visalizedsorting_claude_planned_work_todos",
+      "label": "Planned work (todos)",
+      "file_type": "document",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L51"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_hellmachine_desktop_projects_visalizedsorting_claude_md",
+      "target": "visalizedsorting_claude_claude_md",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "visalizedsorting_claude_claude_md",
+      "target": "visalizedsorting_claude_commands",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "visalizedsorting_claude_commands",
+      "target": "visalizedsorting_claude_codeblock_1",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "visalizedsorting_claude_commands",
+      "target": "visalizedsorting_claude_codeblock_2",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "visalizedsorting_claude_claude_md",
+      "target": "visalizedsorting_claude_architecture",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "visalizedsorting_claude_architecture",
+      "target": "visalizedsorting_claude_key_files",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "visalizedsorting_claude_architecture",
+      "target": "visalizedsorting_claude_data_flow",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "visalizedsorting_claude_architecture",
+      "target": "visalizedsorting_claude_adding_a_new_algorithm",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "visalizedsorting_claude_claude_md",
+      "target": "visalizedsorting_claude_planned_work_todos",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md",
+      "source_location": "L51",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

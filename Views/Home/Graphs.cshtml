@@ -2,25 +2,7 @@
     ViewData["Title"] = "Graphs - VisualizedAlgorithms";
 }
 
-<nav class="vs-nav" id="vs-nav">
-    <div class="vs-nav-inner">
-        <a asp-controller="Home" asp-action="Index" class="vs-nav-logo">
-            <span class="logo-bracket">{</span>VisualizedAlgorithms<span class="logo-bracket">}</span>
-        </a>
-        <div class="vs-nav-links">
-            <a asp-controller="Home" asp-action="Sorting" class="vs-nav-link">Sorting</a>
-            <a asp-controller="Home" asp-action="Trees" class="vs-nav-link">Trees</a>
-            <a asp-controller="Home" asp-action="Graphs" class="vs-nav-link vs-nav-link-active">Graphs</a>
-            <a asp-controller="Home" asp-action="DynamicProgramming" class="vs-nav-link">DP</a>
-            <a asp-controller="Home" asp-action="Greedy" class="vs-nav-link">Greedy</a>
-            <a asp-controller="Home" asp-action="SearchingHashing" class="vs-nav-link">Search</a>
-            <a asp-controller="Home" asp-action="Heaps" class="vs-nav-link">Heaps</a>
-            <a asp-controller="Home" asp-action="Strings" class="vs-nav-link">Strings</a>
-            <a asp-controller="Home" asp-action="DivideConquer" class="vs-nav-link">D&amp;C</a>
-            <a asp-controller="Home" asp-action="Geometry" class="vs-nav-link">Geometry</a>
-        </div>
-    </div>
-</nav>
+<partial name="_Nav" />
 
 <section class="vs-algos-section vs-page-head" id="graphs">
     <div class="vs-container">

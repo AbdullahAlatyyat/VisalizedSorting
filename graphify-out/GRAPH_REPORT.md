@@ -1,16 +1,16 @@
 # Graph Report - VisalizedSorting  (2026-05-29)
 
 ## Corpus Check
-- 18 files · ~33,266 words
+- 18 files · ~33,112 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 501 nodes · 788 edges · 23 communities (18 shown, 5 thin omitted)
+- 508 nodes · 795 edges · 24 communities (20 shown, 4 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `69af907e`
+- Built from commit: `5b566343`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -35,6 +35,7 @@
 - [[_COMMUNITY_Community 17|Community 17]]
 - [[_COMMUNITY_Community 19|Community 19]]
 - [[_COMMUNITY_Community 20|Community 20]]
+- [[_COMMUNITY_Community 21|Community 21]]
 - [[_COMMUNITY_Community 22|Community 22]]
 - [[_COMMUNITY_Community 23|Community 23]]
 
@@ -67,7 +68,7 @@
 - **Algorithm Catalog to Runner Pattern** — site_sorting_algorithm_catalog, site_sort_generators, dynamic_programming_dp_catalog, greedy_algorithm_catalog, graphs_graph_algorithm_catalog, search_trees_tree_catalog, textbook_sections_topic_catalog [INFERRED 0.84]
 - **AlgorithmCore Test Contracts** — algorithm_core_tests_contract_suite, algorithm_core_run_sort, algorithm_core_dynamic_programming_runners, algorithm_core_greedy_runners, algorithm_core_graph_runners, algorithm_core_tree_sessions, algorithm_core_topic_runners [EXTRACTED 1.00]
 
-## Communities (23 total, 5 thin omitted)
+## Communities (24 total, 4 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.06
@@ -133,26 +134,34 @@ Nodes (34): code:block1 (/graphify                                             #
 Cohesion: 0.05
 Nodes (43): code:block10 (You are a graphify extraction subagent. Read the files liste), code:bash ($(cat graphify-out/.graphify_python) -c "), code:bash ($(cat .graphify_python) -c "), code:bash ($(cat .graphify_python) -c "), code:bash ($(cat .graphify_python) -c "), code:bash (mkdir -p graphify-out), code:bash ($(cat .graphify_python) -c "), code:bash ($(cat .graphify_python) -c ") (+35 more)
 
+### Community 21 - "Community 21"
+Cohesion: 0.50
+Nodes (4): menu, nav, setOpen(), toggle
+
 ### Community 22 - "Community 22"
 Cohesion: 0.20
 Nodes (8): Adding a new algorithm, Architecture, code:bash (dotnet build VisualizedAlgorithms.sln              # Build t), code:bash (# See build.txt for the exact docker buildx command used), Commands, Data flow, Key files, Planned work (todos)
 
+### Community 23 - "Community 23"
+Cohesion: 0.50
+Nodes (3): Git workflow, graphify, Responsive design
+
 ## Knowledge Gaps
-- **160 isolated node(s):** `Default`, `Microsoft.AspNetCore`, `AllowedHosts`, `$schema`, `commandName` (+155 more)
+- **164 isolated node(s):** `Default`, `Microsoft.AspNetCore`, `AllowedHosts`, `$schema`, `commandName` (+159 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `runGraph()` connect `Community 2` to `Community 1`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
+  _High betweenness centrality (0.028) - this node is a cross-community bridge._
 - **Why does `weight()` connect `Community 1` to `Community 2`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
+  _High betweenness centrality (0.028) - this node is a cross-community bridge._
 - **Why does `What You Must Do When Invoked` connect `Community 20` to `Community 19`?**
-  _High betweenness centrality (0.018) - this node is a cross-community bridge._
+  _High betweenness centrality (0.017) - this node is a cross-community bridge._
 - **What connects `Default`, `Microsoft.AspNetCore`, `AllowedHosts` to the rest of the system?**
-  _160 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _164 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.06105834464043419 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**

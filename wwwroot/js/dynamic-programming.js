@@ -195,7 +195,7 @@ function renderTable(table) {
             cells.push(`<div class="vs-dp-cell ${cls}">${value}</div>`);
         });
     });
-    refs.stage.innerHTML = `<div class="vs-dp-table" style="grid-template-columns: repeat(${cols}, minmax(54px, max-content));">${cells.join('')}</div><p class="vs-dp-caption">${table.caption}</p>`;
+    refs.stage.innerHTML = `<div class="vs-dp-table" style="grid-template-columns: repeat(${cols}, minmax(var(--vs-dp-cell-min), max-content));">${cells.join('')}</div><p class="vs-dp-caption">${table.caption}</p>`;
 }
 
 function renderLog(message) {

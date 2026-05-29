@@ -50,8 +50,8 @@
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/dynamic-programming.js": {
-    "mtime": 1780094984.5637088,
-    "ast_hash": "e3a500fe01dc366c926de3190a9ba4ca",
+    "mtime": 1780095885.2428539,
+    "ast_hash": "fdcd5fea913c1ebd35accd91b6e420d7",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/Controllers/HomeController.cs": {
@@ -74,20 +74,15 @@
     "ast_hash": "4085685248e9e6956f733758e4f6d64b",
     "semantic_hash": "4085685248e9e6956f733758e4f6d64b"
   },
-  "/home/hellmachine/Desktop/Projects/VisalizedSorting/CLAUDE.md": {
-    "mtime": 1777839399.2549293,
-    "ast_hash": "4cc7f945ea73a16500a42a0944fa5d25",
-    "semantic_hash": "4cc7f945ea73a16500a42a0944fa5d25"
-  },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/build.txt": {
     "mtime": 1780076650.9670568,
     "ast_hash": "cb4cde01d9e3cf4b928f408d362c9266",
     "semantic_hash": "cb4cde01d9e3cf4b928f408d362c9266"
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/AGENTS.md": {
-    "mtime": 1780077140.0753536,
-    "ast_hash": "62c05a2bf20bf036a0b2633478663e64",
-    "semantic_hash": "62c05a2bf20bf036a0b2633478663e64"
+    "mtime": 1780095370.6133273,
+    "ast_hash": "33d2a9369d6d6a9ec4460c4688386f29",
+    "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/.agents/skills/graphify/SKILL.md": {
     "mtime": 1780077140.074469,
@@ -98,5 +93,10 @@
     "mtime": 1777831446.9978635,
     "ast_hash": "a3abc020d1410f4b996d00a55dbc5871",
     "semantic_hash": "a3abc020d1410f4b996d00a55dbc5871"
+  },
+  "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/site-shell.js": {
+    "mtime": 1780095654.0794644,
+    "ast_hash": "8de99f7b3deb5ece6f3c17e6fd782265",
+    "semantic_hash": ""
   }
 }

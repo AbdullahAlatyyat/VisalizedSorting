@@ -65,6 +65,8 @@ const refs = {
     status: document.getElementById('dp-stat-status'),
     speed: document.getElementById('dp-speed'),
     speedVal: document.getElementById('dp-speed-val'),
+    size: document.getElementById('dp-size'),
+    sizeVal: document.getElementById('dp-size-val'),
     play: document.getElementById('dp-play'),
     step: document.getElementById('dp-step'),
     reset: document.getElementById('dp-reset'),
@@ -77,6 +79,10 @@ let steps = [];
 let stepIndex = 0;
 let timerId = null;
 let playing = false;
+
+function problemSize() {
+    return parseInt(refs.size.value, 10) || 8;
+}
 
 function renderGrid() {
     refs.grid.innerHTML = Object.entries(DP_ALGORITHMS).map(([key, algo]) => `
@@ -126,7 +132,7 @@ function openDp(key) {
 function buildSteps() {
     pause();
     refs.log.innerHTML = '';
-    steps = (RUNNERS[currentKey] || runFib)();
+    steps = (RUNNERS[currentKey] || runFib)(problemSize());
     stepIndex = 0;
     renderStep(steps[0]);
 }
@@ -175,10 +181,10 @@ function renderLog(message) {
     while (refs.log.children.length > 8) refs.log.lastChild.remove();
 }
 
-function runFib() {
+function runFib(size = 8) {
     if (globalThis.AlgorithmCore) {
-        const core = globalThis.AlgorithmCore.dp.run('fib');
-        const labels = [...Array(9).keys()];
+        const core = globalThis.AlgorithmCore.dp.run('fib', { size });
+        const labels = [...Array(core.steps[0].state.memo.length).keys()];
         return core.steps.map(step => {
             const rows = [step.state.memo.map(v => v ?? ''), step.state.tab.map(v => v ?? '')];
             const done = [];
@@ -187,10 +193,10 @@ function runFib() {
             return tableStep(step.message, makeTable(rows, ['memo', 'tab'], labels, 'Memoization caches recursive calls; tabulation fills states bottom-up.', active, done));
         });
     }
-    const n = 8;
+    const n = size;
     const rows = [Array(n + 1).fill(''), Array(n + 1).fill('')];
     const done = [];
-    const out = [tableStep('Compare memoized states with bottom-up table states', makeTable(rows, ['memo', 'tab'], [...Array(n + 1).keys()], 'Fibonacci states F(0) through F(8).', [], done))];
+    const out = [tableStep('Compare memoized states with bottom-up table states', makeTable(rows, ['memo', 'tab'], [...Array(n + 1).keys()], `Fibonacci states F(0) through F(${n}).`, [], done))];
     rows[0][0] = rows[1][0] = 0;
     rows[0][1] = rows[1][1] = 1;
     done.push([0,0], [0,1], [1,0], [1,1]);
@@ -204,8 +210,8 @@ function runFib() {
     return out;
 }
 
-function runCoin() {
-    const coins = [1, 2, 5], amount = 11;
+function runCoin(size = 8) {
+    const coins = [1, 2, 5], amount = size + 3;
     const dp = Array(amount + 1).fill('∞');
     const done = [];
     const out = [];
@@ -224,12 +230,15 @@ function runCoin() {
     return out;
 }
 
-function runKnapsack() {
-    const items = [{ w: 1, v: 1 }, { w: 3, v: 4 }, { w: 4, v: 5 }, { w: 5, v: 7 }];
-    const cap = 7;
+function runKnapsack(size = 8) {
+    const baseItems = [{ w: 1, v: 1 }, { w: 3, v: 4 }, { w: 4, v: 5 }, { w: 5, v: 7 }, { w: 2, v: 3 }, { w: 6, v: 9 }, { w: 7, v: 10 }];
+    const itemCount = Math.max(3, Math.min(baseItems.length, Math.round(size / 2)));
+    const items = baseItems.slice(0, itemCount);
+    const cap = Math.max(4, size - 1);
     const rows = emptyRows(items.length + 1, cap + 1, 0);
     const done = [];
-    const out = [tableStep('Initialize row 0: no items means value 0', makeTable(rows, ['0 items', 'i1', 'i2', 'i3', 'i4'], [...Array(cap + 1).keys()], 'Items: (w1,v1), (w3,v4), (w4,v5), (w5,v7).', [], done))];
+    const rowLabels = ['0 items', ...items.map((_, i) => `i${i + 1}`)];
+    const out = [tableStep('Initialize row 0: no items means value 0', makeTable(rows, rowLabels, [...Array(cap + 1).keys()], `Items: ${items.map(i => `(w${i.w},v${i.v})`).join(', ')}.`, [], done))];
     for (let i = 1; i <= items.length; i++) {
         for (let w = 0; w <= cap; w++) {
             const item = items[i - 1];
@@ -237,14 +246,15 @@ function runKnapsack() {
             const take = item.w <= w ? item.v + rows[i - 1][w - item.w] : -Infinity;
             rows[i][w] = Math.max(skip, take);
             done.push([i,w]);
-            out.push(tableStep(`Item ${i}, capacity ${w}: max(skip ${skip}, take ${take === -Infinity ? 'n/a' : take}) = ${rows[i][w]}`, makeTable(rows, ['0 items', 'i1', 'i2', 'i3', 'i4'], [...Array(cap + 1).keys()], 'Rows are item prefixes; columns are capacities.', [[i,w]], [...done])));
+            out.push(tableStep(`Item ${i}, capacity ${w}: max(skip ${skip}, take ${take === -Infinity ? 'n/a' : take}) = ${rows[i][w]}`, makeTable(rows, rowLabels, [...Array(cap + 1).keys()], 'Rows are item prefixes; columns are capacities.', [[i,w]], [...done])));
         }
     }
     return out;
 }
 
-function runLcs() {
-    const x = 'ABCBDAB', y = 'BDCABA';
+function runLcs(size = 8) {
+    const x = 'ABCBDABXYZPQ'.slice(0, Math.min(size, 12));
+    const y = 'BDCABAZYXPQ'.slice(0, Math.min(Math.max(4, size - 1), 11));
     const rows = emptyRows(x.length + 1, y.length + 1, 0);
     const done = [];
     const out = [tableStep('Initialize empty-prefix row and column to 0', makeTable(rows, ['-', ...x], ['-', ...y], 'dp[i][j] is LCS length for prefixes x[0..i) and y[0..j).', [], done))];
@@ -258,8 +268,9 @@ function runLcs() {
     return out;
 }
 
-function runEdit() {
-    const a = 'kitten', b = 'sitting';
+function runEdit(size = 8) {
+    const a = 'kittenfold'.slice(0, Math.min(size, 10));
+    const b = 'sittingpad'.slice(0, Math.min(Math.max(4, size + 1), 10));
     const rows = emptyRows(a.length + 1, b.length + 1, 0);
     const done = [];
     for (let i = 0; i <= a.length; i++) rows[i][0] = i;
@@ -276,8 +287,8 @@ function runEdit() {
     return out;
 }
 
-function runMatrix() {
-    const p = [10, 30, 5, 60];
+function runMatrix(size = 8) {
+    const p = [10, 30, 5, 60, 12, 24, 8, 16].slice(0, Math.max(4, Math.min(8, Math.round(size / 2))));
     const n = p.length - 1;
     const rows = emptyRows(n, n, '');
     const done = [];
@@ -285,8 +296,8 @@ function runMatrix() {
         rows[i][i] = 0;
         done.push([i,i]);
     }
-    const labels = ['A1', 'A2', 'A3'];
-    const out = [tableStep('Single matrix intervals cost 0', makeTable(rows, labels, labels, 'Dimensions: 10x30, 30x5, 5x60.', [[0,0],[1,1],[2,2]], [...done]))];
+    const labels = [...Array(n).keys()].map(i => `A${i + 1}`);
+    const out = [tableStep('Single matrix intervals cost 0', makeTable(rows, labels, labels, `Dimensions: ${p.join(' x ')}.`, [[0,0]], [...done]))];
     for (let len = 2; len <= n; len++) {
         for (let i = 0; i <= n - len; i++) {
             const j = i + len - 1;
@@ -302,8 +313,9 @@ function runMatrix() {
     return out;
 }
 
-function runLis() {
-    const arr = [10, 9, 2, 5, 3, 7, 101, 18];
+function runLis(size = 8) {
+    const base = [10, 9, 2, 5, 3, 7, 101, 18, 22, 6, 31, 4, 45, 11];
+    const arr = base.slice(0, size);
     const dp = Array(arr.length).fill('');
     const done = [];
     const out = [tableStep('Each position starts as a subsequence of length 1', makeTable([arr, dp], ['value', 'LIS'], arr.map((_, i) => i), 'dp[i] is best increasing subsequence ending at i.', [], done))];
@@ -364,6 +376,10 @@ refs.speed.addEventListener('input', () => {
         pause();
         play();
     }
+});
+refs.size.addEventListener('input', () => {
+    refs.sizeVal.textContent = refs.size.value;
+    if (currentKey) buildSteps();
 });
 
 renderGrid();

@@ -85,6 +85,8 @@ const refs = {
     pseudocode: document.getElementById('tree-pseudocode'),
     speed: document.getElementById('tree-speed'),
     speedVal: document.getElementById('tree-speed-val'),
+    size: document.getElementById('tree-size'),
+    sizeVal: document.getElementById('tree-size-val'),
     play: document.getElementById('tree-play'),
     step: document.getElementById('tree-step'),
     reset: document.getElementById('tree-reset')
@@ -96,6 +98,19 @@ let steps = [];
 let stepIndex = 0;
 let timerId = null;
 let playing = false;
+
+function treeSize() {
+    return parseInt(refs.size.value, 10) || 11;
+}
+function sizedKeys(source, size, step = 7) {
+    const keys = source.slice(0, size);
+    let next = source[source.length - 1] + step;
+    while (keys.length < size) {
+        keys.push(next);
+        next += step;
+    }
+    return keys;
+}
 
 class BinaryModel {
     constructor(keys = []) {
@@ -317,12 +332,13 @@ function openTree(key) {
 }
 
 function createModel(key) {
-    if (globalThis.AlgorithmCore) return globalThis.AlgorithmCore.trees.createSession(key);
+    const size = treeSize();
+    if (globalThis.AlgorithmCore) return globalThis.AlgorithmCore.trees.createSession(key, { size });
     if (['twoThree', 'twoThreeFour', 'btree', 'bplus'].includes(key)) {
         const maxKeys = key === 'btree' || key === 'bplus' ? 5 : 3;
-        return new MultiwayModel(MULTIWAY_KEYS, maxKeys);
+        return new MultiwayModel(sizedKeys(MULTIWAY_KEYS, size, 10), maxKeys);
     }
-    return new BinaryModel(DEFAULT_KEYS);
+    return new BinaryModel(sizedKeys(DEFAULT_KEYS, size));
 }
 
 function setSteps(nextSteps) {
@@ -487,6 +503,13 @@ refs.reset.addEventListener('click', () => {
     model = createModel(currentTreeKey);
     refs.log.innerHTML = '';
     setSteps([model.snapshot({}, 'Reset')]);
+});
+refs.size.addEventListener('input', () => {
+    refs.sizeVal.textContent = refs.size.value;
+    if (!currentTreeKey) return;
+    model = createModel(currentTreeKey);
+    refs.log.innerHTML = '';
+    setSteps([model.snapshot({}, 'Ready')]);
 });
 refs.play.addEventListener('click', () => playing ? pause() : play());
 refs.step.addEventListener('click', () => {

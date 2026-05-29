@@ -124,3 +124,24 @@ test('textbook topic runners exist for every card key', () => {
         }
     }
 });
+
+test('optional visualizer sizing is deterministic and backward compatible', () => {
+    const fib = AlgorithmCore.dp.run('fib', { size: 12 });
+    assert.equal(fib.steps[0].state.memo.length, 13);
+
+    const lis = AlgorithmCore.dp.run('lis', { size: 12 });
+    assert.equal(lis.input.length, 12);
+
+    const activity = AlgorithmCore.greedy.run('activity', { size: 6 });
+    assert.equal(activity.steps[0].items.length, 6);
+
+    const graph = AlgorithmCore.graphs.graphFrom(AlgorithmCore.graphs.samples.weighted, { size: 12 });
+    assert.equal(graph.nodes.length, 12);
+    assert.ok(AlgorithmCore.graphs.run('dijkstra', 'A', 'L', graph).distances.L < Infinity);
+
+    const tree = AlgorithmCore.trees.createSession('bst', { size: 13 });
+    assert.equal(tree.snapshot().count, 13);
+
+    const topic = AlgorithmCore.topics.run('searching', 'linear', { size: 12 });
+    assert.equal(topic.steps[0].items.length, 12);
+});

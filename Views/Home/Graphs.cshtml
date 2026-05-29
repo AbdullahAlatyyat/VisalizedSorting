@@ -91,15 +91,39 @@
                     </div>
                     <div class="vs-controls">
                         <div class="vs-ctrl-btns">
-                            <button class="vs-ctrl-btn" id="graph-reset" type="button">Reset</button>
-                            <button class="vs-ctrl-btn vs-ctrl-btn-primary" id="graph-play" type="button">Play</button>
-                            <button class="vs-ctrl-btn" id="graph-step" type="button">Step</button>
+                            <button class="vs-ctrl-btn" id="graph-reset" type="button">
+                                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                    <path d="M2 8a6 6 0 1 1 1.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M2 12V8h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Reset
+                            </button>
+                            <button class="vs-ctrl-btn vs-ctrl-btn-primary" id="graph-play" type="button">
+                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                    <path d="M5 3.5L13 8L5 12.5V3.5Z" fill="currentColor"/>
+                                </svg>
+                                Play
+                            </button>
+                            <button class="vs-ctrl-btn" id="graph-step" type="button">
+                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                    <path d="M4 3.5L10 8L4 12.5V3.5Z" fill="currentColor"/>
+                                    <line x1="12" y1="4" x2="12" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                                Step
+                            </button>
                         </div>
-                        <label class="vs-slider-label vs-tree-speed">
-                            Speed
-                            <span class="vs-slider-val" id="graph-speed-val">5</span>
-                            <input type="range" min="1" max="10" value="5" id="graph-speed" class="vs-slider" />
-                        </label>
+                        <div class="vs-sliders">
+                            <label class="vs-slider-label">
+                                Speed
+                                <span class="vs-slider-val" id="graph-speed-val">5</span>
+                                <input type="range" min="1" max="10" value="5" id="graph-speed" class="vs-slider" />
+                            </label>
+                            <label class="vs-slider-label">
+                                Graph Size
+                                <span class="vs-slider-val" id="graph-size-val">8</span>
+                                <input type="range" min="4" max="12" value="8" id="graph-size" class="vs-slider" />
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>

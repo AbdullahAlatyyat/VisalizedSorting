@@ -85,6 +85,8 @@ const refs = {
     status: document.getElementById('topic-stat-status'),
     speed: document.getElementById('topic-speed'),
     speedVal: document.getElementById('topic-speed-val'),
+    size: document.getElementById('topic-size'),
+    sizeVal: document.getElementById('topic-size-val'),
     play: document.getElementById('topic-play'),
     step: document.getElementById('topic-step'),
     reset: document.getElementById('topic-reset'),
@@ -97,6 +99,10 @@ let steps = [];
 let stepIndex = 0;
 let timerId = null;
 let playing = false;
+
+function topicItemCount() {
+    return parseInt(refs.size.value, 10) || 8;
+}
 
 function renderGrid() {
     if (!topic) return;
@@ -145,8 +151,9 @@ function openAlgorithm(key) {
 function buildSteps() {
     pause();
     refs.log.innerHTML = '';
+    const size = topicItemCount();
     if (globalThis.AlgorithmCore) {
-        const result = globalThis.AlgorithmCore.topics.run(topicKey, current.key);
+        const result = globalThis.AlgorithmCore.topics.run(topicKey, current.key, { size });
         steps = result.steps.map(step => ({
             message: step.message,
             caption: step.caption || current.idea,
@@ -165,7 +172,7 @@ function buildSteps() {
         renderStep(steps[0]);
         return;
     }
-    const base = makeItems(current);
+    const base = makeItems(current, size);
     steps = current.messages.map((message, index) => {
         const items = base.map((item, i) => {
             const next = { ...item, state: i < index ? 'good' : '' };
@@ -184,7 +191,7 @@ function buildSteps() {
     renderStep(steps[0]);
 }
 
-function makeItems(algo) {
+function makeItems(algo, size = 8) {
     const labels = {
         searching: ['0:4', '1:9', '2:1', '3:7', '4:11', '5:13', '6:18', '7:21'],
         heaps: ['root', 'parent', 'left child', 'right child', 'leaf', 'swap path', 'root list'],
@@ -192,7 +199,9 @@ function makeItems(algo) {
         divide: ['problem', 'left half', 'right half', 'base case', 'combine', 'answer'],
         geometry: ['point A', 'point B', 'edge', 'turn test', 'candidate', 'active set', 'result']
     }[topicKey] || ['candidate'];
-    return labels.map((label, i) => ({
+    const expanded = [...labels];
+    while (expanded.length < size) expanded.push(`${algo.category.toLowerCase()} ${expanded.length + 1}`);
+    return expanded.slice(0, size).map((label, i) => ({
         label,
         meta: `${algo.name.split(' ')[0]} step ${i + 1}`,
         state: ''
@@ -264,6 +273,10 @@ if (topic) {
             pause();
             play();
         }
+    });
+    refs.size.addEventListener('input', () => {
+        refs.sizeVal.textContent = refs.size.value;
+        if (current) buildSteps();
     });
     renderGrid();
 }

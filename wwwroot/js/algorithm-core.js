@@ -5,6 +5,19 @@
     const range = n => Array.from({ length: n }, (_, i) => i);
     const sorted = arr => [...arr].sort((a, b) => a - b);
     const edgeKey = (edge, directed = false) => directed ? `${edge.from}->${edge.to}` : [edge.from, edge.to].sort().join('-');
+    const sizeOption = (options, fallback, min, max) => {
+        const raw = typeof options === 'number' ? options : options && Number.isFinite(options.size) ? options.size : fallback;
+        return Math.max(min, Math.min(max, Math.round(raw)));
+    };
+    const sizedKeys = (source, size, step = 7) => {
+        const keys = source.slice(0, size);
+        let next = source[source.length - 1] + step;
+        while (keys.length < size) {
+            keys.push(next);
+            next += step;
+        }
+        return keys;
+    };
 
     function sortingStep(message, array, active = [], sortedIndices = [], metrics = {}) {
         return { message, state: { array: [...array], active: [...active], sorted: [...sortedIndices] }, metrics: { ...metrics } };
@@ -194,8 +207,8 @@
     }
 
     const dp = {
-        fib() {
-            const n = 8;
+        fib(options) {
+            const n = sizeOption(options, 8, 4, 14);
             const memo = Array(n + 1).fill(null);
             const tab = Array(n + 1).fill(null);
             const steps = [];
@@ -218,16 +231,18 @@
             }
             return { answer: tab[n], steps };
         },
-        coin() {
-            const coins = [1, 2, 5], amount = 11;
+        coin(options) {
+            const coins = [1, 2, 5], amount = sizeOption(options, 8, 4, 14) + 3;
             const table = Array(amount + 1).fill(Infinity);
             table[0] = 0;
             for (let a = 1; a <= amount; a++) for (const c of coins) if (c <= a) table[a] = Math.min(table[a], table[a - c] + 1);
             return { answer: table[amount], table, coins };
         },
-        knapsack() {
-            const items = [{ w: 1, v: 1 }, { w: 3, v: 4 }, { w: 4, v: 5 }, { w: 5, v: 7 }];
-            const cap = 7;
+        knapsack(options) {
+            const size = sizeOption(options, 8, 4, 14);
+            const baseItems = [{ w: 1, v: 1 }, { w: 3, v: 4 }, { w: 4, v: 5 }, { w: 5, v: 7 }, { w: 2, v: 3 }, { w: 6, v: 9 }, { w: 7, v: 10 }];
+            const items = baseItems.slice(0, Math.max(3, Math.min(baseItems.length, Math.round(size / 2))));
+            const cap = Math.max(4, size - 1);
             const table = Array.from({ length: items.length + 1 }, () => Array(cap + 1).fill(0));
             for (let i = 1; i <= items.length; i++) for (let w = 0; w <= cap; w++) {
                 const item = items[i - 1];
@@ -235,20 +250,26 @@
             }
             return { answer: table[items.length][cap], table, items, cap };
         },
-        lcs() {
-            const x = 'ABCBDAB', y = 'BDCABA';
+        lcs(options) {
+            const custom = options && Number.isFinite(options.size);
+            const size = sizeOption(options, 8, 4, 14);
+            const x = custom ? 'ABCBDABXYZPQ'.slice(0, Math.min(size, 12)) : 'ABCBDAB';
+            const y = custom ? 'BDCABAZYXPQ'.slice(0, Math.min(Math.max(4, size - 1), 11)) : 'BDCABA';
             const table = Array.from({ length: x.length + 1 }, () => Array(y.length + 1).fill(0));
             for (let i = 1; i <= x.length; i++) for (let j = 1; j <= y.length; j++) table[i][j] = x[i - 1] === y[j - 1] ? table[i - 1][j - 1] + 1 : Math.max(table[i - 1][j], table[i][j - 1]);
             return { answer: table[x.length][y.length], table, x, y };
         },
-        edit() {
-            const a = 'kitten', b = 'sitting';
+        edit(options) {
+            const custom = options && Number.isFinite(options.size);
+            const size = sizeOption(options, 8, 4, 14);
+            const a = custom ? 'kittenfold'.slice(0, Math.min(size, 10)) : 'kitten';
+            const b = custom ? 'sittingpad'.slice(0, Math.min(Math.max(4, size + 1), 10)) : 'sitting';
             const table = Array.from({ length: a.length + 1 }, (_, i) => Array.from({ length: b.length + 1 }, (_, j) => i === 0 ? j : j === 0 ? i : 0));
             for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++) table[i][j] = Math.min(table[i - 1][j] + 1, table[i][j - 1] + 1, table[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
             return { answer: table[a.length][b.length], table, a, b };
         },
-        matrix() {
-            const p = [10, 30, 5, 60], n = p.length - 1;
+        matrix(options) {
+            const p = [10, 30, 5, 60, 12, 24, 8, 16].slice(0, Math.max(4, Math.min(8, Math.round(sizeOption(options, 8, 4, 14) / 2)))), n = p.length - 1;
             const table = Array.from({ length: n }, () => Array(n).fill(0));
             for (let len = 2; len <= n; len++) for (let i = 0; i <= n - len; i++) {
                 const j = i + len - 1;
@@ -257,29 +278,32 @@
             }
             return { answer: table[0][n - 1], table, dimensions: p };
         },
-        lis() {
-            const input = [10, 9, 2, 5, 3, 7, 101, 18];
+        lis(options) {
+            const input = [10, 9, 2, 5, 3, 7, 101, 18, 22, 6, 31, 4, 45, 11].slice(0, sizeOption(options, 8, 4, 14));
             const table = Array(input.length).fill(1);
             for (let i = 0; i < input.length; i++) for (let j = 0; j < i; j++) if (input[j] < input[i]) table[i] = Math.max(table[i], table[j] + 1);
             return { answer: Math.max(...table), table, input };
         }
     };
 
-    function runDp(key) {
+    function runDp(key, options = {}) {
         if (!dp[key]) throw new Error(`Unknown DP algorithm: ${key}`);
-        return dp[key]();
+        return dp[key](options);
     }
 
     function item(id, label, meta, state = '') { return { id, label, meta, state }; }
     function snapshot(message, items, caption = '', metrics = {}) { return { message, items: items.map(x => ({ ...x })), caption, metrics: { ...metrics } }; }
 
-    function runGreedy(key) {
+    function runGreedy(key, options = {}) {
         if (key === 'activity') {
-            const acts = [
+            const size = sizeOption(options, 10, 4, 14);
+            const base = [
                 { id: 'A1', s: 1, f: 4 }, { id: 'A2', s: 3, f: 5 }, { id: 'A3', s: 0, f: 6 },
                 { id: 'A4', s: 5, f: 7 }, { id: 'A5', s: 3, f: 9 }, { id: 'A6', s: 5, f: 9 },
                 { id: 'A7', s: 6, f: 10 }, { id: 'A8', s: 8, f: 11 }, { id: 'A9', s: 8, f: 12 }, { id: 'A10', s: 12, f: 14 }
-            ].sort((a, b) => a.f - b.f);
+            ];
+            for (let i = base.length + 1; i <= size; i++) base.push({ id: `A${i}`, s: i + 2, f: i + 5 });
+            const acts = base.slice(0, size).sort((a, b) => a.f - b.f);
             const states = acts.map(a => item(a.id, a.id, `${a.s} -> ${a.f}`));
             const chosen = [];
             const steps = [snapshot('Sort by finish time', states)];
@@ -298,15 +322,21 @@
             return { steps, answer: chosen, value: chosen.length };
         }
         if (key === 'interval') {
-            const intervals = [{ id: 'I1', s: 0, f: 3 }, { id: 'I2', s: 1, f: 2 }, { id: 'I3', s: 3, f: 4 }, { id: 'I4', s: 2, f: 5 }, { id: 'I5', s: 5, f: 7 }, { id: 'I6', s: 6, f: 9 }, { id: 'I7', s: 8, f: 10 }].sort((a, b) => a.f - b.f);
+            const size = sizeOption(options, 7, 4, 14);
+            const base = [{ id: 'I1', s: 0, f: 3 }, { id: 'I2', s: 1, f: 2 }, { id: 'I3', s: 3, f: 4 }, { id: 'I4', s: 2, f: 5 }, { id: 'I5', s: 5, f: 7 }, { id: 'I6', s: 6, f: 9 }, { id: 'I7', s: 8, f: 10 }];
+            for (let i = base.length + 1; i <= size; i++) base.push({ id: `I${i}`, s: i + 1, f: i + 4 });
+            const intervals = base.slice(0, size).sort((a, b) => a.f - b.f);
             const chosen = [];
             let end = -Infinity;
             intervals.forEach(x => { if (x.s >= end) { chosen.push(x.id); end = x.f; } });
             return { answer: chosen, value: chosen.length };
         }
         if (key === 'fractional') {
-            const items = [{ id: 'A', w: 10, v: 60 }, { id: 'B', w: 20, v: 100 }, { id: 'C', w: 30, v: 120 }, { id: 'D', w: 15, v: 45 }].sort((a, b) => b.v / b.w - a.v / a.w);
-            let remaining = 50, value = 0;
+            const size = sizeOption(options, 4, 4, 14);
+            const base = [{ id: 'A', w: 10, v: 60 }, { id: 'B', w: 20, v: 100 }, { id: 'C', w: 30, v: 120 }, { id: 'D', w: 15, v: 45 }];
+            for (let i = base.length; i < size; i++) base.push({ id: String.fromCharCode(65 + i), w: 8 + i * 2, v: 30 + i * 17 });
+            const items = base.slice(0, size).sort((a, b) => b.v / b.w - a.v / a.w);
+            let remaining = options && Number.isFinite(options.size) ? Math.max(35, size * 10 + 10) : 50, value = 0;
             const taken = [];
             for (const x of items) {
                 if (remaining <= 0) break;
@@ -318,14 +348,21 @@
             return { answer: taken, value };
         }
         if (key === 'jobs') {
-            const jobs = [{ id: 'J1', d: 2, p: 100 }, { id: 'J2', d: 1, p: 19 }, { id: 'J3', d: 2, p: 27 }, { id: 'J4', d: 1, p: 25 }, { id: 'J5', d: 3, p: 15 }].sort((a, b) => b.p - a.p);
+            const size = sizeOption(options, 5, 4, 14);
+            const base = [{ id: 'J1', d: 2, p: 100 }, { id: 'J2', d: 1, p: 19 }, { id: 'J3', d: 2, p: 27 }, { id: 'J4', d: 1, p: 25 }, { id: 'J5', d: 3, p: 15 }];
+            for (let i = base.length + 1; i <= size; i++) base.push({ id: `J${i}`, d: 1 + (i % 5), p: 20 + i * 9 });
+            const jobs = base.slice(0, size).sort((a, b) => b.p - a.p);
             const slots = Array(Math.max(...jobs.map(j => j.d))).fill(null);
             for (const job of jobs) for (let s = Math.min(job.d, slots.length) - 1; s >= 0; s--) if (!slots[s]) { slots[s] = job; break; }
             return { answer: slots.map(j => j && j.id).filter(Boolean), value: slots.reduce((sum, j) => sum + (j ? j.p : 0), 0) };
         }
         if (key === 'setcover') {
-            const universe = new Set(['A', 'B', 'C', 'D', 'E', 'F', 'G']);
-            const sets = [{ id: 'S1', covers: ['A', 'B', 'C'] }, { id: 'S2', covers: ['A', 'D'] }, { id: 'S3', covers: ['B', 'E', 'F'] }, { id: 'S4', covers: ['C', 'G'] }, { id: 'S5', covers: ['D', 'E', 'G'] }];
+            const size = sizeOption(options, 5, 4, 14);
+            const universeItems = 'ABCDEFG'.split('');
+            const universe = new Set(universeItems);
+            const base = [{ id: 'S1', covers: ['A', 'B', 'C'] }, { id: 'S2', covers: ['A', 'D'] }, { id: 'S3', covers: ['B', 'E', 'F'] }, { id: 'S4', covers: ['C', 'G'] }, { id: 'S5', covers: ['D', 'E', 'G'] }];
+            for (let i = base.length + 1; i <= size; i++) base.push({ id: `S${i}`, covers: universeItems.filter((_, index) => (index + i) % 3 === 0).slice(0, 4) });
+            const sets = base.slice(0, size);
             const chosen = [], uncovered = new Set(universe);
             while (uncovered.size) {
                 const best = sets.filter(s => !chosen.includes(s.id)).sort((a, b) => b.covers.filter(x => uncovered.has(x)).length - a.covers.filter(x => uncovered.has(x)).length)[0];
@@ -335,7 +372,10 @@
             return { answer: chosen, value: chosen.length };
         }
         if (key === 'huffman') {
-            let nodes = [{ id: 'A', freq: 45 }, { id: 'B', freq: 13 }, { id: 'C', freq: 12 }, { id: 'D', freq: 16 }, { id: 'E', freq: 9 }, { id: 'F', freq: 5 }];
+            const size = sizeOption(options, 6, 4, 14);
+            const base = [{ id: 'A', freq: 45 }, { id: 'B', freq: 13 }, { id: 'C', freq: 12 }, { id: 'D', freq: 16 }, { id: 'E', freq: 9 }, { id: 'F', freq: 5 }];
+            for (let i = base.length; i < size; i++) base.push({ id: String.fromCharCode(65 + i), freq: 7 + i * 4 });
+            let nodes = base.slice(0, size);
             const merges = [];
             let count = 1;
             while (nodes.length > 1) {
@@ -358,7 +398,32 @@
         negativeCycle: { directed: true, nodes: ['A', 'B', 'C'], edges: [['A','B',1], ['B','C',-2], ['C','A',-2]] },
         scc: { directed: true, nodes: ['A', 'B', 'C', 'D', 'E', 'F'], edges: [['A','B'], ['B','C'], ['C','A'], ['B','D'], ['D','C'], ['C','E'], ['E','F'], ['F','E']] }
     };
-    function graphFrom(sample) { return { directed: sample.directed, nodes: sample.nodes.map(id => ({ id })), edges: sample.edges.map(e => ({ from: e[0], to: e[1], weight: e[2] })) }; }
+    function edgeExists(edges, from, to, directed) {
+        return edges.some(e => directed ? e[0] === from && e[1] === to : (e[0] === from && e[1] === to) || (e[0] === to && e[1] === from));
+    }
+    function resizedGraphSample(sample, options = {}) {
+        if (!options || !Number.isFinite(options.size)) return sample;
+        const size = sizeOption(options, sample.nodes.length, 4, 12);
+        const nodes = range(size).map(i => String.fromCharCode(65 + i));
+        const ids = new Set(nodes);
+        const weighted = sample.edges.some(e => e[2] !== undefined);
+        const edges = sample.edges.filter(e => ids.has(e[0]) && ids.has(e[1])).map(e => [...e]);
+        for (let i = 0; i < size - 1; i++) {
+            const from = nodes[i], to = nodes[i + 1];
+            if (!edgeExists(edges, from, to, sample.directed)) edges.push(weighted ? [from, to, (i * 3) % 9 + 1] : [from, to]);
+        }
+        if (!sample.directed) {
+            for (let i = 0; i < size - 2; i += 2) {
+                const from = nodes[i], to = nodes[i + 2];
+                if (!edgeExists(edges, from, to, false)) edges.push(weighted ? [from, to, (i * 5) % 8 + 2] : [from, to]);
+            }
+        }
+        return { directed: sample.directed, nodes, edges };
+    }
+    function graphFrom(sample, options = {}) {
+        const sized = resizedGraphSample(sample, options);
+        return { directed: sized.directed, nodes: sized.nodes.map(id => ({ id })), edges: sized.edges.map(e => ({ from: e[0], to: e[1], weight: e[2] })) };
+    }
     function graphNeighbors(graph, id) {
         const out = [];
         for (const e of graph.edges) {
@@ -584,7 +649,13 @@
     }
     function createTreeSession(kind, initialKeys = [50, 25, 75, 12, 37, 62, 88, 31, 43, 57, 70]) {
         const multi = ['twoThree', 'twoThreeFour', 'btree', 'bplus'].includes(kind);
-        const keys = multi ? [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110] : [...initialKeys];
+        const options = Array.isArray(initialKeys) ? {} : initialKeys || {};
+        const defaultBinary = [50, 25, 75, 12, 37, 62, 88, 31, 43, 57, 70];
+        const defaultMulti = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110];
+        const size = sizeOption(options, 11, 5, 25);
+        const keys = multi
+            ? sizedKeys(defaultMulti, size, 10)
+            : Array.isArray(initialKeys) ? [...initialKeys] : sizedKeys(defaultBinary, size);
         const session = {
             keys,
             snapshot(highlight = {}, message = 'Ready') {
@@ -634,8 +705,15 @@
         return { ordered: vals.every((v, i) => i === 0 || vals[i - 1] < v), keys: vals };
     }
 
-    function runTopic(topic, key) {
-        const done = (message, items, result) => ({ steps: [snapshot(message, items, result)], answer: result });
+    function runTopic(topic, key, options = {}) {
+        const requestedSize = options && Number.isFinite(options.size) ? sizeOption(options, 8, 4, 14) : null;
+        const fitItems = items => {
+            if (!requestedSize) return items;
+            const next = items.map(x => ({ ...x }));
+            while (next.length < requestedSize) next.push(item(`extra-${next.length}`, `item ${next.length + 1}`, 'generated'));
+            return next.slice(0, requestedSize);
+        };
+        const done = (message, items, result) => ({ steps: [snapshot(message, fitItems(items), result)], answer: result });
         if (topic === 'searching') {
             const arr = key === 'binary' ? [1, 3, 5, 7, 9, 11, 13, 18, 21, 27] : [4, 9, 1, 7, 11, 13, 18, 21];
             if (key === 'linear') {

@@ -145,6 +145,8 @@ const refs = {
     status: document.getElementById('graph-stat-status'),
     speed: document.getElementById('graph-speed'),
     speedVal: document.getElementById('graph-speed-val'),
+    size: document.getElementById('graph-size'),
+    sizeVal: document.getElementById('graph-size-val'),
     play: document.getElementById('graph-play'),
     step: document.getElementById('graph-step'),
     reset: document.getElementById('graph-reset'),
@@ -154,6 +156,7 @@ const refs = {
 
 let currentKey = null;
 let currentGraph = null;
+let currentSample = null;
 let steps = [];
 let stepIndex = 0;
 let timerId = null;
@@ -170,6 +173,47 @@ function cloneGraph(graph) {
         nodes: graph.nodes.map(node => ({ ...node })),
         edges: graph.edges.map(edge => ({ ...edge }))
     };
+}
+function graphSize() {
+    return parseInt(refs.size.value, 10) || 8;
+}
+function nodeLabel(index) {
+    return String.fromCharCode(65 + index);
+}
+function generatedNode(index, total) {
+    const angle = (Math.PI * 2 * index) / total;
+    return n(nodeLabel(index), Math.round(410 + Math.cos(angle) * 300), Math.round(205 + Math.sin(angle) * 145));
+}
+function hasEdge(edges, from, to, directed) {
+    return edges.some(edge => directed
+        ? edge.from === from && edge.to === to
+        : (edge.from === from && edge.to === to) || (edge.from === to && edge.to === from));
+}
+function resizeGraphSample(sample, size) {
+    const nextSize = Math.max(4, Math.min(12, size));
+    const nodes = [];
+    for (let i = 0; i < nextSize; i++) {
+        const id = nodeLabel(i);
+        const existing = sample.nodes.find(node => node.id === id);
+        nodes.push(existing ? { ...existing } : generatedNode(i, nextSize));
+    }
+    const ids = new Set(nodes.map(node => node.id));
+    const edges = sample.edges
+        .filter(edge => ids.has(edge.from) && ids.has(edge.to))
+        .map(edge => ({ ...edge }));
+    for (let i = 0; i < nextSize - 1; i++) {
+        const from = nodeLabel(i);
+        const to = nodeLabel(i + 1);
+        if (!hasEdge(edges, from, to, sample.directed)) edges.push(e(from, to, sample.edges.some(edge => edge.weight !== undefined) ? (i * 3) % 9 + 1 : undefined));
+    }
+    if (!sample.directed) {
+        for (let i = 0; i < nextSize - 2; i += 2) {
+            const from = nodeLabel(i);
+            const to = nodeLabel(i + 2);
+            if (!hasEdge(edges, from, to, false)) edges.push(e(from, to, sample.edges.some(edge => edge.weight !== undefined) ? (i * 5) % 8 + 2 : undefined));
+        }
+    }
+    return { directed: sample.directed, nodes, edges };
 }
 function nodeIds(graph) { return graph.nodes.map(node => node.id); }
 function neighbors(graph, id) {
@@ -217,7 +261,8 @@ function renderGrid() {
 function openGraph(key) {
     currentKey = key;
     const algo = GRAPH_ALGORITHMS[key];
-    currentGraph = cloneGraph(GRAPH_SAMPLES[algo.sample]);
+    currentSample = GRAPH_SAMPLES[algo.sample];
+    currentGraph = resizeGraphSample(currentSample, graphSize());
     refs.title.textContent = algo.name;
     refs.category.textContent = algo.category;
     document.getElementById('graph-cp-time').textContent = algo.time;
@@ -249,6 +294,17 @@ function buildSteps() {
     if (!steps.length) steps = [step('Ready')];
     stepIndex = 0;
     renderStep(steps[0]);
+}
+function rebuildGraph() {
+    if (!currentSample) return;
+    const previousSource = refs.source.value;
+    const previousTarget = refs.target.value;
+    currentGraph = resizeGraphSample(currentSample, graphSize());
+    fillSelectors(currentGraph);
+    const ids = nodeIds(currentGraph);
+    refs.source.value = ids.includes(previousSource) ? previousSource : ids[0];
+    refs.target.value = ids.includes(previousTarget) ? previousTarget : ids[ids.length - 1];
+    buildSteps();
 }
 
 function renderStep(item) {
@@ -645,6 +701,10 @@ refs.speed.addEventListener('input', () => {
         pause();
         play();
     }
+});
+refs.size.addEventListener('input', () => {
+    refs.sizeVal.textContent = refs.size.value;
+    rebuildGraph();
 });
 refs.source.addEventListener('change', buildSteps);
 refs.target.addEventListener('change', buildSteps);

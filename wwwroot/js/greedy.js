@@ -58,6 +58,8 @@ const refs = {
     status: document.getElementById('greedy-stat-status'),
     speed: document.getElementById('greedy-speed'),
     speedVal: document.getElementById('greedy-speed-val'),
+    size: document.getElementById('greedy-size'),
+    sizeVal: document.getElementById('greedy-size-val'),
     play: document.getElementById('greedy-play'),
     step: document.getElementById('greedy-step'),
     reset: document.getElementById('greedy-reset'),
@@ -70,6 +72,19 @@ let steps = [];
 let stepIndex = 0;
 let timerId = null;
 let playing = false;
+
+const GREEDY_DEFAULT_SIZES = {
+    activity: 10,
+    interval: 7,
+    fractional: 4,
+    jobs: 5,
+    setcover: 5,
+    huffman: 6
+};
+
+function itemCount() {
+    return parseInt(refs.size.value, 10) || GREEDY_DEFAULT_SIZES[currentKey] || 8;
+}
 
 function renderGrid() {
     refs.grid.innerHTML = Object.entries(GREEDY_ALGORITHMS).map(([key, algo]) => `
@@ -111,6 +126,8 @@ function openGreedy(key) {
     document.getElementById('greedy-cp-result').textContent = algo.result;
     document.getElementById('greedy-description').textContent = algo.description;
     refs.pseudocode.textContent = algo.pseudocode;
+    refs.size.value = GREEDY_DEFAULT_SIZES[key] || 8;
+    refs.sizeVal.textContent = refs.size.value;
     refs.list.classList.add('vs-hidden');
     refs.viz.classList.remove('vs-hidden');
     buildSteps();
@@ -119,7 +136,7 @@ function openGreedy(key) {
 function buildSteps() {
     pause();
     refs.log.innerHTML = '';
-    steps = (RUNNERS[currentKey] || runActivity)();
+    steps = (RUNNERS[currentKey] || runActivity)(itemCount());
     stepIndex = 0;
     renderStep(steps[0]);
 }
@@ -155,13 +172,15 @@ function renderLog(message) {
     while (refs.log.children.length > 8) refs.log.lastChild.remove();
 }
 
-function runActivity() {
-    const acts = [
+function runActivity(size = 10) {
+    const base = [
         { id: 'A1', s: 1, f: 4 }, { id: 'A2', s: 3, f: 5 }, { id: 'A3', s: 0, f: 6 },
         { id: 'A4', s: 5, f: 7 }, { id: 'A5', s: 3, f: 9 }, { id: 'A6', s: 5, f: 9 },
         { id: 'A7', s: 6, f: 10 }, { id: 'A8', s: 8, f: 11 }, { id: 'A9', s: 8, f: 12 },
         { id: 'A10', s: 12, f: 14 }
-    ].sort((a, b) => a.f - b.f);
+    ];
+    for (let i = base.length + 1; i <= size; i++) base.push({ id: `A${i}`, s: i + 2, f: i + 5 });
+    const acts = base.slice(0, size).sort((a, b) => a.f - b.f);
     const states = acts.map(a => item(a.id, a.id, `${a.s} -> ${a.f}`));
     const out = [snapshot('Sort by finish time', states, 'Greedy rule: pick the compatible activity that finishes earliest.')];
     let last = -Infinity;
@@ -181,12 +200,14 @@ function runActivity() {
     return out;
 }
 
-function runInterval() {
-    const intervals = [
+function runInterval(size = 7) {
+    const base = [
         { id: 'I1', s: 0, f: 3 }, { id: 'I2', s: 1, f: 2 }, { id: 'I3', s: 3, f: 4 },
         { id: 'I4', s: 2, f: 5 }, { id: 'I5', s: 5, f: 7 }, { id: 'I6', s: 6, f: 9 },
         { id: 'I7', s: 8, f: 10 }
-    ].sort((a, b) => a.f - b.f);
+    ];
+    for (let i = base.length + 1; i <= size; i++) base.push({ id: `I${i}`, s: i + 1, f: i + 4 });
+    const intervals = base.slice(0, size).sort((a, b) => a.f - b.f);
     const states = intervals.map(x => item(x.id, x.id, `[${x.s}, ${x.f})`));
     const out = [snapshot('Sort intervals by end time', states, 'This maximizes the number of non-overlapping intervals.')];
     let end = -Infinity;
@@ -206,11 +227,13 @@ function runInterval() {
     return out;
 }
 
-function runFractional() {
-    const capacity = 50;
-    const items = [
+function runFractional(size = 4) {
+    const capacity = Math.max(35, size * 10 + 10);
+    const base = [
         { id: 'A', w: 10, v: 60 }, { id: 'B', w: 20, v: 100 }, { id: 'C', w: 30, v: 120 }, { id: 'D', w: 15, v: 45 }
-    ].sort((a, b) => (b.v / b.w) - (a.v / a.w));
+    ];
+    for (let i = base.length; i < size; i++) base.push({ id: String.fromCharCode(65 + i), w: 8 + i * 2, v: 30 + i * 17 });
+    const items = base.slice(0, size).sort((a, b) => (b.v / b.w) - (a.v / a.w));
     const states = items.map(x => item(x.id, `Item ${x.id}`, `w=${x.w}, v=${x.v}, ratio=${(x.v / x.w).toFixed(1)}`));
     const out = [snapshot('Sort by value density', states, `Capacity starts at ${capacity}.`)]; 
     let remaining = capacity;
@@ -240,13 +263,15 @@ function runFractional() {
     return out;
 }
 
-function runJobs() {
-    const jobs = [
+function runJobs(size = 5) {
+    const base = [
         { id: 'J1', d: 2, p: 100 }, { id: 'J2', d: 1, p: 19 }, { id: 'J3', d: 2, p: 27 },
         { id: 'J4', d: 1, p: 25 }, { id: 'J5', d: 3, p: 15 }
-    ].sort((a, b) => b.p - a.p);
+    ];
+    for (let i = base.length + 1; i <= size; i++) base.push({ id: `J${i}`, d: 1 + (i % 5), p: 20 + i * 9 });
+    const jobs = base.slice(0, size).sort((a, b) => b.p - a.p);
     const states = jobs.map(j => item(j.id, j.id, `deadline=${j.d}, profit=${j.p}`));
-    const slots = Array(3).fill(null);
+    const slots = Array(Math.max(...jobs.map(j => j.d))).fill(null);
     const out = [snapshot('Sort jobs by profit descending', states, 'Place each job in the latest open slot before its deadline.')];
     for (const j of jobs) {
         const cur = states.find(i => i.id === j.id);
@@ -266,12 +291,15 @@ function runJobs() {
     return out;
 }
 
-function runSetcover() {
-    const universe = new Set(['A', 'B', 'C', 'D', 'E', 'F', 'G']);
-    const sets = [
+function runSetcover(size = 5) {
+    const universeItems = 'ABCDEFG'.split('');
+    const universe = new Set(universeItems);
+    const base = [
         { id: 'S1', covers: ['A', 'B', 'C'] }, { id: 'S2', covers: ['A', 'D'] }, { id: 'S3', covers: ['B', 'E', 'F'] },
         { id: 'S4', covers: ['C', 'G'] }, { id: 'S5', covers: ['D', 'E', 'G'] }
     ];
+    for (let i = base.length + 1; i <= size; i++) base.push({ id: `S${i}`, covers: universeItems.filter((_, index) => (index + i) % 3 === 0).slice(0, 4) });
+    const sets = base.slice(0, size);
     const states = sets.map(s => item(s.id, s.id, `{${s.covers.join(', ')}}`));
     const uncovered = new Set(universe);
     const out = [snapshot('Start with every element uncovered', states, `Uncovered: ${[...uncovered].join(', ')}`)];
@@ -289,10 +317,12 @@ function runSetcover() {
     return out;
 }
 
-function runHuffman() {
-    let nodes = [
+function runHuffman(size = 6) {
+    const base = [
         { id: 'A', freq: 45 }, { id: 'B', freq: 13 }, { id: 'C', freq: 12 }, { id: 'D', freq: 16 }, { id: 'E', freq: 9 }, { id: 'F', freq: 5 }
     ];
+    for (let i = base.length; i < size; i++) base.push({ id: String.fromCharCode(65 + i), freq: 7 + i * 4 });
+    let nodes = base.slice(0, size);
     const out = [snapshot('Start with one leaf per symbol', nodes.map(x => item(x.id, x.id, `freq=${x.freq}`)), 'Always merge the two smallest frequencies.')];
     let count = 1;
     while (nodes.length > 1) {
@@ -361,6 +391,10 @@ refs.speed.addEventListener('input', () => {
         pause();
         play();
     }
+});
+refs.size.addEventListener('input', () => {
+    refs.sizeVal.textContent = refs.size.value;
+    if (currentKey) buildSteps();
 });
 
 renderGrid();

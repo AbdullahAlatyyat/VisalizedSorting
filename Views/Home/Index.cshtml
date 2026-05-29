@@ -39,7 +39,45 @@
                     <p class="vs-hero-subtitle">
                         VisualizedAlgorithms exists to make the ideas behind algorithms visible: the comparisons, decisions, rotations, splits, and tradeoffs that are easy to miss in static notes.
                     </p>
-                    <div class="vs-home-actions">
+                </div>
+
+                <div class="vs-hero-visual vs-home-hero-visual" role="img" aria-label="Animated Bubble Sort board preview">
+                    <div class="vs-hero-visual-topbar">
+                        <span class="vs-hero-visual-label">Bubble Sort &mdash; step 14 / 32</span>
+                        <span class="vs-hero-visual-status">Sorting&hellip;</span>
+                    </div>
+                    <div class="vs-hero-bars-wrap">
+                        <div class="vs-hero-bars" aria-hidden="true">
+                            <span class="vs-hero-bar vs-bar-sorted" style="height:10%;--dur:3.2s;--delay:0s;--to:.90"></span>
+                            <span class="vs-hero-bar vs-bar-sorted" style="height:16%;--dur:3.5s;--delay:.2s;--to:.88"></span>
+                            <span class="vs-hero-bar vs-bar-sorted" style="height:23%;--dur:3.1s;--delay:.4s;--to:.92"></span>
+                            <span class="vs-hero-bar vs-bar-sorted" style="height:32%;--dur:3.4s;--delay:.1s;--to:.86"></span>
+                            <span class="vs-hero-bar vs-bar-sorted" style="height:41%;--dur:3.6s;--delay:.3s;--to:.90"></span>
+                            <span class="vs-hero-bar vs-bar-sorted" style="height:50%;--dur:3.3s;--delay:.5s;--to:.88"></span>
+                            <span class="vs-hero-bar vs-bar-sorted" style="height:58%;--dur:3.2s;--delay:.2s;--to:.92"></span>
+                            <span class="vs-hero-bar vs-bar-compare" style="height:76%;--dur:1s;--delay:0s;--to:.60"></span>
+                            <span class="vs-hero-bar vs-bar-compare" style="height:62%;--dur:1s;--delay:.12s;--to:.60"></span>
+                            <span class="vs-hero-bar vs-bar-default" style="height:88%;--dur:2s;--delay:.35s;--to:.40"></span>
+                            <span class="vs-hero-bar vs-bar-default" style="height:44%;--dur:1.7s;--delay:.1s;--to:.50"></span>
+                            <span class="vs-hero-bar vs-bar-default" style="height:72%;--dur:2.3s;--delay:.55s;--to:.35"></span>
+                            <span class="vs-hero-bar vs-bar-default" style="height:55%;--dur:1.9s;--delay:.25s;--to:.45"></span>
+                            <span class="vs-hero-bar vs-bar-default" style="height:94%;--dur:2.1s;--delay:.4s;--to:.30"></span>
+                            <span class="vs-hero-bar vs-bar-default" style="height:34%;--dur:1.6s;--delay:.15s;--to:.55"></span>
+                            <span class="vs-hero-bar vs-bar-default" style="height:80%;--dur:2.4s;--delay:.6s;--to:.38"></span>
+                            <span class="vs-hero-bar vs-bar-default" style="height:48%;--dur:1.8s;--delay:.3s;--to:.48"></span>
+                            <span class="vs-hero-bar vs-bar-default" style="height:90%;--dur:2.2s;--delay:.45s;--to:.32"></span>
+                        </div>
+                    </div>
+                    <div class="vs-hero-visual-legend">
+                        <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-default"></span>Default</span>
+                        <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-compare"></span>Comparing</span>
+                        <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-swap"></span>Swapping</span>
+                        <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-sorted"></span>Sorted</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vs-home-actions">
                         <a asp-controller="Home" asp-action="Sorting" class="vs-home-card">
                             <span class="vs-home-card-kicker">Array algorithms</span>
                             <strong>Sorting</strong>
@@ -90,23 +128,6 @@
                             <strong>Computational Geometry</strong>
                             <span>Watch hulls, sweep lines, intersections, closest pairs, and spatial partitions emerge.</span>
                         </a>
-                    </div>
-                </div>
-
-                <div class="vs-welcome-panel" aria-label="Why VisualizedAlgorithms exists">
-                    <div class="vs-welcome-panel-row">
-                        <span>For students</span>
-                        <strong>Turn lecture diagrams into interactive systems.</strong>
-                    </div>
-                    <div class="vs-welcome-panel-row">
-                        <span>For interviews</span>
-                        <strong>Practice the invariants behind common data structures.</strong>
-                    </div>
-                    <div class="vs-welcome-panel-row">
-                        <span>For curiosity</span>
-                        <strong>Replay an algorithm until the motion finally clicks.</strong>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

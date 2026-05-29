@@ -157,6 +157,13 @@ body { min-height: 100vh; overflow-x: hidden; }
     gap: 4rem; align-items: center;
     padding: 5rem 0;
 }
+.vs-welcome-hero .vs-hero-inner {
+    grid-template-columns: minmax(0, .95fr) minmax(360px, 1.05fr);
+    padding-bottom: 2.25rem;
+}
+.vs-home-hero-visual {
+    align-self: center;
+}
 
 /* Hero text */
 .vs-hero-title {
@@ -171,9 +178,12 @@ body { min-height: 100vh; overflow-x: hidden; }
 }
 .vs-hero-actions { display: flex; flex-direction: column; gap: 2rem; }
 .vs-home-actions {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 1rem;
+    padding-bottom: 5rem;
 }
 .vs-home-card {
     display: flex;
@@ -1013,6 +1023,7 @@ body { min-height: 100vh; overflow-x: hidden; }
 @media (max-width: 900px) {
     .vs-algo-grid { grid-template-columns: repeat(2, 1fr); }
     .vs-hero-inner { grid-template-columns: 1fr; padding: 4rem 0; }
+    .vs-welcome-hero .vs-hero-inner { grid-template-columns: 1fr; }
     .vs-hero-visual { display: none; }
 }
 

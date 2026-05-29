@@ -16,6 +16,15 @@ Docker build (ARM64):
 # See build.txt for the exact docker buildx command used
 ```
 
+## Git workflow
+
+After completing any user-requested file change:
+- Run the relevant validation command(s) for the change when practical.
+- Stage only the files changed for the request.
+- Create a concise git commit describing the completed change.
+- Push the commit to the current branch's upstream remote.
+- Do not force-push, reset, or revert unrelated user work.
+
 ## Architecture
 
 **VisualizedAlgorithms** is an ASP.NET Core 10.0 MVC app for visualizing sorting algorithms. The backend is minimal — a single `HomeController` that serves static pages. All sorting logic and visualization runs entirely client-side in JavaScript.

@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Dynamic Programming - VisualizedAlgorithms";
+    ViewData["Title"] = "Greedy - VisualizedAlgorithms";
 }
 
 <nav class="vs-nav" id="vs-nav">
@@ -11,84 +11,84 @@
             <a asp-controller="Home" asp-action="Sorting" class="vs-nav-link">Sorting</a>
             <a asp-controller="Home" asp-action="Trees" class="vs-nav-link">Trees</a>
             <a asp-controller="Home" asp-action="Graphs" class="vs-nav-link">Graphs</a>
-            <a asp-controller="Home" asp-action="DynamicProgramming" class="vs-nav-link vs-nav-link-active">DP</a>
-            <a asp-controller="Home" asp-action="Greedy" class="vs-nav-link">Greedy</a>
+            <a asp-controller="Home" asp-action="DynamicProgramming" class="vs-nav-link">DP</a>
+            <a asp-controller="Home" asp-action="Greedy" class="vs-nav-link vs-nav-link-active">Greedy</a>
             <a asp-controller="Home" asp-action="SearchingHashing" class="vs-nav-link">Search</a>
             <a asp-controller="Home" asp-action="Heaps" class="vs-nav-link">Heaps</a>
             <a asp-controller="Home" asp-action="Strings" class="vs-nav-link">Strings</a>
             <a asp-controller="Home" asp-action="DivideConquer" class="vs-nav-link">D&amp;C</a>
             <a asp-controller="Home" asp-action="Geometry" class="vs-nav-link">Geometry</a>
-            <a href="#dynamic-programming" class="vs-nav-cta">Explore DP</a>
+            <a href="#greedy" class="vs-nav-cta">Explore Greedy</a>
         </div>
     </div>
 </nav>
 
-<section class="vs-algos-section vs-page-head" id="dynamic-programming">
+<section class="vs-algos-section vs-page-head" id="greedy">
     <div class="vs-container">
         <div class="vs-section-header">
             <span class="vs-eyebrow">
                 <span class="vs-eyebrow-dot"></span>
-                DYNAMIC PROGRAMMING
+                GREEDY ALGORITHMS
             </span>
-            <h1 class="vs-section-title">Pick a DP Problem</h1>
+            <h1 class="vs-section-title">Pick a Greedy Algorithm</h1>
             <p class="vs-section-subtitle">
-                Watch recurrence relations turn overlapping subproblems into tables, paths, scores, and optimal decisions.
+                Watch local choices become schedules, codes, packs, and covers, and see exactly which candidates get accepted or rejected.
             </p>
         </div>
-        <div class="vs-algo-grid" id="dp-grid"></div>
+        <div class="vs-algo-grid" id="greedy-grid"></div>
     </div>
 </section>
 
-<section class="vs-viz-section vs-hidden" id="dp-viz-section">
+<section class="vs-viz-section vs-hidden" id="greedy-viz-section">
     <div class="vs-container">
-        <button class="vs-back-btn" id="dp-back-btn" type="button">
+        <button class="vs-back-btn" id="greedy-back-btn" type="button">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M13 8H3M3 8L8 3M3 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            All DP Problems
+            All Greedy Algorithms
         </button>
 
         <div class="vs-viz-inner">
             <div class="vs-viz-main">
                 <div class="vs-viz-header">
-                    <h2 class="vs-viz-title" id="dp-title">Fibonacci</h2>
-                    <span class="vs-category-badge vs-badge-dp" id="dp-category">1D DP</span>
+                    <h2 class="vs-viz-title" id="greedy-title">Activity Selection</h2>
+                    <span class="vs-category-badge vs-badge-greedy" id="greedy-category">Scheduling</span>
                 </div>
 
                 <div class="vs-color-legend">
-                    <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-default"></span>Unknown</span>
-                    <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-compare"></span>Reading</span>
-                    <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-swap"></span>Writing</span>
-                    <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-sorted"></span>Final</span>
+                    <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-default"></span>Candidate</span>
+                    <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-compare"></span>Considering</span>
+                    <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-swap"></span>Rejected</span>
+                    <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-sorted"></span>Chosen</span>
                 </div>
 
-                <div class="vs-dp-stage" id="dp-stage" role="img" aria-label="Dynamic programming table visualization"></div>
+                <div class="vs-greedy-stage" id="greedy-stage" role="img" aria-label="Greedy algorithm visualization"></div>
 
                 <div class="vs-stats-row">
                     <div class="vs-stat-box">
-                        <span class="vs-stat-box-num" id="dp-stat-cells">0</span>
-                        <span class="vs-stat-box-label">Cells Filled</span>
+                        <span class="vs-stat-box-num" id="greedy-stat-chosen">0</span>
+                        <span class="vs-stat-box-label">Chosen</span>
                     </div>
                     <div class="vs-stat-box">
-                        <span class="vs-stat-box-num" id="dp-stat-steps">0</span>
+                        <span class="vs-stat-box-num" id="greedy-stat-steps">0</span>
                         <span class="vs-stat-box-label">Steps</span>
                     </div>
                     <div class="vs-stat-box">
-                        <span class="vs-stat-box-num" id="dp-stat-status">Ready</span>
+                        <span class="vs-stat-box-num" id="greedy-stat-status">Ready</span>
                         <span class="vs-stat-box-label">Status</span>
                     </div>
                 </div>
 
                 <div class="vs-controls">
                     <div class="vs-ctrl-btns">
-                        <button class="vs-ctrl-btn" id="dp-reset" type="button">Reset</button>
-                        <button class="vs-ctrl-btn vs-ctrl-btn-primary" id="dp-play" type="button">Play</button>
-                        <button class="vs-ctrl-btn" id="dp-step" type="button">Step</button>
+                        <button class="vs-ctrl-btn" id="greedy-reset" type="button">Reset</button>
+                        <button class="vs-ctrl-btn vs-ctrl-btn-primary" id="greedy-play" type="button">Play</button>
+                        <button class="vs-ctrl-btn" id="greedy-step" type="button">Step</button>
                     </div>
                     <label class="vs-slider-label vs-tree-speed">
                         Speed
-                        <span class="vs-slider-val" id="dp-speed-val">5</span>
-                        <input type="range" min="1" max="10" value="5" id="dp-speed" class="vs-slider" />
+                        <span class="vs-slider-val" id="greedy-speed-val">5</span>
+                        <input type="range" min="1" max="10" value="5" id="greedy-speed" class="vs-slider" />
                     </label>
                 </div>
             </div>
@@ -97,35 +97,35 @@
                 <div class="vs-complexity-grid">
                     <div class="vs-complexity-card">
                         <span class="vs-complexity-label">Time</span>
-                        <span class="vs-complexity-val" id="dp-cp-time">&mdash;</span>
+                        <span class="vs-complexity-val" id="greedy-cp-time">&mdash;</span>
                     </div>
                     <div class="vs-complexity-card">
                         <span class="vs-complexity-label">Space</span>
-                        <span class="vs-complexity-val" id="dp-cp-space">&mdash;</span>
+                        <span class="vs-complexity-val" id="greedy-cp-space">&mdash;</span>
                     </div>
                     <div class="vs-complexity-card">
-                        <span class="vs-complexity-label">Example</span>
-                        <span class="vs-complexity-val" id="dp-cp-example">&mdash;</span>
+                        <span class="vs-complexity-label">Rule</span>
+                        <span class="vs-complexity-val" id="greedy-cp-rule">&mdash;</span>
                     </div>
                     <div class="vs-complexity-card">
-                        <span class="vs-complexity-label">Answer</span>
-                        <span class="vs-complexity-val vs-complexity-val-worst" id="dp-cp-answer">&mdash;</span>
+                        <span class="vs-complexity-label">Result</span>
+                        <span class="vs-complexity-val vs-complexity-val-worst" id="greedy-cp-result">&mdash;</span>
                     </div>
                 </div>
 
                 <div class="vs-info-card">
                     <h4 class="vs-info-card-title">About</h4>
-                    <p id="dp-description" class="vs-info-text"></p>
+                    <p id="greedy-description" class="vs-info-text"></p>
                 </div>
 
                 <div class="vs-info-card">
                     <h4 class="vs-info-card-title">Operation Log</h4>
-                    <ol class="vs-tree-log" id="dp-log"></ol>
+                    <ol class="vs-tree-log" id="greedy-log"></ol>
                 </div>
 
                 <div class="vs-info-card">
                     <h4 class="vs-info-card-title">Pseudocode</h4>
-                    <pre class="vs-pseudocode" id="dp-pseudocode"></pre>
+                    <pre class="vs-pseudocode" id="greedy-pseudocode"></pre>
                 </div>
             </div>
         </div>
@@ -144,5 +144,5 @@
 </footer>
 
 @section Scripts {
-    <script src="~/js/dynamic-programming.js" asp-append-version="true"></script>
+    <script src="~/js/greedy.js" asp-append-version="true"></script>
 }

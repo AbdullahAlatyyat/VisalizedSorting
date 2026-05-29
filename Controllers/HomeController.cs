@@ -36,6 +36,42 @@ public class HomeController : Controller
         return View();
     }
 
+    [Route("/Greedy")]
+    public IActionResult Greedy()
+    {
+        return View();
+    }
+
+    [Route("/SearchingHashing")]
+    public IActionResult SearchingHashing()
+    {
+        return View();
+    }
+
+    [Route("/Heaps")]
+    public IActionResult Heaps()
+    {
+        return View();
+    }
+
+    [Route("/Strings")]
+    public IActionResult Strings()
+    {
+        return View();
+    }
+
+    [Route("/DivideConquer")]
+    public IActionResult DivideConquer()
+    {
+        return View();
+    }
+
+    [Route("/Geometry")]
+    public IActionResult Geometry()
+    {
+        return View();
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

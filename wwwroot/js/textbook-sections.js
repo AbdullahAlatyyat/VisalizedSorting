@@ -5,7 +5,7 @@ const TOPICS = {
         badge: 'Searching',
         algorithms: [
             a('linear', 'Linear Search', 'Search', 'O(n)', 'O(1)', 'Scan left to right', 'found 7', 'Checks each item until the target appears or the array ends.', 'for each item:\n  if item == target: return index', ['Scan from index 0', 'Compare 4', 'Compare 9', 'Compare 1', 'Compare 7', 'Found target 7']),
-            a('binary', 'Binary Search', 'Search', 'O(log n)', 'O(1)', 'Halve sorted range', 'index 5', 'Narrows a sorted array by comparing with the middle element.', 'while lo <= hi:\n  mid = (lo + hi) / 2\n  compare target with a[mid]', ['lo=0 hi=9', 'mid=4 value=11 too high', 'search left half', 'mid=1 value=3 too low', 'mid=2 value=5 found']),
+            a('binary', 'Binary Search', 'Search', 'O(log n)', 'O(1)', 'Halve sorted range', 'index 6', 'Narrows a sorted array by comparing with the middle element.', 'while lo <= hi:\n  mid = (lo + hi) / 2\n  compare target with a[mid]', ['lo=0 hi=9', 'mid=4 value=9 too low', 'search right half', 'mid=7 value=18 too high', 'mid=6 value=13 found']),
             a('interpolation', 'Interpolation Search', 'Search', 'Avg O(log log n)', 'O(1)', 'Estimate position', 'near index 6', 'Uses value distribution to estimate where the key should be.', 'pos = lo + (x-a[lo])*(hi-lo)/(a[hi]-a[lo])', ['Estimate likely position', 'Probe index 6', 'Value is close', 'Adjust narrow range', 'Find target']),
             a('chaining', 'Hash Table Chaining', 'Hashing', 'Avg O(1)', 'O(n)', 'Bucket chains', 'collision stored', 'Collisions become linked lists or buckets at each table slot.', 'bucket = hash(key) mod m\nappend key to bucket', ['hash(18)=2', 'slot 2 already has 10', 'append 18 to chain', 'lookup scans slot 2 chain']),
             a('open', 'Open Addressing', 'Hashing', 'Avg O(1)', 'O(1)', 'Probe empty slots', 'placed', 'Stores all keys inside the table and probes until a free slot appears.', 'i = 0\nwhile table[h(key,i)] occupied:\n  i++', ['hash key to slot 3', 'slot occupied', 'probe next candidate', 'place key in free slot']),
@@ -145,6 +145,26 @@ function openAlgorithm(key) {
 function buildSteps() {
     pause();
     refs.log.innerHTML = '';
+    if (globalThis.AlgorithmCore) {
+        const result = globalThis.AlgorithmCore.topics.run(topicKey, current.key);
+        steps = result.steps.map(step => ({
+            message: step.message,
+            caption: step.caption || current.idea,
+            items: step.items.map((item, i) => ({
+                label: item.label,
+                meta: item.meta,
+                state: item.state === 'chosen' ? 'good' : item.state === 'reject' ? 'bad' : item.state || (i === 0 ? 'active' : '')
+            }))
+        }));
+        steps.push({
+            message: `${current.name} walkthrough complete`,
+            items: steps[steps.length - 1].items.map(item => ({ ...item, state: item.state === 'bad' ? 'bad' : 'good' })),
+            caption: String(result.answer)
+        });
+        stepIndex = 0;
+        renderStep(steps[0]);
+        return;
+    }
     const base = makeItems(current);
     steps = current.messages.map((message, index) => {
         const items = base.map((item, i) => {

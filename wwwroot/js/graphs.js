@@ -86,7 +86,7 @@ const GRAPH_ALGORITHMS = {
         category: 'Heuristic path',
         time: 'Depends on heuristic', space: 'O(V)', kind: 'Weighted spatial', use: 'Pathfinding',
         sample: 'weighted',
-        description: 'Chooses vertices by distance so far plus a heuristic estimate to the goal, guiding shortest-path search toward the target.',
+        description: 'Chooses vertices by distance so far plus an admissible heuristic estimate. This demo uses h=0, so it remains exact and behaves like Dijkstra on the sample.',
         pseudocode: 'g[source] = 0\nf[source] = heuristic(source, target)\nwhile open set not empty:\n  u = node with smallest f\n  if u is target: reconstruct path\n  for each neighbor v:\n    if g[u] + w improves v:\n      parent[v] = u\n      update g[v] and f[v]'
     }
 };
@@ -420,8 +420,9 @@ function runBellman(graph, source, target) {
         }
         if (!changed) break;
     }
+    const negativeCycle = graph.edges.some(edge => dist[edge.from] !== Infinity && dist[edge.from] + weight(edge) < dist[edge.to]);
     const path = reconstruct(prev, source, target, graph);
-    out.push(step(`Bellman-Ford result for ${target}: ${dist[target]}`, { path: path.path, edgePath: path.edgePath }));
+    out.push(step(negativeCycle ? 'Negative cycle reachable from source' : `Bellman-Ford result for ${target}: ${dist[target]}`, { path: negativeCycle ? [] : path.path, edgePath: negativeCycle ? [] : path.edgePath }));
     return out;
 }
 
@@ -468,14 +469,17 @@ function runPrim(graph, source) {
 
 function makeDsu(ids) {
     const parent = Object.fromEntries(ids.map(id => [id, id]));
+    const rank = Object.fromEntries(ids.map(id => [id, 0]));
     function find(x) {
-        while (parent[x] !== x) x = parent[x];
-        return x;
+        if (parent[x] !== x) parent[x] = find(parent[x]);
+        return parent[x];
     }
     function union(a, b) {
-        const ra = find(a), rb = find(b);
+        let ra = find(a), rb = find(b);
         if (ra === rb) return false;
+        if (rank[ra] < rank[rb]) [ra, rb] = [rb, ra];
         parent[rb] = ra;
+        if (rank[ra] === rank[rb]) rank[ra]++;
         return true;
     }
     return { find, union };
@@ -549,8 +553,7 @@ function runScc(graph) {
 }
 
 function heuristic(graph, a, b) {
-    const nodes = Object.fromEntries(graph.nodes.map(node => [node.id, node]));
-    return Math.hypot(nodes[a].x - nodes[b].x, nodes[a].y - nodes[b].y) / 100;
+    return 0;
 }
 
 function runAstar(graph, source, target) {

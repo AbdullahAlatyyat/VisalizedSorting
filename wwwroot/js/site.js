@@ -180,7 +180,7 @@ procedure heapify(arr, n, root):
     counting: {
         name:     'Counting Sort',
         category: 'Non-comparison',
-        best: 'O(n + k)', avg: 'O(n + k)', worst: 'O(n + k)', space: 'O(k)',
+        best: 'O(n + k)', avg: 'O(n + k)', worst: 'O(n + k)', space: 'O(n + k)',
         description:
             'Breaks the O(n log n) lower bound by never comparing elements. Counts ' +
             'occurrences of each value, computes prefix sums to determine final positions, ' +
@@ -445,7 +445,6 @@ function* selectionSortGen(arr) {
 
 function* insertionSortGen(arr) {
     const n = arr.length;
-    yield { type: 'sorted', indices: [0] };
     for (let i = 1; i < n; i++) {
         let j = i;
         while (j > 0) {
@@ -458,8 +457,8 @@ function* insertionSortGen(arr) {
                 break;
             }
         }
-        yield { type: 'sorted', indices: [j] };
     }
+    yield { type: 'sorted', indices: Array.from({ length: n }, (_, k) => k) };
 }
 
 function* mergeSortGen(arr) {
@@ -625,23 +624,16 @@ function* countingSortGen(arr) {
 
 function* radixSortGen(arr) {
     const n   = arr.length;
-    // Scale float heights to integers 0-999 for digit extraction
-    const min = Math.min(...arr);
     const max = Math.max(...arr);
-    const toInt = v => Math.round((v - min) / (max - min + 0.0001) * 999);
-
-    const passes = [1, 10, 100];   // LSD: units, tens, hundreds
-
-    for (const exp of passes) {
+    for (let exp = 1; Math.floor(max / exp) > 0; exp *= 10) {
         const count  = new Array(10).fill(0);
-        const ints   = arr.map(toInt);
 
-        for (const v of ints) count[Math.floor(v / exp) % 10]++;
+        for (const v of arr) count[Math.floor(v / exp) % 10]++;
         for (let i = 1; i < 10; i++) count[i] += count[i - 1];
 
         const output = new Array(n);
         for (let i = n - 1; i >= 0; i--) {
-            const digit = Math.floor(ints[i] / exp) % 10;
+            const digit = Math.floor(arr[i] / exp) % 10;
             const pos   = --count[digit];
             output[pos] = arr[i];
             yield { type: 'compare', i, j: Math.min(n - 1, pos) };

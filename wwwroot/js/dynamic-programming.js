@@ -176,6 +176,17 @@ function renderLog(message) {
 }
 
 function runFib() {
+    if (globalThis.AlgorithmCore) {
+        const core = globalThis.AlgorithmCore.dp.run('fib');
+        const labels = [...Array(9).keys()];
+        return core.steps.map(step => {
+            const rows = [step.state.memo.map(v => v ?? ''), step.state.tab.map(v => v ?? '')];
+            const done = [];
+            rows.forEach((row, r) => row.forEach((value, c) => { if (value !== '') done.push([r, c]); }));
+            const active = step.state.active.flatMap(i => [[0, i], [1, i]]);
+            return tableStep(step.message, makeTable(rows, ['memo', 'tab'], labels, 'Memoization caches recursive calls; tabulation fills states bottom-up.', active, done));
+        });
+    }
     const n = 8;
     const rows = [Array(n + 1).fill(''), Array(n + 1).fill('')];
     const done = [];

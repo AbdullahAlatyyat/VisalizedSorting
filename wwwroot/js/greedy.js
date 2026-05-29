@@ -159,7 +159,8 @@ function runActivity() {
     const acts = [
         { id: 'A1', s: 1, f: 4 }, { id: 'A2', s: 3, f: 5 }, { id: 'A3', s: 0, f: 6 },
         { id: 'A4', s: 5, f: 7 }, { id: 'A5', s: 3, f: 9 }, { id: 'A6', s: 5, f: 9 },
-        { id: 'A7', s: 6, f: 10 }, { id: 'A8', s: 8, f: 11 }, { id: 'A9', s: 8, f: 12 }
+        { id: 'A7', s: 6, f: 10 }, { id: 'A8', s: 8, f: 11 }, { id: 'A9', s: 8, f: 12 },
+        { id: 'A10', s: 12, f: 14 }
     ].sort((a, b) => a.f - b.f);
     const states = acts.map(a => item(a.id, a.id, `${a.s} -> ${a.f}`));
     const out = [snapshot('Sort by finish time', states, 'Greedy rule: pick the compatible activity that finishes earliest.')];

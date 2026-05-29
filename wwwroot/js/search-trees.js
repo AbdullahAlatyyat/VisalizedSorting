@@ -12,28 +12,28 @@ const TREE_DATA = {
         name: 'AVL Tree',
         category: 'Height-balanced',
         search: 'O(log n)', insert: 'O(log n)', delete: 'O(log n)', space: 'O(n)',
-        description: 'Keeps each node height-balanced. This first version shows the search-tree operation path and records where AVL rotations would preserve the invariant.',
+        description: 'Keeps each node height-balanced with rotations so every balance factor remains between -1 and 1.',
         pseudocode: 'insert/delete(x):\n  perform BST operation\n  walk back toward the root\n  update heights\n  rotate when balance factor is outside [-1, 1]'
     },
     rb: {
         name: 'Red-Black Tree',
         category: 'Color-balanced',
         search: 'O(log n)', insert: 'O(log n)', delete: 'O(log n)', space: 'O(n)',
-        description: 'Uses node colors and local rotations to keep paths approximately balanced. The visualizer highlights the access path and rebalance checkpoint.',
+        description: 'Uses node colors and local rotations to keep the root black, avoid red-red links, and bound tree height.',
         pseudocode: 'insert/delete(x):\n  perform BST operation\n  restore red-black properties\n  recolor or rotate around local violations\n  keep the root black'
     },
     splay: {
         name: 'Splay Tree',
         category: 'Self-adjusting',
         search: 'Amortized O(log n)', insert: 'Amortized O(log n)', delete: 'Amortized O(log n)', space: 'O(n)',
-        description: 'Moves recently accessed keys toward the root. The page shows the access path and the conceptual splay step after each operation.',
+        description: 'Moves recently accessed keys toward the root using zig, zig-zig, and zig-zag rotations.',
         pseudocode: 'access(x):\n  search for x or last touched node\n  while node is not root:\n    perform zig, zig-zig, or zig-zag rotation'
     },
     treap: {
         name: 'Treap',
         category: 'Randomized',
         search: 'Expected O(log n)', insert: 'Expected O(log n)', delete: 'Expected O(log n)', space: 'O(n)',
-        description: 'Combines BST ordering by key with heap ordering by random priority. The visualizer shows the key path and notes the priority repair step.',
+        description: 'Combines BST ordering by key with heap ordering by deterministic demo priorities.',
         pseudocode: 'insert(x):\n  insert by BST key order\n  assign random priority\n  rotate upward while priority beats parent'
     },
     twoThree: {
@@ -61,7 +61,7 @@ const TREE_DATA = {
         name: 'B+ Tree',
         category: 'Index tree',
         search: 'O(log n)', insert: 'O(log n)', delete: 'O(log n)', space: 'O(n)',
-        description: 'Keeps records in linked leaves and separator keys above them. This first pass shows the multiway search shape and leaf-level ordering.',
+        description: 'Keeps records in ordered leaves with separator keys above them for multiway search.',
         pseudocode: 'search(x):\n  descend through separator keys\n  scan the target leaf\n\ninsert/delete(x):\n  update leaf\n  split, borrow, or merge as needed'
     }
 };
@@ -317,6 +317,7 @@ function openTree(key) {
 }
 
 function createModel(key) {
+    if (globalThis.AlgorithmCore) return globalThis.AlgorithmCore.trees.createSession(key);
     if (['twoThree', 'twoThreeFour', 'btree', 'bplus'].includes(key)) {
         const maxKeys = key === 'btree' || key === 'bplus' ? 5 : 3;
         return new MultiwayModel(MULTIWAY_KEYS, maxKeys);
@@ -380,12 +381,12 @@ function renderMultiway(snapshot) {
         });
     });
     const all = snapshot.levels.flat();
-    const root = snapshot.levels[0] && snapshot.levels[0][0];
-    if (root && root.children) {
-        for (const child of root.children) {
-            parts.push(`<line class="vs-tree-edge" x1="${root._x}" y1="${root._y + 24}" x2="${child._x}" y2="${child._y - 24}"></line>`);
-        }
-    }
+    all.forEach(node => {
+        if (!node.children) return;
+        node.children.forEach(child => {
+            parts.push(`<line class="vs-tree-edge" x1="${node._x}" y1="${node._y + 24}" x2="${child._x}" y2="${child._y - 24}"></line>`);
+        });
+    });
     for (const node of all) {
         const keyText = node.keys.join(' | ');
         const state = node.keys.some(k => snapshot.highlight.found && snapshot.highlight.found.includes(k)) ? 'vs-tree-node-found'

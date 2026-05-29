@@ -427,6 +427,10 @@ body { min-height: 100vh; overflow-x: hidden; }
     background: rgba(245,200,66,.12); color: var(--vs-bar-compare);
     border: 1px solid rgba(245,200,66,.28);
 }
+.vs-badge-dp {
+    background: rgba(139,92,246,.13); color: var(--vs-violet);
+    border: 1px solid rgba(139,92,246,.32);
+}
 
 /* Complexity table */
 .vs-complexity-table {
@@ -672,6 +676,61 @@ body { min-height: 100vh; overflow-x: hidden; }
     outline: none;
 }
 .vs-select:focus { border-color: var(--vs-blue); }
+
+/* Dynamic programming visualizer */
+.vs-dp-stage {
+    min-height: 380px;
+    background: var(--vs-surface);
+    border: 1px solid var(--vs-border);
+    border-radius: var(--vs-radius-sm);
+    overflow: auto;
+    padding: 1rem;
+}
+.vs-dp-table {
+    display: grid;
+    gap: 4px;
+    width: max-content;
+    min-width: 100%;
+}
+.vs-dp-cell {
+    min-width: 54px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #202044;
+    border: 1px solid var(--vs-border-light);
+    border-radius: 6px;
+    color: var(--vs-text);
+    font-family: var(--vs-mono);
+    font-size: .78rem;
+    font-weight: 700;
+}
+.vs-dp-cell-label {
+    background: transparent;
+    border-color: transparent;
+    color: var(--vs-text-3);
+    font-size: .7rem;
+    text-transform: uppercase;
+}
+.vs-dp-cell-read {
+    background: rgba(245,200,66,.18);
+    border-color: var(--vs-bar-compare);
+}
+.vs-dp-cell-write {
+    background: rgba(240,84,84,.16);
+    border-color: var(--vs-bar-swap);
+}
+.vs-dp-cell-done {
+    background: rgba(66,217,122,.16);
+    border-color: rgba(66,217,122,.5);
+}
+.vs-dp-caption {
+    margin-top: .85rem;
+    color: var(--vs-text-2);
+    font-size: .85rem;
+    line-height: 1.55;
+}
 
 /* Stats row */
 .vs-stats-row {

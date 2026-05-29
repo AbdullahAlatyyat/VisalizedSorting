@@ -1,2 +1,77 @@
-convert brand to be visualizedalgorithms
-add binary search tree and other search mechanisims
+# VisualizedAlgorithms Roadmap
+
+## 1. Graph Algorithms
+- Breadth-first search
+- Depth-first search
+- Topological sort
+- Dijkstra's shortest path
+- Bellman-Ford
+- Floyd-Warshall
+- Prim's minimum spanning tree
+- Kruskal's minimum spanning tree
+- Union-Find / Disjoint Set
+- Strongly connected components
+- A* pathfinding
+
+## 2. Dynamic Programming
+- Fibonacci memoization vs tabulation
+- Coin change
+- 0/1 knapsack
+- Longest common subsequence
+- Edit distance
+- Matrix chain multiplication
+- Longest increasing subsequence
+
+## 3. Greedy Algorithms
+- Activity selection
+- Huffman coding
+- Fractional knapsack
+- Interval scheduling
+- Job sequencing
+- Set cover approximation
+
+## 4. Searching and Hashing
+- Linear search
+- Binary search
+- Interpolation search
+- Hash tables with chaining
+- Open addressing
+- Linear probing
+- Quadratic probing
+- Double hashing
+- Bloom filters
+
+## 5. Heaps and Priority Queues
+- Binary min/max heap
+- Heap insert
+- Extract min/max
+- Decrease key
+- Heapify
+- Binomial heap
+- Fibonacci heap
+
+## 6. String Algorithms
+- Naive string matching
+- Knuth-Morris-Pratt
+- Rabin-Karp
+- Boyer-Moore
+- Trie
+- Suffix trie
+- Suffix array
+- Aho-Corasick
+
+## 7. Divide and Conquer
+- Binary search
+- Merge sort recursion tree
+- Quickselect
+- Closest pair of points
+- Karatsuba multiplication
+- Strassen matrix multiplication
+
+## 8. Computational Geometry
+- Convex hull: Graham scan
+- Convex hull: Jarvis march
+- Line segment intersection
+- Sweep line basics
+- Closest pair
+- Voronoi / Delaunay

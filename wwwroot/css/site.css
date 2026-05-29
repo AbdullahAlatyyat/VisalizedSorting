@@ -172,7 +172,7 @@ body { min-height: 100vh; overflow-x: hidden; }
 .vs-hero-actions { display: flex; flex-direction: column; gap: 2rem; }
 .vs-home-actions {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 1rem;
 }
 .vs-home-card {
@@ -423,6 +423,10 @@ body { min-height: 100vh; overflow-x: hidden; }
     background: rgba(66,217,122,.12); color: var(--vs-bar-sorted);
     border: 1px solid rgba(66,217,122,.28);
 }
+.vs-badge-graph {
+    background: rgba(245,200,66,.12); color: var(--vs-bar-compare);
+    border: 1px solid rgba(245,200,66,.28);
+}
 
 /* Complexity table */
 .vs-complexity-table {
@@ -590,6 +594,84 @@ body { min-height: 100vh; overflow-x: hidden; }
     color: var(--vs-blue);
     font-family: var(--vs-mono);
 }
+
+/* Graph visualizer */
+.vs-graph-stage {
+    min-height: 430px;
+    background: var(--vs-surface);
+    border: 1px solid var(--vs-border);
+    border-radius: var(--vs-radius-sm);
+    overflow: auto;
+}
+.vs-graph-stage svg {
+    display: block;
+    min-width: 820px;
+}
+.vs-graph-edge {
+    stroke: var(--vs-border-light);
+    stroke-width: 2.5;
+}
+.vs-graph-edge-frontier { stroke: var(--vs-bar-compare); stroke-width: 4; }
+.vs-graph-edge-path,
+.vs-graph-edge-mst { stroke: var(--vs-bar-sorted); stroke-width: 4; }
+.vs-graph-edge-rejected {
+    stroke: var(--vs-bar-swap);
+    stroke-width: 4;
+    stroke-dasharray: 8 5;
+}
+.vs-graph-weight {
+    fill: var(--vs-text-2);
+    font-family: var(--vs-mono);
+    font-size: 12px;
+    font-weight: 700;
+    paint-order: stroke;
+    stroke: var(--vs-surface);
+    stroke-width: 4;
+}
+.vs-graph-node circle {
+    fill: #202044;
+    stroke: var(--vs-border-light);
+    stroke-width: 2;
+}
+.vs-graph-node text {
+    fill: var(--vs-text);
+    font-family: var(--vs-mono);
+    font-size: 14px;
+    font-weight: 800;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+.vs-graph-node-frontier circle {
+    fill: rgba(245,200,66,.22);
+    stroke: var(--vs-bar-compare);
+}
+.vs-graph-node-current circle {
+    fill: rgba(240,84,84,.2);
+    stroke: var(--vs-bar-swap);
+}
+.vs-graph-node-visited circle,
+.vs-graph-node-path circle {
+    fill: rgba(66,217,122,.18);
+    stroke: var(--vs-bar-sorted);
+}
+.vs-select-label {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    color: var(--vs-text-2);
+    font-size: .8rem;
+    font-weight: 600;
+}
+.vs-select {
+    background: var(--vs-surface);
+    border: 1px solid var(--vs-border);
+    border-radius: 7px;
+    color: var(--vs-text);
+    font-family: var(--vs-mono);
+    padding: .625rem .75rem;
+    outline: none;
+}
+.vs-select:focus { border-color: var(--vs-blue); }
 
 /* Stats row */
 .vs-stats-row {

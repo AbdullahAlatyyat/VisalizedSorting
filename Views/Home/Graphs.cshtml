@@ -1,0 +1,153 @@
+@{
+    ViewData["Title"] = "Graphs - VisualizedAlgorithms";
+}
+
+<nav class="vs-nav" id="vs-nav">
+    <div class="vs-nav-inner">
+        <a asp-controller="Home" asp-action="Index" class="vs-nav-logo">
+            <span class="logo-bracket">{</span>VisualizedAlgorithms<span class="logo-bracket">}</span>
+        </a>
+        <div class="vs-nav-links">
+            <a asp-controller="Home" asp-action="Sorting" class="vs-nav-link">Sorting</a>
+            <a asp-controller="Home" asp-action="Trees" class="vs-nav-link">Trees</a>
+            <a asp-controller="Home" asp-action="Graphs" class="vs-nav-link vs-nav-link-active">Graphs</a>
+            <a href="#graphs" class="vs-nav-cta">Explore Graphs</a>
+        </div>
+    </div>
+</nav>
+
+<section class="vs-algos-section vs-page-head" id="graphs">
+    <div class="vs-container">
+        <div class="vs-section-header">
+            <span class="vs-eyebrow">
+                <span class="vs-eyebrow-dot"></span>
+                GRAPH ALGORITHMS
+            </span>
+            <h1 class="vs-section-title">Pick a Graph Algorithm</h1>
+            <p class="vs-section-subtitle">
+                See frontiers, visited sets, relaxations, components, shortest paths, spanning trees, and rejected edges as they change one step at a time.
+            </p>
+        </div>
+        <div class="vs-algo-grid" id="graph-grid"></div>
+    </div>
+</section>
+
+<section class="vs-viz-section vs-hidden" id="graph-viz-section">
+    <div class="vs-container">
+        <button class="vs-back-btn" id="graph-back-btn" type="button">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M13 8H3M3 8L8 3M3 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            All Graphs
+        </button>
+
+        <div class="vs-viz-inner">
+            <div class="vs-viz-main">
+                <div class="vs-viz-header">
+                    <h2 class="vs-viz-title" id="graph-title">Breadth-first Search</h2>
+                    <span class="vs-category-badge vs-badge-graph" id="graph-category">Traversal</span>
+                </div>
+
+                <div class="vs-color-legend">
+                    <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-default"></span>Unvisited</span>
+                    <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-compare"></span>Frontier</span>
+                    <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-swap"></span>Current / Rejected</span>
+                    <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-sorted"></span>Visited / Chosen</span>
+                </div>
+
+                <div class="vs-graph-stage" id="graph-stage" role="img" aria-label="Graph algorithm visualization"></div>
+
+                <div class="vs-stats-row">
+                    <div class="vs-stat-box">
+                        <span class="vs-stat-box-num" id="graph-stat-visited">0</span>
+                        <span class="vs-stat-box-label">Visited</span>
+                    </div>
+                    <div class="vs-stat-box">
+                        <span class="vs-stat-box-num" id="graph-stat-steps">0</span>
+                        <span class="vs-stat-box-label">Steps</span>
+                    </div>
+                    <div class="vs-stat-box">
+                        <span class="vs-stat-box-num" id="graph-stat-status">Ready</span>
+                        <span class="vs-stat-box-label">Status</span>
+                    </div>
+                </div>
+
+                <div class="vs-tree-controls">
+                    <div class="vs-tree-input-row">
+                        <label class="vs-select-label">
+                            Source
+                            <select id="graph-source" class="vs-select"></select>
+                        </label>
+                        <label class="vs-select-label">
+                            Target
+                            <select id="graph-target" class="vs-select"></select>
+                        </label>
+                    </div>
+                    <div class="vs-controls">
+                        <div class="vs-ctrl-btns">
+                            <button class="vs-ctrl-btn" id="graph-reset" type="button">Reset</button>
+                            <button class="vs-ctrl-btn vs-ctrl-btn-primary" id="graph-play" type="button">Play</button>
+                            <button class="vs-ctrl-btn" id="graph-step" type="button">Step</button>
+                        </div>
+                        <label class="vs-slider-label vs-tree-speed">
+                            Speed
+                            <span class="vs-slider-val" id="graph-speed-val">5</span>
+                            <input type="range" min="1" max="10" value="5" id="graph-speed" class="vs-slider" />
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vs-info-panel">
+                <div class="vs-complexity-grid">
+                    <div class="vs-complexity-card">
+                        <span class="vs-complexity-label">Time</span>
+                        <span class="vs-complexity-val" id="graph-cp-time">&mdash;</span>
+                    </div>
+                    <div class="vs-complexity-card">
+                        <span class="vs-complexity-label">Space</span>
+                        <span class="vs-complexity-val" id="graph-cp-space">&mdash;</span>
+                    </div>
+                    <div class="vs-complexity-card">
+                        <span class="vs-complexity-label">Graph</span>
+                        <span class="vs-complexity-val" id="graph-cp-kind">&mdash;</span>
+                    </div>
+                    <div class="vs-complexity-card">
+                        <span class="vs-complexity-label">Use Case</span>
+                        <span class="vs-complexity-val vs-complexity-val-worst" id="graph-cp-use">&mdash;</span>
+                    </div>
+                </div>
+
+                <div class="vs-info-card">
+                    <h4 class="vs-info-card-title">About</h4>
+                    <p id="graph-description" class="vs-info-text"></p>
+                </div>
+
+                <div class="vs-info-card">
+                    <h4 class="vs-info-card-title">Operation Log</h4>
+                    <ol class="vs-tree-log" id="graph-log"></ol>
+                </div>
+
+                <div class="vs-info-card">
+                    <h4 class="vs-info-card-title">Pseudocode</h4>
+                    <pre class="vs-pseudocode" id="graph-pseudocode"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="vs-footer">
+    <div class="vs-container">
+        <div class="vs-footer-inner">
+            <span class="vs-footer-logo">
+                <span class="logo-bracket">{</span>VisualizedAlgorithms<span class="logo-bracket">}</span>
+            </span>
+            <span class="vs-footer-tagline">Built for CS students, interview prep, and curious minds</span>
+        </div>
+    </div>
+</footer>
+
+@section Scripts {
+    <script src="~/js/graphs.js" asp-append-version="true"></script>
+}

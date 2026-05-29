@@ -1,1 +1,13 @@
-{"nodes": [{"id": "home_hellmachine_desktop_projects_visalizedsorting_program_cs", "label": "Program.cs", "file_type": "code", "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/Program.cs", "source_location": "L1"}], "edges": [], "raw_calls": []}
+{
+  "nodes": [
+    {
+      "id": "home_hellmachine_desktop_projects_visalizedsorting_program_cs",
+      "label": "Program.cs",
+      "file_type": "code",
+      "source_file": "/home/hellmachine/Desktop/Projects/VisalizedSorting/Program.cs",
+      "source_location": "L1"
+    }
+  ],
+  "edges": [],
+  "raw_calls": []
+}

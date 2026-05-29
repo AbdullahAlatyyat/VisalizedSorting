@@ -1,20 +1,24 @@
-# Graph Report - VisalizedSorting  (2026-05-29)
+# Graph Report - VisalizedSorting (2026-05-29)
 
 ## Corpus Check
+
 - 19 files · ~38,208 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
+
 - 562 nodes · 907 edges · 25 communities (21 shown, 4 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
+
 - Built from commit: `4665554b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
+
 - [[_COMMUNITY_Community 0|Community 0]]
 - [[_COMMUNITY_Community 1|Community 1]]
 - [[_COMMUNITY_Community 2|Community 2]]
@@ -41,6 +45,7 @@
 - [[_COMMUNITY_Community 24|Community 24]]
 
 ## God Nodes (most connected - your core abstractions)
+
 1. `BinaryModel` - 16 edges
 2. `runTopic()` - 16 edges
 3. `MultiwayModel` - 15 edges
@@ -53,18 +58,20 @@
 10. `edgeId()` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Sorting Bars Favicon` --conceptually_related_to--> `Client-Side Visualization Design`  [INFERRED]
+
+- `Sorting Bars Favicon` --conceptually_related_to--> `Client-Side Visualization Design` [INFERRED]
   wwwroot/favicon.svg → CLAUDE.md
-- `Project Architecture Guidance` --references--> `HomeController`  [EXTRACTED]
+- `Project Architecture Guidance` --references--> `HomeController` [EXTRACTED]
   CLAUDE.md → Controllers/HomeController.cs
-- `Client-Side Visualization Design` --references--> `Sorting Generator Step Protocol`  [EXTRACTED]
+- `Client-Side Visualization Design` --references--> `Sorting Generator Step Protocol` [EXTRACTED]
   CLAUDE.md → wwwroot/js/site.js
-- `Project Architecture Guidance` --references--> `Sorting Engine IIFE`  [EXTRACTED]
+- `Project Architecture Guidance` --references--> `Sorting Engine IIFE` [EXTRACTED]
   CLAUDE.md → wwwroot/js/site.js
-- `Client-Side Visualization Design` --references--> `Sorting Generator Functions`  [EXTRACTED]
+- `Client-Side Visualization Design` --references--> `Sorting Generator Functions` [EXTRACTED]
   CLAUDE.md → wwwroot/js/site.js
 
 ## Hyperedges (group relationships)
+
 - **Client-Side Algorithm Visualizers** — site_sorting_visualizer_flow, search_trees_tree_interaction_flow, graphs_visualization_flow, dynamic_programming_visualization_flow, greedy_visualization_flow, textbook_sections_topic_visualization_flow, algorithm_core_facade [INFERRED 0.86]
 - **Algorithm Catalog to Runner Pattern** — site_sorting_algorithm_catalog, site_sort_generators, dynamic_programming_dp_catalog, greedy_algorithm_catalog, graphs_graph_algorithm_catalog, search_trees_tree_catalog, textbook_sections_topic_catalog [INFERRED 0.84]
 - **AlgorithmCore Test Contracts** — algorithm_core_tests_contract_suite, algorithm_core_run_sort, algorithm_core_dynamic_programming_runners, algorithm_core_greedy_runners, algorithm_core_graph_runners, algorithm_core_tree_sessions, algorithm_core_topic_runners [EXTRACTED 1.00]
@@ -72,91 +79,113 @@
 ## Communities (25 total, 4 thin omitted)
 
 ### Community 0 - "Community 0"
+
 Cohesion: 0.06
 Nodes (35): advance(), BinaryModel, createModel(), createModelFromKeys(), DEFAULT_KEYS, delay(), insertNode(), keysAfter() (+27 more)
 
 ### Community 1 - "Community 1"
+
 Cohesion: 0.11
 Nodes (46): advance(), ALGO_RUNNERS, buildSteps(), cloneGraph(), delay(), e(), edgeId(), fillSelectors() (+38 more)
 
 ### Community 2 - "Community 2"
+
 Cohesion: 0.08
 Nodes (50): AlgorithmCore, arrayOption(), buildBinary(), buildMultiway(), clone(), createTreeSession(), dp, dsu() (+42 more)
 
 ### Community 3 - "Community 3"
+
 Cohesion: 0.06
 Nodes (27): ALGO_GENERATORS, algoGrid, ALGORITHMS, algosSection, aux, backBtn, barsContainer, btnPlay (+19 more)
 
 ### Community 4 - "Community 4"
+
 Cohesion: 0.09
 Nodes (29): Dynamic Programming Runners, AlgorithmCore Facade, Graph Algorithm Runners, Canonical Graph Samples, Greedy Runners, runSort, AlgorithmCore Contract Test Suite, Graph Expected Results (+21 more)
 
 ### Community 5 - "Community 5"
+
 Cohesion: 0.11
 Nodes (40): advance(), boundedNumber(), buildSteps(), cloneRows(), collectManualOptions(), coreDp(), delay(), DP_ALGORITHMS (+32 more)
 
 ### Community 6 - "Community 6"
+
 Cohesion: 0.09
 Nodes (36): advance(), boundedNumber(), buildSteps(), collectManualOptions(), delay(), ensureInputPanel(), GREEDY_ALGORITHMS, GREEDY_DEFAULT_SIZES (+28 more)
 
 ### Community 7 - "Community 7"
+
 Cohesion: 0.09
 Nodes (40): advance(), buildSteps(), collectDivideOptions(), collectGeometryOptions(), collectHeapOptions(), collectManualOptions(), collectSearchOptions(), collectStringOptions() (+32 more)
 
 ### Community 8 - "Community 8"
+
 Cohesion: 0.14
 Nodes (17): Logging Configuration, Docker Buildx Publish Command, Client-Side Visualization Design, Project Architecture Guidance, Sorting Bars Favicon, Algorithm Page Actions, HomeController, Index Action (+9 more)
 
 ### Community 9 - "Community 9"
+
 Cohesion: 0.13
 Nodes (15): ASPNETCORE_ENVIRONMENT, applicationUrl, commandName, dotnetRunMessages, environmentVariables, launchBrowser, applicationUrl, commandName (+7 more)
 
 ### Community 10 - "Community 10"
+
 Cohesion: 0.07
 Nodes (23): activity, AlgorithmCore, assert, coin, cycleGraph, expected, fib, fractional (+15 more)
 
 ### Community 12 - "Community 12"
+
 Cohesion: 0.33
 Nodes (5): AllowedHosts, Logging, LogLevel, Default, Microsoft.AspNetCore
 
 ### Community 13 - "Community 13"
+
 Cohesion: 0.50
 Nodes (5): Graphify Project Policy, Graphify Hook Check, Claude Bash Permission, Structural and Semantic Extraction, Graphify Workflow
 
 ### Community 16 - "Community 16"
+
 Cohesion: 0.67
 Nodes (3): ErrorViewModel, Error Action, Production Error Pipeline
 
 ### Community 19 - "Community 19"
+
 Cohesion: 0.06
-Nodes (34): code:block1 (/graphify                                             # full), code:bash ($(cat .graphify_python) -c "), code:bash ($(cat .graphify_python) -c "), code:bash (if [ ! -f graphify-out/.graphify_extract.json ]; then), code:bash ($(cat .graphify_python) -c "), code:bash ($(cat .graphify_python) -c "), code:bash ($(cat .graphify_python) -c "), code:bash ($(cat .graphify_python) -c ") (+26 more)
+Nodes (34): code:block1 (/graphify # full), code:bash ($(cat .graphify_python) -c "), code:bash ($(cat .graphify_python) -c "), code:bash (if [ ! -f graphify-out/.graphify_extract.json ]; then), code:bash ($(cat .graphify_python) -c "), code:bash ($(cat .graphify_python) -c "), code:bash ($(cat .graphify_python) -c "), code:bash ($(cat .graphify_python) -c ") (+26 more)
 
 ### Community 20 - "Community 20"
+
 Cohesion: 0.05
 Nodes (43): code:block10 (You are a graphify extraction subagent. Read the files liste), code:bash ($(cat graphify-out/.graphify_python) -c "), code:bash ($(cat .graphify_python) -c "), code:bash ($(cat .graphify_python) -c "), code:bash ($(cat .graphify_python) -c "), code:bash (mkdir -p graphify-out), code:bash ($(cat .graphify_python) -c "), code:bash ($(cat .graphify_python) -c ") (+35 more)
 
 ### Community 21 - "Community 21"
+
 Cohesion: 0.50
 Nodes (4): menu, nav, setOpen(), toggle
 
 ### Community 22 - "Community 22"
+
 Cohesion: 0.20
-Nodes (8): Adding a new algorithm, Architecture, code:bash (dotnet build VisualizedAlgorithms.sln              # Build t), code:bash (# See build.txt for the exact docker buildx command used), Commands, Data flow, Key files, Planned work (todos)
+Nodes (8): Adding a new algorithm, Architecture, code:bash (dotnet build VisualizedAlgorithms.sln # Build t), code:bash (# See build.txt for the exact docker buildx command used), Commands, Data flow, Key files, Planned work (todos)
 
 ### Community 23 - "Community 23"
+
 Cohesion: 0.50
 Nodes (3): Git workflow, graphify, Responsive design
 
 ### Community 24 - "Community 24"
+
 Cohesion: 0.83
 Nodes (3): deploy.sh script, die(), step()
 
 ## Knowledge Gaps
+
 - **168 isolated node(s):** `Default`, `Microsoft.AspNetCore`, `AllowedHosts`, `$schema`, `commandName` (+163 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
+
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `runGraph()` connect `Community 2` to `Community 1`?**

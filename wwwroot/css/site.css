@@ -118,6 +118,13 @@ body { min-height: 100vh; overflow-x: hidden; }
     transition: color .2s;
 }
 .vs-nav-link:hover { color: var(--vs-text); }
+.vs-nav-link-active {
+    color: var(--vs-text);
+    background: rgba(91,138,247,.12);
+    border: 1px solid rgba(91,138,247,.25);
+    border-radius: var(--vs-radius-xs);
+    padding: .45rem .85rem;
+}
 .vs-nav-cta {
     background: var(--vs-gradient); color: #fff;
     text-decoration: none; font-size: .825rem; font-weight: 600;
@@ -163,6 +170,76 @@ body { min-height: 100vh; overflow-x: hidden; }
     color: var(--vs-text-2); margin-bottom: 2.5rem;
 }
 .vs-hero-actions { display: flex; flex-direction: column; gap: 2rem; }
+.vs-home-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+.vs-home-card {
+    display: flex;
+    min-height: 180px;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem;
+    color: var(--vs-text);
+    text-decoration: none;
+    background: var(--vs-card);
+    border: 1px solid var(--vs-border);
+    border-radius: var(--vs-radius-sm);
+    transition: transform .2s, border-color .2s, background .2s;
+}
+.vs-home-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(91,138,247,.55);
+    background: var(--vs-card-hover);
+}
+.vs-home-card-kicker {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--vs-blue);
+}
+.vs-home-card strong {
+    display: block;
+    font-size: 1.55rem;
+    line-height: 1.1;
+}
+.vs-home-card span:last-child {
+    color: var(--vs-text-2);
+    font-size: .9rem;
+    line-height: 1.55;
+}
+.vs-welcome-panel {
+    background: var(--vs-surface);
+    border: 1px solid var(--vs-border);
+    border-radius: var(--vs-radius);
+    padding: 1.25rem;
+    display: grid;
+    gap: .9rem;
+}
+.vs-welcome-panel-row {
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(255,255,255,.055);
+    border-radius: var(--vs-radius-sm);
+    padding: 1.1rem;
+}
+.vs-welcome-panel-row span {
+    display: block;
+    margin-bottom: .5rem;
+    color: var(--vs-blue);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+.vs-welcome-panel-row strong {
+    display: block;
+    color: var(--vs-text);
+    font-size: 1.1rem;
+    line-height: 1.45;
+}
 
 .vs-btn-primary {
     display: inline-flex; align-items: center; gap: .5rem;
@@ -274,6 +351,7 @@ body { min-height: 100vh; overflow-x: hidden; }
 
 /* ─── ALGORITHMS SECTION ─────────────────────────────────────────────────────── */
 .vs-algos-section { padding: 6rem 0; }
+.vs-page-head { padding-top: 4rem; }
 
 .vs-section-header { text-align: center; margin-bottom: 4rem; }
 .vs-section-title {
@@ -340,6 +418,10 @@ body { min-height: 100vh; overflow-x: hidden; }
 .vs-badge-noncomparison {
     background: rgba(139,92,246,.13); color: var(--vs-violet);
     border: 1px solid rgba(139,92,246,.3);
+}
+.vs-badge-tree {
+    background: rgba(66,217,122,.12); color: var(--vs-bar-sorted);
+    border: 1px solid rgba(66,217,122,.28);
 }
 
 /* Complexity table */
@@ -429,6 +511,85 @@ body { min-height: 100vh; overflow-x: hidden; }
     box-shadow: 0 0 7px rgba(240,84,84,.5);
 }
 .vs-bar.vs-state-sorted { background: var(--vs-bar-sorted); }
+
+/* Tree visualizer */
+.vs-tree-stage {
+    min-height: 380px;
+    background: var(--vs-surface);
+    border: 1px solid var(--vs-border);
+    border-radius: var(--vs-radius-sm);
+    overflow: auto;
+}
+.vs-tree-stage svg {
+    display: block;
+    min-width: 760px;
+}
+.vs-tree-edge {
+    stroke: var(--vs-border-light);
+    stroke-width: 2;
+}
+.vs-tree-node circle,
+.vs-tree-node rect {
+    fill: #202044;
+    stroke: var(--vs-border-light);
+    stroke-width: 2;
+}
+.vs-tree-node text {
+    fill: var(--vs-text);
+    font-family: var(--vs-mono);
+    font-size: 13px;
+    font-weight: 700;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+.vs-tree-node-visit circle,
+.vs-tree-node-visit rect {
+    fill: rgba(245,200,66,.22);
+    stroke: var(--vs-bar-compare);
+}
+.vs-tree-node-change circle,
+.vs-tree-node-change rect {
+    fill: rgba(240,84,84,.2);
+    stroke: var(--vs-bar-swap);
+}
+.vs-tree-node-found circle,
+.vs-tree-node-found rect {
+    fill: rgba(66,217,122,.18);
+    stroke: var(--vs-bar-sorted);
+}
+.vs-tree-controls {
+    display: grid;
+    gap: 1rem;
+}
+.vs-tree-input-row {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+}
+.vs-tree-input {
+    width: 110px;
+    background: var(--vs-surface);
+    border: 1px solid var(--vs-border);
+    border-radius: 7px;
+    color: var(--vs-text);
+    font-family: var(--vs-mono);
+    font-size: .9rem;
+    padding: .625rem .75rem;
+    outline: none;
+}
+.vs-tree-input:focus { border-color: var(--vs-blue); }
+.vs-tree-speed { min-width: 240px; flex: 1; }
+.vs-tree-log {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--vs-text-2);
+    font-size: .8rem;
+    line-height: 1.7;
+}
+.vs-tree-log li::marker {
+    color: var(--vs-blue);
+    font-family: var(--vs-mono);
+}
 
 /* Stats row */
 .vs-stats-row {
@@ -594,9 +755,11 @@ body { min-height: 100vh; overflow-x: hidden; }
 @media (max-width: 640px) {
     .vs-container { padding: 0 1.25rem; }
     .vs-algo-grid { grid-template-columns: 1fr; }
+    .vs-home-actions { grid-template-columns: 1fr; }
     .vs-complexity-grid { grid-template-columns: 1fr 1fr; }
     .vs-controls { flex-direction: column; }
     .vs-ctrl-btns { flex-wrap: wrap; }
     .vs-nav-links { gap: 1rem; }
     .vs-nav-cta { display: none; }
+    .vs-nav-link-active { padding: .35rem .55rem; }
 }

@@ -1,0 +1,160 @@
+@{
+    ViewData["Title"] = "Trees - VisualizedAlgorithms";
+}
+
+<nav class="vs-nav" id="vs-nav">
+    <div class="vs-nav-inner">
+        <a asp-controller="Home" asp-action="Index" class="vs-nav-logo">
+            <span class="logo-bracket">{</span>VisualizedAlgorithms<span class="logo-bracket">}</span>
+        </a>
+        <div class="vs-nav-links">
+            <a asp-controller="Home" asp-action="Sorting" class="vs-nav-link">Sorting</a>
+            <a asp-controller="Home" asp-action="Trees" class="vs-nav-link vs-nav-link-active">Trees</a>
+            <a href="#trees" class="vs-nav-cta">Explore Trees</a>
+        </div>
+    </div>
+</nav>
+
+<section class="vs-algos-section vs-page-head" id="trees">
+    <div class="vs-container">
+        <div class="vs-section-header">
+            <span class="vs-eyebrow">
+                <span class="vs-eyebrow-dot"></span>
+                SEARCH TREE STRUCTURES
+            </span>
+            <h1 class="vs-section-title">Pick a Search Tree</h1>
+            <p class="vs-section-subtitle">
+                Follow inserts, searches, deletes, rotations, splits, and traversals across the search trees you meet in serious algorithms courses.
+            </p>
+        </div>
+        <div class="vs-algo-grid" id="tree-grid"></div>
+    </div>
+</section>
+
+<section class="vs-viz-section vs-hidden" id="tree-viz-section">
+    <div class="vs-container">
+        <button class="vs-back-btn" id="tree-back-btn" type="button">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M13 8H3M3 8L8 3M3 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            All Trees
+        </button>
+
+        <div class="vs-viz-inner">
+            <div class="vs-viz-main">
+                <div class="vs-viz-header">
+                    <h2 class="vs-viz-title" id="tree-title">Binary Search Tree</h2>
+                    <span class="vs-category-badge vs-badge-tree" id="tree-category">Unbalanced</span>
+                </div>
+
+                <div class="vs-color-legend">
+                    <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-default"></span>Node</span>
+                    <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-compare"></span>Visit</span>
+                    <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-swap"></span>Change</span>
+                    <span class="vs-legend-item"><span class="vs-legend-dot vs-dot-sorted"></span>Found</span>
+                </div>
+
+                <div class="vs-tree-stage" id="tree-stage" role="img" aria-label="Search tree visualization"></div>
+
+                <div class="vs-stats-row">
+                    <div class="vs-stat-box">
+                        <span class="vs-stat-box-num" id="tree-stat-nodes">0</span>
+                        <span class="vs-stat-box-label">Nodes</span>
+                    </div>
+                    <div class="vs-stat-box">
+                        <span class="vs-stat-box-num" id="tree-stat-steps">0</span>
+                        <span class="vs-stat-box-label">Steps</span>
+                    </div>
+                    <div class="vs-stat-box">
+                        <span class="vs-stat-box-num" id="tree-stat-status">Ready</span>
+                        <span class="vs-stat-box-label">Status</span>
+                    </div>
+                </div>
+
+                <div class="vs-tree-controls">
+                    <div class="vs-tree-input-row">
+                        <input type="number" id="tree-value" class="vs-tree-input" min="0" max="999" value="42" aria-label="Tree key" />
+                        <button class="vs-ctrl-btn vs-ctrl-btn-primary" id="tree-insert" type="button">Insert</button>
+                        <button class="vs-ctrl-btn" id="tree-search" type="button">Search</button>
+                        <button class="vs-ctrl-btn" id="tree-delete" type="button">Delete</button>
+                    </div>
+                    <div class="vs-ctrl-btns">
+                        <button class="vs-ctrl-btn" id="tree-min" type="button">Min</button>
+                        <button class="vs-ctrl-btn" id="tree-max" type="button">Max</button>
+                        <button class="vs-ctrl-btn" id="tree-prev" type="button">Predecessor</button>
+                        <button class="vs-ctrl-btn" id="tree-next" type="button">Successor</button>
+                    </div>
+                    <div class="vs-ctrl-btns">
+                        <button class="vs-ctrl-btn" data-tree-traversal="inorder" type="button">Inorder</button>
+                        <button class="vs-ctrl-btn" data-tree-traversal="preorder" type="button">Preorder</button>
+                        <button class="vs-ctrl-btn" data-tree-traversal="postorder" type="button">Postorder</button>
+                        <button class="vs-ctrl-btn" data-tree-traversal="levelorder" type="button">Level Order</button>
+                    </div>
+                    <div class="vs-controls">
+                        <div class="vs-ctrl-btns">
+                            <button class="vs-ctrl-btn" id="tree-reset" type="button">Reset</button>
+                            <button class="vs-ctrl-btn vs-ctrl-btn-primary" id="tree-play" type="button">Play</button>
+                            <button class="vs-ctrl-btn" id="tree-step" type="button">Step</button>
+                        </div>
+                        <label class="vs-slider-label vs-tree-speed">
+                            Speed
+                            <span class="vs-slider-val" id="tree-speed-val">5</span>
+                            <input type="range" min="1" max="10" value="5" id="tree-speed" class="vs-slider" />
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vs-info-panel">
+                <div class="vs-complexity-grid">
+                    <div class="vs-complexity-card">
+                        <span class="vs-complexity-label">Search</span>
+                        <span class="vs-complexity-val" id="tree-cp-search">&mdash;</span>
+                    </div>
+                    <div class="vs-complexity-card">
+                        <span class="vs-complexity-label">Insert</span>
+                        <span class="vs-complexity-val" id="tree-cp-insert">&mdash;</span>
+                    </div>
+                    <div class="vs-complexity-card">
+                        <span class="vs-complexity-label">Delete</span>
+                        <span class="vs-complexity-val vs-complexity-val-worst" id="tree-cp-delete">&mdash;</span>
+                    </div>
+                    <div class="vs-complexity-card">
+                        <span class="vs-complexity-label">Space</span>
+                        <span class="vs-complexity-val" id="tree-cp-space">&mdash;</span>
+                    </div>
+                </div>
+
+                <div class="vs-info-card">
+                    <h4 class="vs-info-card-title">About</h4>
+                    <p id="tree-description" class="vs-info-text"></p>
+                </div>
+
+                <div class="vs-info-card">
+                    <h4 class="vs-info-card-title">Operation Log</h4>
+                    <ol class="vs-tree-log" id="tree-log"></ol>
+                </div>
+
+                <div class="vs-info-card">
+                    <h4 class="vs-info-card-title">Pseudocode</h4>
+                    <pre class="vs-pseudocode" id="tree-pseudocode"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="vs-footer">
+    <div class="vs-container">
+        <div class="vs-footer-inner">
+            <span class="vs-footer-logo">
+                <span class="logo-bracket">{</span>VisualizedAlgorithms<span class="logo-bracket">}</span>
+            </span>
+            <span class="vs-footer-tagline">Built for CS students, interview prep, and curious minds</span>
+        </div>
+    </div>
+</footer>
+
+@section Scripts {
+    <script src="~/js/search-trees.js" asp-append-version="true"></script>
+}

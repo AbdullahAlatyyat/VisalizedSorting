@@ -6,12 +6,20 @@ namespace VisualizedAlgorithms.Controllers;
 
 public class HomeController : Controller
 {
+    [Route("/")]
     public IActionResult Index()
     {
         return View();
     }
 
-    public IActionResult Privacy()
+    [Route("/Sorting")]
+    public IActionResult Sorting()
+    {
+        return View();
+    }
+
+    [Route("/Trees")]
+    public IActionResult Trees()
     {
         return View();
     }

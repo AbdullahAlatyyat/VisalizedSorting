@@ -136,7 +136,9 @@ function openGreedy(key) {
 function buildSteps() {
     pause();
     refs.log.innerHTML = '';
-    steps = (RUNNERS[currentKey] || runActivity)(itemCount());
+    const result = (RUNNERS[currentKey] || runActivity)(itemCount(), { randomize: true });
+    steps = Array.isArray(result) ? result : result.steps;
+    updateResult(result);
     stepIndex = 0;
     renderStep(steps[0]);
 }
@@ -147,6 +149,22 @@ function snapshot(message, items, caption = '') {
 
 function item(id, label, meta, state = '') {
     return { id, label, meta, state };
+}
+function resultOf(steps, result) { return { steps, result }; }
+function updateResult(result) {
+    if (!result || Array.isArray(result)) return;
+    document.getElementById('greedy-cp-result').textContent = result.result;
+}
+function randInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function shuffle(items) {
+    const next = [...items];
+    for (let i = next.length - 1; i > 0; i--) {
+        const j = randInt(0, i);
+        [next[i], next[j]] = [next[j], next[i]];
+    }
+    return next;
 }
 
 function renderStep(step) {
@@ -172,8 +190,11 @@ function renderLog(message) {
     while (refs.log.children.length > 8) refs.log.lastChild.remove();
 }
 
-function runActivity(size = 10) {
-    const base = [
+function runActivity(size = 10, options = {}) {
+    const base = options.randomize ? Array.from({ length: size }, (_, i) => {
+        const s = randInt(0, size + 4);
+        return { id: `A${i + 1}`, s, f: s + randInt(1, 5) };
+    }) : [
         { id: 'A1', s: 1, f: 4 }, { id: 'A2', s: 3, f: 5 }, { id: 'A3', s: 0, f: 6 },
         { id: 'A4', s: 5, f: 7 }, { id: 'A5', s: 3, f: 9 }, { id: 'A6', s: 5, f: 9 },
         { id: 'A7', s: 6, f: 10 }, { id: 'A8', s: 8, f: 11 }, { id: 'A9', s: 8, f: 12 },
@@ -197,11 +218,14 @@ function runActivity(size = 10) {
             out.push(snapshot(`Reject ${a.id}; it overlaps the current schedule`, states, 'Rejected candidates conflict with the latest chosen activity.'));
         }
     }
-    return out;
+    return resultOf(out, `${states.filter(x => x.state === 'chosen').length} activities`);
 }
 
-function runInterval(size = 7) {
-    const base = [
+function runInterval(size = 7, options = {}) {
+    const base = options.randomize ? Array.from({ length: size }, (_, i) => {
+        const s = randInt(0, size + 5);
+        return { id: `I${i + 1}`, s, f: s + randInt(1, 5) };
+    }) : [
         { id: 'I1', s: 0, f: 3 }, { id: 'I2', s: 1, f: 2 }, { id: 'I3', s: 3, f: 4 },
         { id: 'I4', s: 2, f: 5 }, { id: 'I5', s: 5, f: 7 }, { id: 'I6', s: 6, f: 9 },
         { id: 'I7', s: 8, f: 10 }
@@ -224,12 +248,12 @@ function runInterval(size = 7) {
             out.push(snapshot(`Reject ${x.id}; it overlaps`, states, 'Overlapping intervals cannot both be scheduled.'));
         }
     }
-    return out;
+    return resultOf(out, `${states.filter(x => x.state === 'chosen').length} intervals`);
 }
 
-function runFractional(size = 4) {
-    const capacity = Math.max(35, size * 10 + 10);
-    const base = [
+function runFractional(size = 4, options = {}) {
+    const capacity = options.randomize ? randInt(Math.max(25, size * 5), Math.max(45, size * 12)) : Math.max(35, size * 10 + 10);
+    const base = options.randomize ? Array.from({ length: size }, (_, i) => ({ id: String.fromCharCode(65 + i), w: randInt(5, 35), v: randInt(20, 140) })) : [
         { id: 'A', w: 10, v: 60 }, { id: 'B', w: 20, v: 100 }, { id: 'C', w: 30, v: 120 }, { id: 'D', w: 15, v: 45 }
     ];
     for (let i = base.length; i < size; i++) base.push({ id: String.fromCharCode(65 + i), w: 8 + i * 2, v: 30 + i * 17 });
@@ -260,11 +284,11 @@ function runFractional(size = 4) {
             out.push(snapshot(`Reject ${x.id}; no capacity remains`, states, `Final value: ${value}.`));
         }
     }
-    return out;
+    return resultOf(out, `${value.toFixed(1)} value`);
 }
 
-function runJobs(size = 5) {
-    const base = [
+function runJobs(size = 5, options = {}) {
+    const base = options.randomize ? Array.from({ length: size }, (_, i) => ({ id: `J${i + 1}`, d: randInt(1, Math.max(2, Math.min(7, size))), p: randInt(10, 150) })) : [
         { id: 'J1', d: 2, p: 100 }, { id: 'J2', d: 1, p: 19 }, { id: 'J3', d: 2, p: 27 },
         { id: 'J4', d: 1, p: 25 }, { id: 'J5', d: 3, p: 15 }
     ];
@@ -288,16 +312,21 @@ function runJobs(size = 5) {
         cur.state = placed ? 'chosen' : 'reject';
         out.push(snapshot(placed ? `Schedule ${j.id}` : `Reject ${j.id}; no slot before deadline`, states, `Slots: ${slots.map(x => x || '-').join(' | ')}`));
     }
-    return out;
+    return resultOf(out, `${slots.reduce((sum, id) => sum + (jobs.find(job => job.id === id)?.p || 0), 0)} profit`);
 }
 
-function runSetcover(size = 5) {
+function runSetcover(size = 5, options = {}) {
     const universeItems = 'ABCDEFG'.split('');
     const universe = new Set(universeItems);
-    const base = [
+    const base = options.randomize ? Array.from({ length: size }, (_, i) => ({ id: `S${i + 1}`, covers: shuffle(universeItems).slice(0, randInt(2, 4)).sort() })) : [
         { id: 'S1', covers: ['A', 'B', 'C'] }, { id: 'S2', covers: ['A', 'D'] }, { id: 'S3', covers: ['B', 'E', 'F'] },
         { id: 'S4', covers: ['C', 'G'] }, { id: 'S5', covers: ['D', 'E', 'G'] }
     ];
+    if (options.randomize) universeItems.forEach((symbol, index) => {
+        const bucket = base[index % base.length].covers;
+        if (!bucket.includes(symbol)) bucket.push(symbol);
+        bucket.sort();
+    });
     for (let i = base.length + 1; i <= size; i++) base.push({ id: `S${i}`, covers: universeItems.filter((_, index) => (index + i) % 3 === 0).slice(0, 4) });
     const sets = base.slice(0, size);
     const states = sets.map(s => item(s.id, s.id, `{${s.covers.join(', ')}}`));
@@ -314,11 +343,11 @@ function runSetcover(size = 5) {
         best.covers.forEach(x => uncovered.delete(x));
         out.push(snapshot(`Add ${best.id} to cover`, states, `Remaining uncovered: ${[...uncovered].join(', ') || 'none'}.`));
     }
-    return out;
+    return resultOf(out, `${states.filter(x => x.state === 'chosen').length} sets`);
 }
 
-function runHuffman(size = 6) {
-    const base = [
+function runHuffman(size = 6, options = {}) {
+    const base = options.randomize ? Array.from({ length: size }, (_, i) => ({ id: String.fromCharCode(65 + i), freq: randInt(3, 60) })) : [
         { id: 'A', freq: 45 }, { id: 'B', freq: 13 }, { id: 'C', freq: 12 }, { id: 'D', freq: 16 }, { id: 'E', freq: 9 }, { id: 'F', freq: 5 }
     ];
     for (let i = base.length; i < size; i++) base.push({ id: String.fromCharCode(65 + i), freq: 7 + i * 4 });
@@ -335,7 +364,7 @@ function runHuffman(size = 6) {
         nodes.push(merged);
         out.push(snapshot(`Merge into ${merged.id} with frequency ${merged.freq}`, nodes.map(x => item(x.id, x.id, `freq=${x.freq}`, x.id === merged.id ? 'chosen' : '')), 'The merged node goes back into the min-priority queue.'));
     }
-    return out;
+    return resultOf(out, `total ${nodes[0].freq}`);
 }
 
 const RUNNERS = {

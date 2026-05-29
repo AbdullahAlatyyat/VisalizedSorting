@@ -25,33 +25,33 @@
     "semantic_hash": "9524579679036debbd64803c47c6d8fe"
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/search-trees.js": {
-    "mtime": 1780093736.3395634,
-    "ast_hash": "dcb935de5174e9d59241449df9f6e15b",
+    "mtime": 1780094525.4645834,
+    "ast_hash": "8bce275f6a5b586c24c2930d95a64cf5",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/graphs.js": {
-    "mtime": 1780093722.813455,
-    "ast_hash": "3a5f0a4e413e83c4f8390e284ec79a56",
+    "mtime": 1780094681.8976607,
+    "ast_hash": "c7fb3682e5610edd280d661768069195",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/textbook-sections.js": {
-    "mtime": 1780093750.174674,
-    "ast_hash": "c4c29a2624d09ecfd77c98302f54661d",
+    "mtime": 1780094566.6198683,
+    "ast_hash": "e15fa1f67455a9e40badca00dc03bf06",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/greedy.js": {
-    "mtime": 1780093901.5569293,
-    "ast_hash": "15f5895a832411a7be0b76faa4dbdeba",
+    "mtime": 1780094515.2145119,
+    "ast_hash": "cc4a4adc007563a4532ac0f5143e8234",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/algorithm-core.js": {
-    "mtime": 1780093901.5569293,
-    "ast_hash": "722b2041fc2061e179fe65eaebb82835",
+    "mtime": 1780094679.3516433,
+    "ast_hash": "21b6bdb285764ccb3e9ff12cca2ff010",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/wwwroot/js/dynamic-programming.js": {
-    "mtime": 1780093656.049942,
-    "ast_hash": "0b4be84e70a8a82e081dacc37282f955",
+    "mtime": 1780094476.091239,
+    "ast_hash": "2f14f6718e75dfd96b84bd7a422eaa78",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/Controllers/HomeController.cs": {
@@ -60,8 +60,8 @@
     "semantic_hash": "0a381cebb3f1f3766593205e139a1b06"
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/test/algorithm-core.test.js": {
-    "mtime": 1780093882.4337645,
-    "ast_hash": "6c9a511a8887ee06a67f3ec7b5d10c51",
+    "mtime": 1780094688.2477036,
+    "ast_hash": "28d7e5d212004571a26dd800aaf35896",
     "semantic_hash": ""
   },
   "/home/hellmachine/Desktop/Projects/VisalizedSorting/Models/ErrorViewModel.cs": {

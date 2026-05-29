@@ -46,6 +46,14 @@ function treapCheck(node) {
     return treapCheck(node.left) && treapCheck(node.right);
 }
 
+function seeded(seed) {
+    let state = seed >>> 0;
+    return () => {
+        state = (state * 1664525 + 1013904223) >>> 0;
+        return state / 4294967296;
+    };
+}
+
 test('all sorting runners sort the sample', () => {
     const expected = [...sample].sort((a, b) => a - b);
     for (const key of sortingKeys) {
@@ -144,4 +152,39 @@ test('optional visualizer sizing is deterministic and backward compatible', () =
 
     const topic = AlgorithmCore.topics.run('searching', 'linear', { size: 12 });
     assert.equal(topic.steps[0].items.length, 12);
+});
+
+test('randomized visualizer data stays valid and differs from canonical samples', () => {
+    const coin = AlgorithmCore.dp.run('coin', { size: 8, randomize: true, rng: seeded(1) });
+    assert.notDeepEqual(coin.coins, [1, 2, 5]);
+    assert.equal(coin.coins[0], 1);
+    assert.equal(Number.isFinite(coin.answer), true);
+
+    const lis = AlgorithmCore.dp.run('lis', { size: 10, randomize: true, rng: seeded(2) });
+    assert.equal(lis.input.length, 10);
+    assert.notDeepEqual(lis.input, [10, 9, 2, 5, 3, 7, 101, 18, 22, 6]);
+
+    const huffman = AlgorithmCore.greedy.run('huffman', { size: 6, randomize: true, rng: seeded(3) });
+    assert.equal(huffman.value, huffman.merges.at(-1)[2]);
+    assert.notEqual(huffman.value, 100);
+
+    const tree = AlgorithmCore.trees.createSession('avl', { size: 12, randomize: true, rng: seeded(4) });
+    const treeSnap = tree.snapshot();
+    assert.equal(treeSnap.count, 12);
+    assert.deepEqual(inorder(treeSnap.root), AlgorithmCore.util.sorted(tree.keys));
+    assert.equal(avlBalanced(treeSnap.root).ok, true);
+    assert.notDeepEqual(tree.keys, [50, 25, 75, 12, 37, 62, 88, 31, 43, 57, 70, 77]);
+
+    const graph = AlgorithmCore.graphs.graphFrom(AlgorithmCore.graphs.samples.weighted, { size: 9, randomize: true, rng: seeded(5) });
+    assert.equal(graph.nodes.length, 9);
+    assert.ok(graph.edges.every(edge => edge.weight > 0));
+    assert.ok(AlgorithmCore.graphs.run('dijkstra', 'A', 'I', graph).distances.I < Infinity);
+
+    const negativeGraph = AlgorithmCore.graphs.graphFrom(AlgorithmCore.graphs.samples.negative, { size: 7, randomize: true, rng: seeded(7) });
+    assert.equal(AlgorithmCore.graphs.run('bellman', 'A', 'G', negativeGraph).negativeCycle, false);
+
+    const topic = AlgorithmCore.topics.run('searching', 'binary', { size: 9, randomize: true, rng: seeded(6) });
+    const values = topic.steps[0].items.map(item => Number(item.label.split(':')[1]));
+    assert.deepEqual(values, AlgorithmCore.util.sorted(values));
+    assert.ok(topic.answer >= 0 && topic.answer < values.length);
 });

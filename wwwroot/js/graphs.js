@@ -177,12 +177,19 @@ function cloneGraph(graph) {
 function graphSize() {
     return parseInt(refs.size.value, 10) || 8;
 }
+function randInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 function nodeLabel(index) {
     return String.fromCharCode(65 + index);
 }
 function generatedNode(index, total) {
     const angle = (Math.PI * 2 * index) / total;
     return n(nodeLabel(index), Math.round(410 + Math.cos(angle) * 300), Math.round(205 + Math.sin(angle) * 145));
+}
+function randomizedNode(index, total) {
+    const node = generatedNode(index, total);
+    return n(node.id, Math.max(55, Math.min(765, node.x + randInt(-38, 38))), Math.max(55, Math.min(365, node.y + randInt(-28, 28))));
 }
 function hasEdge(edges, from, to, directed) {
     return edges.some(edge => directed
@@ -191,27 +198,36 @@ function hasEdge(edges, from, to, directed) {
 }
 function resizeGraphSample(sample, size) {
     const nextSize = Math.max(4, Math.min(12, size));
-    const nodes = [];
-    for (let i = 0; i < nextSize; i++) {
-        const id = nodeLabel(i);
-        const existing = sample.nodes.find(node => node.id === id);
-        nodes.push(existing ? { ...existing } : generatedNode(i, nextSize));
+    const nodes = Array.from({ length: nextSize }, (_, i) => randomizedNode(i, nextSize));
+    const edges = [];
+    const weighted = sample.edges.some(edge => edge.weight !== undefined);
+    const hasNegative = sample.edges.some(edge => edge.weight < 0);
+    const isDag = sample.directed && (hasNegative || (!weighted && sample.edges.every(edge => edge.from < edge.to)));
+    const addEdge = (from, to, weight) => {
+        if (from === to || hasEdge(edges, from, to, sample.directed)) return;
+        edges.push(e(from, to, weighted ? weight : undefined));
+    };
+
+    if (sample.directed && !weighted && !isDag) {
+        const split = Math.max(2, Math.floor(nextSize / 2));
+        for (let i = 0; i < split; i++) addEdge(nodeLabel(i), nodeLabel((i + 1) % split));
+        for (let i = split; i < nextSize; i++) addEdge(nodeLabel(i), nodeLabel(i + 1 < nextSize ? i + 1 : split));
+        addEdge(nodeLabel(split - 1), nodeLabel(split));
+        return { directed: true, nodes, edges };
     }
-    const ids = new Set(nodes.map(node => node.id));
-    const edges = sample.edges
-        .filter(edge => ids.has(edge.from) && ids.has(edge.to))
-        .map(edge => ({ ...edge }));
+
     for (let i = 0; i < nextSize - 1; i++) {
         const from = nodeLabel(i);
         const to = nodeLabel(i + 1);
-        if (!hasEdge(edges, from, to, sample.directed)) edges.push(e(from, to, sample.edges.some(edge => edge.weight !== undefined) ? (i * 3) % 9 + 1 : undefined));
+        addEdge(from, to, weighted ? hasNegative ? randInt(-4, 9) || 1 : randInt(1, 12) : undefined);
     }
-    if (!sample.directed) {
-        for (let i = 0; i < nextSize - 2; i += 2) {
-            const from = nodeLabel(i);
-            const to = nodeLabel(i + 2);
-            if (!hasEdge(edges, from, to, false)) edges.push(e(from, to, sample.edges.some(edge => edge.weight !== undefined) ? (i * 5) % 8 + 2 : undefined));
-        }
+    const attempts = nextSize + randInt(1, nextSize);
+    for (let i = 0; i < attempts; i++) {
+        let a = randInt(0, nextSize - 1);
+        let b = randInt(0, nextSize - 1);
+        if (isDag && a > b) [a, b] = [b, a];
+        if (isDag && a === b) b = Math.min(nextSize - 1, a + 1);
+        addEdge(nodeLabel(a), nodeLabel(b), weighted ? hasNegative ? randInt(-4, 10) || 1 : randInt(1, 15) : undefined);
     }
     return { directed: sample.directed, nodes, edges };
 }
@@ -689,7 +705,7 @@ refs.back.addEventListener('click', () => {
     refs.viz.classList.add('vs-hidden');
     refs.list.classList.remove('vs-hidden');
 });
-refs.reset.addEventListener('click', buildSteps);
+refs.reset.addEventListener('click', rebuildGraph);
 refs.play.addEventListener('click', () => playing ? pause() : play());
 refs.step.addEventListener('click', () => {
     pause();

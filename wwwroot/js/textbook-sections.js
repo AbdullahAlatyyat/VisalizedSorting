@@ -153,7 +153,7 @@ function buildSteps() {
     refs.log.innerHTML = '';
     const size = topicItemCount();
     if (globalThis.AlgorithmCore) {
-        const result = globalThis.AlgorithmCore.topics.run(topicKey, current.key, { size });
+        const result = globalThis.AlgorithmCore.topics.run(topicKey, current.key, { size, randomize: true });
         steps = result.steps.map(step => ({
             message: step.message,
             caption: step.caption || current.idea,
@@ -168,6 +168,7 @@ function buildSteps() {
             items: steps[steps.length - 1].items.map(item => ({ ...item, state: item.state === 'bad' ? 'bad' : 'good' })),
             caption: String(result.answer)
         });
+        document.getElementById('topic-cp-result').textContent = formatAnswer(result.answer);
         stepIndex = 0;
         renderStep(steps[0]);
         return;
@@ -189,6 +190,12 @@ function buildSteps() {
     });
     stepIndex = 0;
     renderStep(steps[0]);
+}
+
+function formatAnswer(answer) {
+    if (Array.isArray(answer)) return answer.map(item => Array.isArray(item) ? `[${item.join(', ')}]` : String(item)).join(', ');
+    if (answer && typeof answer === 'object') return JSON.stringify(answer);
+    return String(answer);
 }
 
 function makeItems(algo, size = 8) {

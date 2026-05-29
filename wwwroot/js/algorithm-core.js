@@ -5,6 +5,23 @@
     const range = n => Array.from({ length: n }, (_, i) => i);
     const sorted = arr => [...arr].sort((a, b) => a - b);
     const edgeKey = (edge, directed = false) => directed ? `${edge.from}->${edge.to}` : [edge.from, edge.to].sort().join('-');
+    const shouldRandomize = options => !!(options && options.randomize);
+    const rngOf = options => options && typeof options.rng === 'function' ? options.rng : Math.random;
+    const randInt = (rng, min, max) => Math.floor(rng() * (max - min + 1)) + min;
+    const shuffle = (items, rng) => {
+        const next = [...items];
+        for (let i = next.length - 1; i > 0; i--) {
+            const j = randInt(rng, 0, i);
+            [next[i], next[j]] = [next[j], next[i]];
+        }
+        return next;
+    };
+    const uniqueNumbers = (count, min, max, rng) => {
+        const out = new Set();
+        while (out.size < count && out.size < max - min + 1) out.add(randInt(rng, min, max));
+        return [...out];
+    };
+    const randomLetters = (length, alphabet, rng) => Array.from({ length }, () => alphabet[randInt(rng, 0, alphabet.length - 1)]).join('');
     const sizeOption = (options, fallback, min, max) => {
         const raw = typeof options === 'number' ? options : options && Number.isFinite(options.size) ? options.size : fallback;
         return Math.max(min, Math.min(max, Math.round(raw)));
@@ -232,17 +249,25 @@
             return { answer: tab[n], steps };
         },
         coin(options) {
-            const coins = [1, 2, 5], amount = sizeOption(options, 8, 4, 14) + 3;
+            const rng = rngOf(options);
+            const random = shouldRandomize(options);
+            const coins = random ? sorted([1, ...uniqueNumbers(randInt(rng, 2, 4), 2, 9, rng)]) : [1, 2, 5];
+            const amount = random ? sizeOption(options, 8, 4, 14) + randInt(rng, 2, 8) : sizeOption(options, 8, 4, 14) + 3;
             const table = Array(amount + 1).fill(Infinity);
             table[0] = 0;
             for (let a = 1; a <= amount; a++) for (const c of coins) if (c <= a) table[a] = Math.min(table[a], table[a - c] + 1);
             return { answer: table[amount], table, coins };
         },
         knapsack(options) {
+            const rng = rngOf(options);
+            const random = shouldRandomize(options);
             const size = sizeOption(options, 8, 4, 14);
+            const itemCount = Math.max(3, Math.min(7, Math.round(size / 2)));
             const baseItems = [{ w: 1, v: 1 }, { w: 3, v: 4 }, { w: 4, v: 5 }, { w: 5, v: 7 }, { w: 2, v: 3 }, { w: 6, v: 9 }, { w: 7, v: 10 }];
-            const items = baseItems.slice(0, Math.max(3, Math.min(baseItems.length, Math.round(size / 2))));
-            const cap = Math.max(4, size - 1);
+            const items = random
+                ? Array.from({ length: itemCount }, () => ({ w: randInt(rng, 1, Math.max(3, size - 2)), v: randInt(rng, 2, 18) }))
+                : baseItems.slice(0, itemCount);
+            const cap = random ? randInt(rng, Math.max(4, size - 2), Math.max(6, size + 4)) : Math.max(4, size - 1);
             const table = Array.from({ length: items.length + 1 }, () => Array(cap + 1).fill(0));
             for (let i = 1; i <= items.length; i++) for (let w = 0; w <= cap; w++) {
                 const item = items[i - 1];
@@ -253,8 +278,10 @@
         lcs(options) {
             const custom = options && Number.isFinite(options.size);
             const size = sizeOption(options, 8, 4, 14);
-            const x = custom ? 'ABCBDABXYZPQ'.slice(0, Math.min(size, 12)) : 'ABCBDAB';
-            const y = custom ? 'BDCABAZYXPQ'.slice(0, Math.min(Math.max(4, size - 1), 11)) : 'BDCABA';
+            const rng = rngOf(options);
+            const random = shouldRandomize(options);
+            const x = random ? randomLetters(Math.min(size, 12), 'ABCDEF', rng) : custom ? 'ABCBDABXYZPQ'.slice(0, Math.min(size, 12)) : 'ABCBDAB';
+            const y = random ? randomLetters(Math.min(Math.max(4, size - 1), 11), 'ABCDEF', rng) : custom ? 'BDCABAZYXPQ'.slice(0, Math.min(Math.max(4, size - 1), 11)) : 'BDCABA';
             const table = Array.from({ length: x.length + 1 }, () => Array(y.length + 1).fill(0));
             for (let i = 1; i <= x.length; i++) for (let j = 1; j <= y.length; j++) table[i][j] = x[i - 1] === y[j - 1] ? table[i - 1][j - 1] + 1 : Math.max(table[i - 1][j], table[i][j - 1]);
             return { answer: table[x.length][y.length], table, x, y };
@@ -262,14 +289,21 @@
         edit(options) {
             const custom = options && Number.isFinite(options.size);
             const size = sizeOption(options, 8, 4, 14);
-            const a = custom ? 'kittenfold'.slice(0, Math.min(size, 10)) : 'kitten';
-            const b = custom ? 'sittingpad'.slice(0, Math.min(Math.max(4, size + 1), 10)) : 'sitting';
+            const rng = rngOf(options);
+            const random = shouldRandomize(options);
+            const a = random ? randomLetters(Math.min(size, 10), 'abcdef', rng) : custom ? 'kittenfold'.slice(0, Math.min(size, 10)) : 'kitten';
+            const b = random ? randomLetters(Math.min(Math.max(4, size + 1), 10), 'abcdef', rng) : custom ? 'sittingpad'.slice(0, Math.min(Math.max(4, size + 1), 10)) : 'sitting';
             const table = Array.from({ length: a.length + 1 }, (_, i) => Array.from({ length: b.length + 1 }, (_, j) => i === 0 ? j : j === 0 ? i : 0));
             for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++) table[i][j] = Math.min(table[i - 1][j] + 1, table[i][j - 1] + 1, table[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
             return { answer: table[a.length][b.length], table, a, b };
         },
         matrix(options) {
-            const p = [10, 30, 5, 60, 12, 24, 8, 16].slice(0, Math.max(4, Math.min(8, Math.round(sizeOption(options, 8, 4, 14) / 2)))), n = p.length - 1;
+            const rng = rngOf(options);
+            const random = shouldRandomize(options);
+            const length = Math.max(4, Math.min(8, Math.round(sizeOption(options, 8, 4, 14) / 2)));
+            const p = random
+                ? Array.from({ length }, () => randInt(rng, 4, 35))
+                : [10, 30, 5, 60, 12, 24, 8, 16].slice(0, length), n = p.length - 1;
             const table = Array.from({ length: n }, () => Array(n).fill(0));
             for (let len = 2; len <= n; len++) for (let i = 0; i <= n - len; i++) {
                 const j = i + len - 1;
@@ -279,7 +313,10 @@
             return { answer: table[0][n - 1], table, dimensions: p };
         },
         lis(options) {
-            const input = [10, 9, 2, 5, 3, 7, 101, 18, 22, 6, 31, 4, 45, 11].slice(0, sizeOption(options, 8, 4, 14));
+            const rng = rngOf(options);
+            const input = shouldRandomize(options)
+                ? uniqueNumbers(sizeOption(options, 8, 4, 14), 1, 99, rng)
+                : [10, 9, 2, 5, 3, 7, 101, 18, 22, 6, 31, 4, 45, 11].slice(0, sizeOption(options, 8, 4, 14));
             const table = Array(input.length).fill(1);
             for (let i = 0; i < input.length; i++) for (let j = 0; j < i; j++) if (input[j] < input[i]) table[i] = Math.max(table[i], table[j] + 1);
             return { answer: Math.max(...table), table, input };
@@ -295,9 +332,14 @@
     function snapshot(message, items, caption = '', metrics = {}) { return { message, items: items.map(x => ({ ...x })), caption, metrics: { ...metrics } }; }
 
     function runGreedy(key, options = {}) {
+        const rng = rngOf(options);
+        const random = shouldRandomize(options);
         if (key === 'activity') {
             const size = sizeOption(options, 10, 4, 14);
-            const base = [
+            const base = random ? Array.from({ length: size }, (_, i) => {
+                const s = randInt(rng, 0, Math.max(3, size + 4));
+                return { id: `A${i + 1}`, s, f: s + randInt(rng, 1, 5) };
+            }) : [
                 { id: 'A1', s: 1, f: 4 }, { id: 'A2', s: 3, f: 5 }, { id: 'A3', s: 0, f: 6 },
                 { id: 'A4', s: 5, f: 7 }, { id: 'A5', s: 3, f: 9 }, { id: 'A6', s: 5, f: 9 },
                 { id: 'A7', s: 6, f: 10 }, { id: 'A8', s: 8, f: 11 }, { id: 'A9', s: 8, f: 12 }, { id: 'A10', s: 12, f: 14 }
@@ -323,7 +365,10 @@
         }
         if (key === 'interval') {
             const size = sizeOption(options, 7, 4, 14);
-            const base = [{ id: 'I1', s: 0, f: 3 }, { id: 'I2', s: 1, f: 2 }, { id: 'I3', s: 3, f: 4 }, { id: 'I4', s: 2, f: 5 }, { id: 'I5', s: 5, f: 7 }, { id: 'I6', s: 6, f: 9 }, { id: 'I7', s: 8, f: 10 }];
+            const base = random ? Array.from({ length: size }, (_, i) => {
+                const s = randInt(rng, 0, Math.max(4, size + 5));
+                return { id: `I${i + 1}`, s, f: s + randInt(rng, 1, 5) };
+            }) : [{ id: 'I1', s: 0, f: 3 }, { id: 'I2', s: 1, f: 2 }, { id: 'I3', s: 3, f: 4 }, { id: 'I4', s: 2, f: 5 }, { id: 'I5', s: 5, f: 7 }, { id: 'I6', s: 6, f: 9 }, { id: 'I7', s: 8, f: 10 }];
             for (let i = base.length + 1; i <= size; i++) base.push({ id: `I${i}`, s: i + 1, f: i + 4 });
             const intervals = base.slice(0, size).sort((a, b) => a.f - b.f);
             const chosen = [];
@@ -333,10 +378,10 @@
         }
         if (key === 'fractional') {
             const size = sizeOption(options, 4, 4, 14);
-            const base = [{ id: 'A', w: 10, v: 60 }, { id: 'B', w: 20, v: 100 }, { id: 'C', w: 30, v: 120 }, { id: 'D', w: 15, v: 45 }];
+            const base = random ? Array.from({ length: size }, (_, i) => ({ id: String.fromCharCode(65 + i), w: randInt(rng, 5, 35), v: randInt(rng, 20, 140) })) : [{ id: 'A', w: 10, v: 60 }, { id: 'B', w: 20, v: 100 }, { id: 'C', w: 30, v: 120 }, { id: 'D', w: 15, v: 45 }];
             for (let i = base.length; i < size; i++) base.push({ id: String.fromCharCode(65 + i), w: 8 + i * 2, v: 30 + i * 17 });
             const items = base.slice(0, size).sort((a, b) => b.v / b.w - a.v / a.w);
-            let remaining = options && Number.isFinite(options.size) ? Math.max(35, size * 10 + 10) : 50, value = 0;
+            let remaining = random ? randInt(rng, Math.max(20, size * 5), Math.max(40, size * 12)) : options && Number.isFinite(options.size) ? Math.max(35, size * 10 + 10) : 50, value = 0;
             const taken = [];
             for (const x of items) {
                 if (remaining <= 0) break;
@@ -349,7 +394,7 @@
         }
         if (key === 'jobs') {
             const size = sizeOption(options, 5, 4, 14);
-            const base = [{ id: 'J1', d: 2, p: 100 }, { id: 'J2', d: 1, p: 19 }, { id: 'J3', d: 2, p: 27 }, { id: 'J4', d: 1, p: 25 }, { id: 'J5', d: 3, p: 15 }];
+            const base = random ? Array.from({ length: size }, (_, i) => ({ id: `J${i + 1}`, d: randInt(rng, 1, Math.max(2, Math.min(7, size))), p: randInt(rng, 10, 150) })) : [{ id: 'J1', d: 2, p: 100 }, { id: 'J2', d: 1, p: 19 }, { id: 'J3', d: 2, p: 27 }, { id: 'J4', d: 1, p: 25 }, { id: 'J5', d: 3, p: 15 }];
             for (let i = base.length + 1; i <= size; i++) base.push({ id: `J${i}`, d: 1 + (i % 5), p: 20 + i * 9 });
             const jobs = base.slice(0, size).sort((a, b) => b.p - a.p);
             const slots = Array(Math.max(...jobs.map(j => j.d))).fill(null);
@@ -360,7 +405,12 @@
             const size = sizeOption(options, 5, 4, 14);
             const universeItems = 'ABCDEFG'.split('');
             const universe = new Set(universeItems);
-            const base = [{ id: 'S1', covers: ['A', 'B', 'C'] }, { id: 'S2', covers: ['A', 'D'] }, { id: 'S3', covers: ['B', 'E', 'F'] }, { id: 'S4', covers: ['C', 'G'] }, { id: 'S5', covers: ['D', 'E', 'G'] }];
+            const base = random ? Array.from({ length: size }, (_, i) => ({ id: `S${i + 1}`, covers: shuffle(universeItems, rng).slice(0, randInt(rng, 2, 4)).sort() })) : [{ id: 'S1', covers: ['A', 'B', 'C'] }, { id: 'S2', covers: ['A', 'D'] }, { id: 'S3', covers: ['B', 'E', 'F'] }, { id: 'S4', covers: ['C', 'G'] }, { id: 'S5', covers: ['D', 'E', 'G'] }];
+            if (random) universeItems.forEach((symbol, index) => {
+                const bucket = base[index % base.length].covers;
+                if (!bucket.includes(symbol)) bucket.push(symbol);
+                bucket.sort();
+            });
             for (let i = base.length + 1; i <= size; i++) base.push({ id: `S${i}`, covers: universeItems.filter((_, index) => (index + i) % 3 === 0).slice(0, 4) });
             const sets = base.slice(0, size);
             const chosen = [], uncovered = new Set(universe);
@@ -373,7 +423,7 @@
         }
         if (key === 'huffman') {
             const size = sizeOption(options, 6, 4, 14);
-            const base = [{ id: 'A', freq: 45 }, { id: 'B', freq: 13 }, { id: 'C', freq: 12 }, { id: 'D', freq: 16 }, { id: 'E', freq: 9 }, { id: 'F', freq: 5 }];
+            const base = random ? Array.from({ length: size }, (_, i) => ({ id: String.fromCharCode(65 + i), freq: randInt(rng, 3, 60) })) : [{ id: 'A', freq: 45 }, { id: 'B', freq: 13 }, { id: 'C', freq: 12 }, { id: 'D', freq: 16 }, { id: 'E', freq: 9 }, { id: 'F', freq: 5 }];
             for (let i = base.length; i < size; i++) base.push({ id: String.fromCharCode(65 + i), freq: 7 + i * 4 });
             let nodes = base.slice(0, size);
             const merges = [];
@@ -401,7 +451,45 @@
     function edgeExists(edges, from, to, directed) {
         return edges.some(e => directed ? e[0] === from && e[1] === to : (e[0] === from && e[1] === to) || (e[0] === to && e[1] === from));
     }
+    function randomGraphSample(sample, options = {}) {
+        const rng = rngOf(options);
+        const size = sizeOption(options, sample.nodes.length, 4, 12);
+        const nodes = range(size).map(i => String.fromCharCode(65 + i));
+        const weighted = sample.edges.some(e => e[2] !== undefined);
+        const hasNegative = sample.edges.some(e => e[2] < 0);
+        const indexOf = id => id.charCodeAt(0) - 65;
+        const isDag = sample.directed && (hasNegative || (!weighted && sample.edges.every(e => indexOf(e[0]) < indexOf(e[1]))));
+        const edges = [];
+        const add = (from, to, weight) => {
+            if (from === to || edgeExists(edges, from, to, sample.directed)) return;
+            edges.push(weighted ? [from, to, weight] : [from, to]);
+        };
+
+        if (sample.directed && !weighted && !isDag) {
+            const split = Math.max(2, Math.floor(size / 2));
+            for (let i = 0; i < split; i++) add(nodes[i], nodes[(i + 1) % split]);
+            for (let i = split; i < size; i++) add(nodes[i], nodes[i + 1 < size ? i + 1 : split]);
+            add(nodes[Math.max(0, split - 1)], nodes[split]);
+            return { directed: true, nodes, edges };
+        }
+
+        for (let i = 0; i < size - 1; i++) {
+            const w = weighted ? hasNegative ? randInt(rng, -4, 9) || 1 : randInt(rng, 1, 12) : undefined;
+            add(nodes[i], nodes[i + 1], w);
+        }
+        const attempts = size + randInt(rng, 1, size);
+        for (let i = 0; i < attempts; i++) {
+            let a = randInt(rng, 0, size - 1);
+            let b = randInt(rng, 0, size - 1);
+            if (isDag && a > b) [a, b] = [b, a];
+            if (isDag && a === b) b = Math.min(size - 1, a + 1);
+            const w = weighted ? hasNegative ? randInt(rng, -4, 10) || 1 : randInt(rng, 1, 15) : undefined;
+            add(nodes[a], nodes[b], w);
+        }
+        return { directed: sample.directed, nodes, edges };
+    }
     function resizedGraphSample(sample, options = {}) {
+        if (shouldRandomize(options)) return randomGraphSample(sample, options);
         if (!options || !Number.isFinite(options.size)) return sample;
         const size = sizeOption(options, sample.nodes.length, 4, 12);
         const nodes = range(size).map(i => String.fromCharCode(65 + i));
@@ -653,9 +741,11 @@
         const defaultBinary = [50, 25, 75, 12, 37, 62, 88, 31, 43, 57, 70];
         const defaultMulti = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110];
         const size = sizeOption(options, 11, 5, 25);
+        const rng = rngOf(options);
+        const random = shouldRandomize(options);
         const keys = multi
-            ? sizedKeys(defaultMulti, size, 10)
-            : Array.isArray(initialKeys) ? [...initialKeys] : sizedKeys(defaultBinary, size);
+            ? random ? sorted(uniqueNumbers(size, 5, 250, rng)) : sizedKeys(defaultMulti, size, 10)
+            : Array.isArray(initialKeys) ? [...initialKeys] : random ? uniqueNumbers(size, 5, 250, rng) : sizedKeys(defaultBinary, size);
         const session = {
             keys,
             snapshot(highlight = {}, message = 'Ready') {
@@ -706,6 +796,8 @@
     }
 
     function runTopic(topic, key, options = {}) {
+        const rng = rngOf(options);
+        const random = shouldRandomize(options);
         const requestedSize = options && Number.isFinite(options.size) ? sizeOption(options, 8, 4, 14) : null;
         const fitItems = items => {
             if (!requestedSize) return items;
@@ -715,68 +807,139 @@
         };
         const done = (message, items, result) => ({ steps: [snapshot(message, fitItems(items), result)], answer: result });
         if (topic === 'searching') {
-            const arr = key === 'binary' ? [1, 3, 5, 7, 9, 11, 13, 18, 21, 27] : [4, 9, 1, 7, 11, 13, 18, 21];
+            const arr = random
+                ? key === 'binary' || key === 'interpolation'
+                    ? sorted(uniqueNumbers(requestedSize || 8, 1, 80, rng))
+                    : uniqueNumbers(requestedSize || 8, 1, 80, rng)
+                : key === 'binary' ? [1, 3, 5, 7, 9, 11, 13, 18, 21, 27] : [4, 9, 1, 7, 11, 13, 18, 21];
             if (key === 'linear') {
-                const found = arr.indexOf(7);
-                return done(`Linear search found 7 at index ${found}`, arr.map((v, i) => item(i, `${i}:${v}`, i <= found ? 'checked' : 'unseen', i === found ? 'chosen' : '')), found);
+                const found = random ? randInt(rng, 0, arr.length - 1) : arr.indexOf(7);
+                const target = arr[found];
+                return done(`Linear search found ${target} at index ${found}`, arr.map((v, i) => item(i, `${i}:${v}`, i <= found ? 'checked' : 'unseen', i === found ? 'chosen' : '')), found);
             }
             if (key === 'binary') {
+                const target = random ? arr[randInt(rng, 0, arr.length - 1)] : 13;
                 let lo = 0, hi = arr.length - 1, found = -1;
                 while (lo <= hi) {
                     const mid = Math.floor((lo + hi) / 2);
-                    if (arr[mid] === 13) { found = mid; break; }
-                    if (arr[mid] < 13) lo = mid + 1; else hi = mid - 1;
+                    if (arr[mid] === target) { found = mid; break; }
+                    if (arr[mid] < target) lo = mid + 1; else hi = mid - 1;
                 }
-                return done(`Binary search found 13 at index ${found}`, arr.map((v, i) => item(i, `${i}:${v}`, i === found ? 'target' : 'sorted', i === found ? 'chosen' : '')), found);
+                return done(`Binary search found ${target} at index ${found}`, arr.map((v, i) => item(i, `${i}:${v}`, i === found ? 'target' : 'sorted', i === found ? 'chosen' : '')), found);
             }
             if (key === 'interpolation') {
-                const uniform = [2, 5, 8, 11, 14, 17, 20, 23, 26];
-                const target = 20;
+                const start = random ? randInt(rng, 1, 8) : 2;
+                const gap = random ? randInt(rng, 2, 7) : 3;
+                const uniform = random ? range(requestedSize || 9).map(i => start + i * gap) : [2, 5, 8, 11, 14, 17, 20, 23, 26];
+                const target = random ? uniform[randInt(rng, 1, uniform.length - 2)] : 20;
                 const pos = Math.floor((target - uniform[0]) * (uniform.length - 1) / (uniform.at(-1) - uniform[0]));
                 return done(`Interpolation probe lands at index ${pos}`, uniform.map((v, i) => item(i, `${i}:${v}`, 'uniform', i === pos ? 'chosen' : '')), pos);
             }
             if (key === 'chaining') {
-                const buckets = [[8], [], [10, 18], [], [12]];
-                return done('Hash table chaining stores collision 18 in bucket 2', buckets.map((b, i) => item(i, `slot ${i}`, `[${b.join(', ')}]`, i === 2 ? 'chosen' : '')), true);
+                const tableSize = random ? randInt(rng, 5, 8) : 5;
+                const buckets = Array.from({ length: tableSize }, () => []);
+                const values = random ? uniqueNumbers(requestedSize || 8, 5, 99, rng) : [8, 10, 18, 12];
+                values.forEach(v => buckets[v % tableSize].push(v));
+                const hit = buckets.findIndex(b => b.length > 1);
+                return done(`Hash table chaining stores collisions in bucket ${hit < 0 ? 0 : hit}`, buckets.map((b, i) => item(i, `slot ${i}`, `[${b.join(', ')}]`, i === hit ? 'chosen' : '')), true);
             }
-            if (key === 'open' || key === 'linearprobe') return done('Linear probing places 18 in the first open slot after its hash', [item(4, 'slot 4', 'occupied'), item(5, 'slot 5', 'occupied'), item(6, 'slot 6', 'insert 18', 'chosen')], 6);
-            if (key === 'quadratic') return done('Quadratic probing checks h+1^2 then h+2^2 before insertion', [item(4, 'slot 4', 'occupied'), item(5, 'slot 5', 'occupied'), item(8, 'slot 8', 'insert 18', 'chosen')], 8);
-            if (key === 'doublehash') return done('Double hashing uses the second hash as the stride', [item('h1', 'h1=4', 'first slot'), item('h2', 'h2=3', 'stride'), item(7, 'slot 7', 'insert', 'chosen')], 7);
-            if (key === 'bloom') return done('Bloom query is maybe-present only when every hashed bit is set', [item(1, 'bit 1', 'set', 'chosen'), item(4, 'bit 4', 'set', 'chosen'), item(6, 'bit 6', 'set', 'chosen')], 'maybe present');
+            if (key === 'open' || key === 'linearprobe') {
+                const h = random ? randInt(rng, 1, 8) : 4, placed = h + 2, value = random ? randInt(rng, 10, 99) : 18;
+                return done(`Linear probing places ${value} in the first open slot after its hash`, [item(h, `slot ${h}`, 'occupied'), item(h + 1, `slot ${h + 1}`, 'occupied'), item(placed, `slot ${placed}`, `insert ${value}`, 'chosen')], placed);
+            }
+            if (key === 'quadratic') {
+                const h = random ? randInt(rng, 1, 6) : 4, value = random ? randInt(rng, 10, 99) : 18;
+                return done('Quadratic probing checks h+1^2 then h+2^2 before insertion', [item(h, `slot ${h}`, 'occupied'), item(h + 1, `slot ${h + 1}`, 'occupied'), item(h + 4, `slot ${h + 4}`, `insert ${value}`, 'chosen')], h + 4);
+            }
+            if (key === 'doublehash') {
+                const h1 = random ? randInt(rng, 1, 8) : 4, h2 = random ? randInt(rng, 2, 5) : 3;
+                return done('Double hashing uses the second hash as the stride', [item('h1', `h1=${h1}`, 'first slot'), item('h2', `h2=${h2}`, 'stride'), item(h1 + h2, `slot ${h1 + h2}`, 'insert', 'chosen')], h1 + h2);
+            }
+            if (key === 'bloom') {
+                const bits = random ? shuffle(range(10), rng).slice(0, 3).sort((a, b) => a - b) : [1, 4, 6];
+                return done('Bloom query is maybe-present only when every hashed bit is set', bits.map(bit => item(bit, `bit ${bit}`, 'set', 'chosen')), 'maybe present');
+            }
         }
         if (topic === 'heaps') {
-            const heap = [1, 3, 5, 9, 8, 12, 10];
-            if (key === 'insert') return done('Insert 2 at the end, then bubble it above 3', [item(0, '1', 'root'), item(1, '2', 'new parent', 'chosen'), item(3, '3', 'bubbled down')], [1, 2, 5, 3, 8, 12, 10, 9]);
-            if (key === 'extract') return done('Extract-min removes 1 and sifts 10 down to restore heap order', [item(0, '3', 'new root', 'chosen'), item(1, '8', 'child'), item(2, '5', 'child')], [3, 8, 5, 9, 10, 12]);
-            if (key === 'decrease') return done('Decrease 12 to 2 and bubble it to the root path', [item(0, '1', 'root'), item(2, '2', 'decreased key', 'chosen'), item(5, '5', 'swapped down')], [1, 3, 2, 9, 8, 5, 10]);
+            const heap = random ? sorted(uniqueNumbers(7, 1, 80, rng)) : [1, 3, 5, 9, 8, 12, 10];
+            if (key === 'insert') {
+                const value = random ? Math.max(1, heap[1] - randInt(rng, 1, 4)) : 2;
+                return done(`Insert ${value} at the end, then bubble it above ${heap[1]}`, [item(0, String(heap[0]), 'root'), item(1, String(value), 'new parent', 'chosen'), item(3, String(heap[1]), 'bubbled down')], [heap[0], value, ...heap.slice(2), heap[1]]);
+            }
+            if (key === 'extract') return done(`Extract-min removes ${heap[0]} and sifts down to restore heap order`, [item(0, String(heap[1]), 'new root', 'chosen'), item(1, String(heap[3] || heap[1]), 'child'), item(2, String(heap[2]), 'child')], heap.slice(1));
+            if (key === 'decrease') {
+                const decreased = Math.max(1, heap[0] - 1);
+                return done(`Decrease ${heap.at(-1)} to ${decreased} and bubble it to the root path`, [item(0, String(heap[0]), 'root'), item(2, String(decreased), 'decreased key', 'chosen'), item(5, String(heap.at(-1)), 'swapped down')], [heap[0], heap[1], decreased, ...heap.slice(3, -1), heap.at(-1)]);
+            }
             if (key === 'heapify') return done('Bottom-up heapify turns an unsorted array into a valid min-heap', heap.map((v, i) => item(i, String(v), i === 0 ? 'minimum root' : 'heap order', i === 0 ? 'chosen' : '')), heap);
             if (key === 'binomial') return done('Binomial heap merge links equal-degree trees like binary addition', [item('B0', 'B0', 'single root'), item('B1', 'B1', 'linked tree', 'chosen'), item('B2', 'B2', 'carry result')], true);
             if (key === 'fibonacci') return done('Fibonacci heap decrease-key cuts the improved node into the root list', [item('cut', 'cut node', 'heap violation repaired', 'chosen'), item('mark', 'mark parent', 'cascading-cut bookkeeping')], true);
             if (key === 'binaryheap') return done('Binary heap sample satisfies parent priority before child priority', heap.map((v, i) => item(i, String(v), i === 0 ? 'root min' : `parent ${Math.floor((i - 1) / 2)}`, i === 0 ? 'chosen' : '')), true);
         }
         if (topic === 'strings') {
-            const text = 'ABABACABA', pattern = 'ABA';
+            let text = random ? randomLetters(9, 'ABCD', rng) : 'ABABACABA';
+            const pattern = random ? randomLetters(3, 'ABCD', rng) : 'ABA';
+            if (random) {
+                const insertAt = randInt(rng, 0, text.length - pattern.length);
+                text = text.slice(0, insertAt) + pattern + text.slice(insertAt + pattern.length);
+            }
             const matches = [];
             for (let i = 0; i <= text.length - pattern.length; i++) if (text.slice(i, i + pattern.length) === pattern) matches.push(i);
-            if (['naive', 'kmp', 'rabin', 'boyer'].includes(key)) return done(`${key} finds pattern ABA at shifts ${matches.join(', ')}`, matches.map(i => item(i, `shift ${i}`, text.slice(i, i + pattern.length), 'chosen')), matches);
-            if (key === 'trie') return done('Trie stores CAT, CAR, and DOG with CA shared', [item('C', 'C', 'shared prefix', 'chosen'), item('A', 'A', 'shared prefix'), item('T/R', 'T/R', 'word endings')], true);
-            if (key === 'suffixtrie') return done('Suffix trie for BANANA answers substring ANA by walking A-N-A', [item('A', 'A', 'edge', 'chosen'), item('N', 'N', 'edge', 'chosen'), item('A2', 'A', 'edge', 'chosen')], true);
-            if (key === 'suffixarray') return done('Suffix array for BANANA sorts suffix starts lexicographically', [5, 3, 1, 0, 4, 2].map(i => item(i, String(i), 'suffix start', i === 1 ? 'chosen' : '')), [5, 3, 1, 0, 4, 2]);
-            if (key === 'aho') return done('Aho-Corasick emits all dictionary matches while scanning one pass', [item('he', 'he', 'match'), item('she', 'she', 'match', 'chosen'), item('hers', 'hers', 'match')], ['she', 'he', 'hers']);
+            if (['naive', 'kmp', 'rabin', 'boyer'].includes(key)) return done(`${key} finds pattern ${pattern} at shifts ${matches.join(', ')}`, matches.map(i => item(i, `shift ${i}`, text.slice(i, i + pattern.length), 'chosen')), matches);
+            if (key === 'trie') {
+                const stem = random ? randomLetters(2, 'CARTDOG', rng).toUpperCase() : 'CA';
+                return done(`Trie stores words with ${stem} shared`, [item(stem[0], stem[0], 'shared prefix', 'chosen'), item(stem[1], stem[1], 'shared prefix'), item('end', 'endings', 'word endings')], true);
+            }
+            if (key === 'suffixtrie') {
+                const sample = random ? randomLetters(6, 'BAN', rng) : 'BANANA';
+                return done(`Suffix trie for ${sample} answers a substring by walking edges`, sample.slice(0, 3).split('').map((ch, i) => item(`${ch}${i}`, ch, 'edge', 'chosen')), true);
+            }
+            if (key === 'suffixarray') {
+                const sample = random ? randomLetters(6, 'ABCD', rng) : 'BANANA';
+                const suffixes = range(sample.length).sort((a, b) => sample.slice(a).localeCompare(sample.slice(b)));
+                return done(`Suffix array for ${sample} sorts suffix starts lexicographically`, suffixes.map((i, ix) => item(i, String(i), 'suffix start', ix === 0 ? 'chosen' : '')), suffixes);
+            }
+            if (key === 'aho') {
+                const words = random ? [randomLetters(2, 'abcd', rng), randomLetters(3, 'abcd', rng), randomLetters(4, 'abcd', rng)] : ['she', 'he', 'hers'];
+                return done('Aho-Corasick emits all dictionary matches while scanning one pass', words.map((word, i) => item(word, word, 'match', i === 1 ? 'chosen' : '')), words);
+            }
         }
         if (topic === 'divide') {
-            if (key === 'binary') return done('Divide-and-conquer binary search finds 13 at index 6', [item('left', 'discard left/right by midpoint', 'halving'), item('hit', 'index 6', 'found', 'chosen')], 6);
-            if (key === 'mergetree') return done('Merge sort recursion tree combines sorted halves into final order', sorted([8, 3, 7, 1, 9, 2]).map(v => item(v, String(v), 'sorted', 'chosen')), [1, 2, 3, 7, 8, 9]);
-            if (key === 'quickselect') return done('Quickselect partitions until the 4th-smallest value is isolated', [item('pivot', 'pivot 5', 'partition'), item('k', 'value 5', 'kth', 'chosen')], 5);
-            if (key === 'closestpair') return done('Closest-pair split checks the strip after left/right recursion', [item('p1', '(1,1)', 'point', 'chosen'), item('p2', '(2,2)', 'point', 'chosen')], Math.sqrt(2));
-            if (key === 'karatsuba') return done('Karatsuba combines z2, z1, and z0 into the product', [item('z0', 'z0', 'low product'), item('z1', 'z1', 'cross term'), item('product', '7006652', '1234*5678', 'chosen')], 7006652);
+            if (key === 'binary') {
+                const value = random ? randInt(rng, 5, 80) : 13, index = random ? randInt(rng, 1, 8) : 6;
+                return done(`Divide-and-conquer binary search finds ${value} at index ${index}`, [item('left', 'discard left/right by midpoint', 'halving'), item('hit', `index ${index}`, 'found', 'chosen')], index);
+            }
+            if (key === 'mergetree') {
+                const values = random ? uniqueNumbers(6, 1, 40, rng) : [8, 3, 7, 1, 9, 2];
+                return done('Merge sort recursion tree combines sorted halves into final order', sorted(values).map(v => item(v, String(v), 'sorted', 'chosen')), sorted(values));
+            }
+            if (key === 'quickselect') {
+                const kth = random ? randInt(rng, 2, 6) : 4, value = random ? randInt(rng, 5, 40) : 5;
+                return done(`Quickselect partitions until the ${kth}th-smallest value is isolated`, [item('pivot', `pivot ${value}`, 'partition'), item('k', `value ${value}`, 'kth', 'chosen')], value);
+            }
+            if (key === 'closestpair') {
+                const p1 = random ? [randInt(rng, 0, 6), randInt(rng, 0, 6)] : [1, 1];
+                const p2 = random ? [p1[0] + randInt(rng, 1, 2), p1[1] + randInt(rng, 1, 2)] : [2, 2];
+                return done('Closest-pair split checks the strip after left/right recursion', [item('p1', `(${p1.join(',')})`, 'point', 'chosen'), item('p2', `(${p2.join(',')})`, 'point', 'chosen')], Math.hypot(p2[0] - p1[0], p2[1] - p1[1]));
+            }
+            if (key === 'karatsuba') {
+                const aNum = random ? randInt(rng, 1000, 9999) : 1234, bNum = random ? randInt(rng, 1000, 9999) : 5678;
+                return done('Karatsuba combines z2, z1, and z0 into the product', [item('z0', 'z0', 'low product'), item('z1', 'z1', 'cross term'), item('product', String(aNum * bNum), `${aNum}*${bNum}`, 'chosen')], aNum * bNum);
+            }
             if (key === 'strassen') return done('Strassen computes a 2x2 product with seven block products', [item('C11', '19', 'cell', 'chosen'), item('C12', '22', 'cell'), item('C21', '43', 'cell'), item('C22', '50', 'cell')], [[19, 22], [43, 50]]);
         }
         if (topic === 'geometry') {
-            if (key === 'graham' || key === 'jarvis') return done(`${key} finds the outer hull of the sample points`, [item('A', '(0,0)', 'hull', 'chosen'), item('B', '(4,0)', 'hull', 'chosen'), item('C', '(4,3)', 'hull', 'chosen'), item('D', '(0,3)', 'hull', 'chosen')], ['A', 'B', 'C', 'D']);
+            if (key === 'graham' || key === 'jarvis') {
+                const w = random ? randInt(rng, 3, 8) : 4, h = random ? randInt(rng, 3, 8) : 3;
+                return done(`${key} finds the outer hull of the sample points`, [item('A', '(0,0)', 'hull', 'chosen'), item('B', `(${w},0)`, 'hull', 'chosen'), item('C', `(${w},${h})`, 'hull', 'chosen'), item('D', `(0,${h})`, 'hull', 'chosen')], ['A', 'B', 'C', 'D']);
+            }
             if (key === 'segments') return done('Opposite orientation signs show the two segments intersect', [item('o1', 'ccw', 'orientation'), item('o2', 'cw', 'orientation'), item('x', 'intersection', 'true', 'chosen')], true);
             if (key === 'sweep') return done('Sweep line handles events in x-order and checks active neighbors', [item('enter', 'enter segment', 'event'), item('cross', 'crossing', 'reported', 'chosen'), item('leave', 'leave segment', 'event')], true);
-            if (key === 'closest') return done('Closest-pair strip comparison finds distance sqrt(2)', [item('p1', '(1,1)', 'point', 'chosen'), item('p2', '(2,2)', 'point', 'chosen')], Math.sqrt(2));
+            if (key === 'closest') {
+                const p1 = random ? [randInt(rng, 0, 7), randInt(rng, 0, 7)] : [1, 1];
+                const p2 = random ? [p1[0] + 1, p1[1] + randInt(rng, 1, 2)] : [2, 2];
+                return done('Closest-pair strip comparison finds the nearest distance', [item('p1', `(${p1.join(',')})`, 'point', 'chosen'), item('p2', `(${p2.join(',')})`, 'point', 'chosen')], Math.hypot(p2[0] - p1[0], p2[1] - p1[1]));
+            }
             if (key === 'voronoi') return done('Voronoi cells connect neighboring sites in the Delaunay dual', [item('cell', 'nearest-site cell', 'Voronoi'), item('edge', 'dual edge', 'Delaunay', 'chosen')], true);
         }
         throw new Error(`Unknown topic: ${topic}/${key}`);

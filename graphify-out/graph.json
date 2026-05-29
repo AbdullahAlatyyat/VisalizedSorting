@@ -670,10 +670,19 @@
       "norm_label": "sizedkeys()"
     },
     {
+      "label": "randomKeys()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/search-trees.js",
+      "source_location": "L114",
+      "id": "js_search_trees_randomkeys",
+      "community": 0,
+      "norm_label": "randomkeys()"
+    },
+    {
       "label": "BinaryModel",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L115",
+      "source_location": "L120",
       "id": "js_search_trees_binarymodel",
       "community": 0,
       "norm_label": "binarymodel"
@@ -682,7 +691,7 @@
       "label": ".constructor()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L116",
+      "source_location": "L121",
       "id": "js_search_trees_binarymodel_constructor",
       "community": 0,
       "norm_label": ".constructor()"
@@ -691,7 +700,7 @@
       "label": ".insertSilent()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L121",
+      "source_location": "L126",
       "id": "js_search_trees_binarymodel_insertsilent",
       "community": 0,
       "norm_label": ".insertsilent()"
@@ -700,7 +709,7 @@
       "label": ".removeSilent()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L127",
+      "source_location": "L132",
       "id": "js_search_trees_binarymodel_removesilent",
       "community": 0,
       "norm_label": ".removesilent()"
@@ -709,7 +718,7 @@
       "label": ".pathTo()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L131",
+      "source_location": "L136",
       "id": "js_search_trees_binarymodel_pathto",
       "community": 0,
       "norm_label": ".pathto()"
@@ -718,7 +727,7 @@
       "label": ".build()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L143",
+      "source_location": "L148",
       "id": "js_search_trees_binarymodel_build",
       "community": 0,
       "norm_label": ".build()"
@@ -727,7 +736,7 @@
       "label": ".snapshot()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L151",
+      "source_location": "L156",
       "id": "js_search_trees_binarymodel_snapshot",
       "community": 0,
       "norm_label": ".snapshot()"
@@ -736,7 +745,7 @@
       "label": ".insert()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L155",
+      "source_location": "L160",
       "id": "js_search_trees_binarymodel_insert",
       "community": 0,
       "norm_label": ".insert()"
@@ -745,7 +754,7 @@
       "label": ".search()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L164",
+      "source_location": "L169",
       "id": "js_search_trees_binarymodel_search",
       "community": 0,
       "norm_label": ".search()"
@@ -754,7 +763,7 @@
       "label": ".delete()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L173",
+      "source_location": "L178",
       "id": "js_search_trees_binarymodel_delete",
       "community": 0,
       "norm_label": ".delete()"
@@ -763,7 +772,7 @@
       "label": ".ordered()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L185",
+      "source_location": "L190",
       "id": "js_search_trees_binarymodel_ordered",
       "community": 0,
       "norm_label": ".ordered()"
@@ -772,7 +781,7 @@
       "label": ".min()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L186",
+      "source_location": "L191",
       "id": "js_search_trees_binarymodel_min",
       "community": 0,
       "norm_label": ".min()"
@@ -781,7 +790,7 @@
       "label": ".max()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L187",
+      "source_location": "L192",
       "id": "js_search_trees_binarymodel_max",
       "community": 0,
       "norm_label": ".max()"
@@ -790,7 +799,7 @@
       "label": ".predecessor()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L188",
+      "source_location": "L193",
       "id": "js_search_trees_binarymodel_predecessor",
       "community": 0,
       "norm_label": ".predecessor()"
@@ -799,7 +808,7 @@
       "label": ".successor()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L189",
+      "source_location": "L194",
       "id": "js_search_trees_binarymodel_successor",
       "community": 0,
       "norm_label": ".successor()"
@@ -808,7 +817,7 @@
       "label": ".traversal()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L191",
+      "source_location": "L196",
       "id": "js_search_trees_binarymodel_traversal",
       "community": 0,
       "norm_label": ".traversal()"
@@ -817,7 +826,7 @@
       "label": "MultiwayModel",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L212",
+      "source_location": "L217",
       "id": "js_search_trees_multiwaymodel",
       "community": 0,
       "norm_label": "multiwaymodel"
@@ -826,7 +835,7 @@
       "label": ".constructor()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L213",
+      "source_location": "L218",
       "id": "js_search_trees_multiwaymodel_constructor",
       "community": 0,
       "norm_label": ".constructor()"
@@ -835,7 +844,7 @@
       "label": ".insertSilent()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L219",
+      "source_location": "L224",
       "id": "js_search_trees_multiwaymodel_insertsilent",
       "community": 0,
       "norm_label": ".insertsilent()"
@@ -844,7 +853,7 @@
       "label": ".removeSilent()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L225",
+      "source_location": "L230",
       "id": "js_search_trees_multiwaymodel_removesilent",
       "community": 0,
       "norm_label": ".removesilent()"
@@ -853,7 +862,7 @@
       "label": ".levels()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L229",
+      "source_location": "L234",
       "id": "js_search_trees_multiwaymodel_levels",
       "community": 0,
       "norm_label": ".levels()"
@@ -862,7 +871,7 @@
       "label": ".snapshot()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L239",
+      "source_location": "L244",
       "id": "js_search_trees_multiwaymodel_snapshot",
       "community": 0,
       "norm_label": ".snapshot()"
@@ -871,7 +880,7 @@
       "label": ".insert()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L243",
+      "source_location": "L248",
       "id": "js_search_trees_multiwaymodel_insert",
       "community": 0,
       "norm_label": ".insert()"
@@ -880,7 +889,7 @@
       "label": ".search()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L251",
+      "source_location": "L256",
       "id": "js_search_trees_multiwaymodel_search",
       "community": 0,
       "norm_label": ".search()"
@@ -889,7 +898,7 @@
       "label": ".delete()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L259",
+      "source_location": "L264",
       "id": "js_search_trees_multiwaymodel_delete",
       "community": 0,
       "norm_label": ".delete()"
@@ -898,7 +907,7 @@
       "label": ".ordered()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L270",
+      "source_location": "L275",
       "id": "js_search_trees_multiwaymodel_ordered",
       "community": 0,
       "norm_label": ".ordered()"
@@ -907,7 +916,7 @@
       "label": ".min()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L271",
+      "source_location": "L276",
       "id": "js_search_trees_multiwaymodel_min",
       "community": 0,
       "norm_label": ".min()"
@@ -916,7 +925,7 @@
       "label": ".max()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L272",
+      "source_location": "L277",
       "id": "js_search_trees_multiwaymodel_max",
       "community": 0,
       "norm_label": ".max()"
@@ -925,7 +934,7 @@
       "label": ".predecessor()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L273",
+      "source_location": "L278",
       "id": "js_search_trees_multiwaymodel_predecessor",
       "community": 0,
       "norm_label": ".predecessor()"
@@ -934,7 +943,7 @@
       "label": ".successor()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L274",
+      "source_location": "L279",
       "id": "js_search_trees_multiwaymodel_successor",
       "community": 0,
       "norm_label": ".successor()"
@@ -943,7 +952,7 @@
       "label": ".traversal()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L275",
+      "source_location": "L280",
       "id": "js_search_trees_multiwaymodel_traversal",
       "community": 0,
       "norm_label": ".traversal()"
@@ -952,7 +961,7 @@
       "label": "insertNode()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L281",
+      "source_location": "L286",
       "id": "js_search_trees_insertnode",
       "community": 0,
       "norm_label": "insertnode()"
@@ -961,7 +970,7 @@
       "label": "renderGrid()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L288",
+      "source_location": "L293",
       "id": "js_search_trees_rendergrid",
       "community": 0,
       "norm_label": "rendergrid()"
@@ -970,7 +979,7 @@
       "label": "openTree()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L317",
+      "source_location": "L322",
       "id": "js_search_trees_opentree",
       "community": 0,
       "norm_label": "opentree()"
@@ -979,7 +988,7 @@
       "label": "createModel()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L334",
+      "source_location": "L339",
       "id": "js_search_trees_createmodel",
       "community": 0,
       "norm_label": "createmodel()"
@@ -988,7 +997,7 @@
       "label": "setSteps()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L344",
+      "source_location": "L349",
       "id": "js_search_trees_setsteps",
       "community": 0,
       "norm_label": "setsteps()"
@@ -997,7 +1006,7 @@
       "label": "renderSnapshot()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L353",
+      "source_location": "L358",
       "id": "js_search_trees_rendersnapshot",
       "community": 0,
       "norm_label": "rendersnapshot()"
@@ -1006,7 +1015,7 @@
       "label": "renderBinary()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L360",
+      "source_location": "L365",
       "id": "js_search_trees_renderbinary",
       "community": 0,
       "norm_label": "renderbinary()"
@@ -1015,7 +1024,7 @@
       "label": "renderMultiway()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L388",
+      "source_location": "L393",
       "id": "js_search_trees_rendermultiway",
       "community": 0,
       "norm_label": "rendermultiway()"
@@ -1024,7 +1033,7 @@
       "label": "nodeState()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L418",
+      "source_location": "L423",
       "id": "js_search_trees_nodestate",
       "community": 0,
       "norm_label": "nodestate()"
@@ -1033,7 +1042,7 @@
       "label": "renderLog()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L425",
+      "source_location": "L430",
       "id": "js_search_trees_renderlog",
       "community": 0,
       "norm_label": "renderlog()"
@@ -1042,7 +1051,7 @@
       "label": "keyValue()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L432",
+      "source_location": "L437",
       "id": "js_search_trees_keyvalue",
       "community": 0,
       "norm_label": "keyvalue()"
@@ -1051,7 +1060,7 @@
       "label": "runOperation()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L437",
+      "source_location": "L442",
       "id": "js_search_trees_runoperation",
       "community": 0,
       "norm_label": "runoperation()"
@@ -1060,7 +1069,7 @@
       "label": "runQuery()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L449",
+      "source_location": "L454",
       "id": "js_search_trees_runquery",
       "community": 0,
       "norm_label": "runquery()"
@@ -1069,7 +1078,7 @@
       "label": "runTraversal()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L454",
+      "source_location": "L459",
       "id": "js_search_trees_runtraversal",
       "community": 0,
       "norm_label": "runtraversal()"
@@ -1078,7 +1087,7 @@
       "label": "delay()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L459",
+      "source_location": "L464",
       "id": "js_search_trees_delay",
       "community": 0,
       "norm_label": "delay()"
@@ -1087,7 +1096,7 @@
       "label": "syncPlay()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L464",
+      "source_location": "L469",
       "id": "js_search_trees_syncplay",
       "community": 0,
       "norm_label": "syncplay()"
@@ -1096,7 +1105,7 @@
       "label": "advance()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L468",
+      "source_location": "L473",
       "id": "js_search_trees_advance",
       "community": 0,
       "norm_label": "advance()"
@@ -1105,7 +1114,7 @@
       "label": "play()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L480",
+      "source_location": "L485",
       "id": "js_search_trees_play",
       "community": 0,
       "norm_label": "play()"
@@ -1114,7 +1123,7 @@
       "label": "pause()",
       "file_type": "code",
       "source_file": "wwwroot/js/search-trees.js",
-      "source_location": "L487",
+      "source_location": "L492",
       "id": "js_search_trees_pause",
       "community": 0,
       "norm_label": "pause()"
@@ -1210,10 +1219,19 @@
       "norm_label": "graphsize()"
     },
     {
-      "label": "nodeLabel()",
+      "label": "randInt()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L180",
+      "id": "js_graphs_randint",
+      "community": 1,
+      "norm_label": "randint()"
+    },
+    {
+      "label": "nodeLabel()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/graphs.js",
+      "source_location": "L183",
       "id": "js_graphs_nodelabel",
       "community": 1,
       "norm_label": "nodelabel()"
@@ -1222,16 +1240,25 @@
       "label": "generatedNode()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L183",
+      "source_location": "L186",
       "id": "js_graphs_generatednode",
       "community": 1,
       "norm_label": "generatednode()"
     },
     {
+      "label": "randomizedNode()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/graphs.js",
+      "source_location": "L190",
+      "id": "js_graphs_randomizednode",
+      "community": 1,
+      "norm_label": "randomizednode()"
+    },
+    {
       "label": "hasEdge()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L187",
+      "source_location": "L194",
       "id": "js_graphs_hasedge",
       "community": 1,
       "norm_label": "hasedge()"
@@ -1240,7 +1267,7 @@
       "label": "resizeGraphSample()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L192",
+      "source_location": "L199",
       "id": "js_graphs_resizegraphsample",
       "community": 1,
       "norm_label": "resizegraphsample()"
@@ -1249,7 +1276,7 @@
       "label": "nodeIds()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L218",
+      "source_location": "L234",
       "id": "js_graphs_nodeids",
       "community": 1,
       "norm_label": "nodeids()"
@@ -1258,7 +1285,7 @@
       "label": "neighbors()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L219",
+      "source_location": "L235",
       "id": "js_graphs_neighbors",
       "community": 1,
       "norm_label": "neighbors()"
@@ -1267,7 +1294,7 @@
       "label": "weight()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L227",
+      "source_location": "L243",
       "id": "js_graphs_weight",
       "community": 1,
       "norm_label": "weight()"
@@ -1276,7 +1303,7 @@
       "label": "step()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L228",
+      "source_location": "L244",
       "id": "js_graphs_step",
       "community": 1,
       "norm_label": "step()"
@@ -1285,7 +1312,7 @@
       "label": "renderGrid()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L232",
+      "source_location": "L248",
       "id": "js_graphs_rendergrid",
       "community": 1,
       "norm_label": "rendergrid()"
@@ -1294,7 +1321,7 @@
       "label": "openGraph()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L261",
+      "source_location": "L277",
       "id": "js_graphs_opengraph",
       "community": 1,
       "norm_label": "opengraph()"
@@ -1303,7 +1330,7 @@
       "label": "fillSelectors()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L280",
+      "source_location": "L296",
       "id": "js_graphs_fillselectors",
       "community": 1,
       "norm_label": "fillselectors()"
@@ -1312,7 +1339,7 @@
       "label": "buildSteps()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L288",
+      "source_location": "L304",
       "id": "js_graphs_buildsteps",
       "community": 1,
       "norm_label": "buildsteps()"
@@ -1321,7 +1348,7 @@
       "label": "rebuildGraph()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L298",
+      "source_location": "L314",
       "id": "js_graphs_rebuildgraph",
       "community": 1,
       "norm_label": "rebuildgraph()"
@@ -1330,7 +1357,7 @@
       "label": "renderStep()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L310",
+      "source_location": "L326",
       "id": "js_graphs_renderstep",
       "community": 1,
       "norm_label": "renderstep()"
@@ -1339,7 +1366,7 @@
       "label": "renderLog()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L318",
+      "source_location": "L334",
       "id": "js_graphs_renderlog",
       "community": 1,
       "norm_label": "renderlog()"
@@ -1348,7 +1375,7 @@
       "label": "renderGraph()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L325",
+      "source_location": "L341",
       "id": "js_graphs_rendergraph",
       "community": 1,
       "norm_label": "rendergraph()"
@@ -1357,7 +1384,7 @@
       "label": "reconstruct()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L358",
+      "source_location": "L374",
       "id": "js_graphs_reconstruct",
       "community": 1,
       "norm_label": "reconstruct()"
@@ -1366,7 +1393,7 @@
       "label": "runBfs()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L373",
+      "source_location": "L389",
       "id": "js_graphs_runbfs",
       "community": 1,
       "norm_label": "runbfs()"
@@ -1375,7 +1402,7 @@
       "label": "runDfs()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L395",
+      "source_location": "L411",
       "id": "js_graphs_rundfs",
       "community": 1,
       "norm_label": "rundfs()"
@@ -1384,7 +1411,7 @@
       "label": "runTopo()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L413",
+      "source_location": "L429",
       "id": "js_graphs_runtopo",
       "community": 1,
       "norm_label": "runtopo()"
@@ -1393,7 +1420,7 @@
       "label": "runDijkstra()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L433",
+      "source_location": "L449",
       "id": "js_graphs_rundijkstra",
       "community": 1,
       "norm_label": "rundijkstra()"
@@ -1402,7 +1429,7 @@
       "label": "runBellman()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L461",
+      "source_location": "L477",
       "id": "js_graphs_runbellman",
       "community": 1,
       "norm_label": "runbellman()"
@@ -1411,7 +1438,7 @@
       "label": "runFloyd()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L485",
+      "source_location": "L501",
       "id": "js_graphs_runfloyd",
       "community": 1,
       "norm_label": "runfloyd()"
@@ -1420,7 +1447,7 @@
       "label": "runPrim()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L508",
+      "source_location": "L524",
       "id": "js_graphs_runprim",
       "community": 1,
       "norm_label": "runprim()"
@@ -1429,7 +1456,7 @@
       "label": "makeDsu()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L526",
+      "source_location": "L542",
       "id": "js_graphs_makedsu",
       "community": 1,
       "norm_label": "makedsu()"
@@ -1438,7 +1465,7 @@
       "label": "runKruskal()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L544",
+      "source_location": "L560",
       "id": "js_graphs_runkruskal",
       "community": 1,
       "norm_label": "runkruskal()"
@@ -1447,7 +1474,7 @@
       "label": "runUnionFind()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L562",
+      "source_location": "L578",
       "id": "js_graphs_rununionfind",
       "community": 1,
       "norm_label": "rununionfind()"
@@ -1456,7 +1483,7 @@
       "label": "runScc()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L579",
+      "source_location": "L595",
       "id": "js_graphs_runscc",
       "community": 1,
       "norm_label": "runscc()"
@@ -1465,7 +1492,7 @@
       "label": "heuristic()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L611",
+      "source_location": "L627",
       "id": "js_graphs_heuristic",
       "community": 1,
       "norm_label": "heuristic()"
@@ -1474,7 +1501,7 @@
       "label": "runAstar()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L615",
+      "source_location": "L631",
       "id": "js_graphs_runastar",
       "community": 1,
       "norm_label": "runastar()"
@@ -1483,7 +1510,7 @@
       "label": "ALGO_RUNNERS",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L646",
+      "source_location": "L662",
       "id": "js_graphs_algo_runners",
       "community": 1,
       "norm_label": "algo_runners"
@@ -1492,7 +1519,7 @@
       "label": "delay()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L660",
+      "source_location": "L676",
       "id": "js_graphs_delay",
       "community": 1,
       "norm_label": "delay()"
@@ -1501,7 +1528,7 @@
       "label": "syncPlay()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L664",
+      "source_location": "L680",
       "id": "js_graphs_syncplay",
       "community": 1,
       "norm_label": "syncplay()"
@@ -1510,7 +1537,7 @@
       "label": "pause()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L665",
+      "source_location": "L681",
       "id": "js_graphs_pause",
       "community": 1,
       "norm_label": "pause()"
@@ -1519,7 +1546,7 @@
       "label": "advance()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L671",
+      "source_location": "L687",
       "id": "js_graphs_advance",
       "community": 1,
       "norm_label": "advance()"
@@ -1528,7 +1555,7 @@
       "label": "play()",
       "file_type": "code",
       "source_file": "wwwroot/js/graphs.js",
-      "source_location": "L680",
+      "source_location": "L696",
       "id": "js_graphs_play",
       "community": 1,
       "norm_label": "play()"
@@ -1624,10 +1651,19 @@
       "norm_label": "buildsteps()"
     },
     {
+      "label": "formatAnswer()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/textbook-sections.js",
+      "source_location": "L195",
+      "id": "js_textbook_sections_formatanswer",
+      "community": 7,
+      "norm_label": "formatanswer()"
+    },
+    {
       "label": "makeItems()",
       "file_type": "code",
       "source_file": "wwwroot/js/textbook-sections.js",
-      "source_location": "L194",
+      "source_location": "L201",
       "id": "js_textbook_sections_makeitems",
       "community": 7,
       "norm_label": "makeitems()"
@@ -1636,7 +1672,7 @@
       "label": "renderStep()",
       "file_type": "code",
       "source_file": "wwwroot/js/textbook-sections.js",
-      "source_location": "L211",
+      "source_location": "L218",
       "id": "js_textbook_sections_renderstep",
       "community": 7,
       "norm_label": "renderstep()"
@@ -1645,7 +1681,7 @@
       "label": "renderItem()",
       "file_type": "code",
       "source_file": "wwwroot/js/textbook-sections.js",
-      "source_location": "L219",
+      "source_location": "L226",
       "id": "js_textbook_sections_renderitem",
       "community": 7,
       "norm_label": "renderitem()"
@@ -1654,7 +1690,7 @@
       "label": "renderLog()",
       "file_type": "code",
       "source_file": "wwwroot/js/textbook-sections.js",
-      "source_location": "L224",
+      "source_location": "L231",
       "id": "js_textbook_sections_renderlog",
       "community": 7,
       "norm_label": "renderlog()"
@@ -1663,7 +1699,7 @@
       "label": "delay()",
       "file_type": "code",
       "source_file": "wwwroot/js/textbook-sections.js",
-      "source_location": "L231",
+      "source_location": "L238",
       "id": "js_textbook_sections_delay",
       "community": 7,
       "norm_label": "delay()"
@@ -1672,7 +1708,7 @@
       "label": "syncPlay()",
       "file_type": "code",
       "source_file": "wwwroot/js/textbook-sections.js",
-      "source_location": "L235",
+      "source_location": "L242",
       "id": "js_textbook_sections_syncplay",
       "community": 7,
       "norm_label": "syncplay()"
@@ -1681,7 +1717,7 @@
       "label": "pause()",
       "file_type": "code",
       "source_file": "wwwroot/js/textbook-sections.js",
-      "source_location": "L236",
+      "source_location": "L243",
       "id": "js_textbook_sections_pause",
       "community": 7,
       "norm_label": "pause()"
@@ -1690,7 +1726,7 @@
       "label": "advance()",
       "file_type": "code",
       "source_file": "wwwroot/js/textbook-sections.js",
-      "source_location": "L242",
+      "source_location": "L249",
       "id": "js_textbook_sections_advance",
       "community": 7,
       "norm_label": "advance()"
@@ -1699,7 +1735,7 @@
       "label": "play()",
       "file_type": "code",
       "source_file": "wwwroot/js/textbook-sections.js",
-      "source_location": "L251",
+      "source_location": "L258",
       "id": "js_textbook_sections_play",
       "community": 7,
       "norm_label": "play()"
@@ -1789,7 +1825,7 @@
       "label": "snapshot()",
       "file_type": "code",
       "source_file": "wwwroot/js/greedy.js",
-      "source_location": "L144",
+      "source_location": "L146",
       "id": "js_greedy_snapshot",
       "community": 6,
       "norm_label": "snapshot()"
@@ -1798,16 +1834,52 @@
       "label": "item()",
       "file_type": "code",
       "source_file": "wwwroot/js/greedy.js",
-      "source_location": "L148",
+      "source_location": "L150",
       "id": "js_greedy_item",
       "community": 6,
       "norm_label": "item()"
     },
     {
+      "label": "resultOf()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": "L153",
+      "id": "js_greedy_resultof",
+      "community": 6,
+      "norm_label": "resultof()"
+    },
+    {
+      "label": "updateResult()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": "L154",
+      "id": "js_greedy_updateresult",
+      "community": 6,
+      "norm_label": "updateresult()"
+    },
+    {
+      "label": "randInt()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": "L158",
+      "id": "js_greedy_randint",
+      "community": 6,
+      "norm_label": "randint()"
+    },
+    {
+      "label": "shuffle()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": "L161",
+      "id": "js_greedy_shuffle",
+      "community": 6,
+      "norm_label": "shuffle()"
+    },
+    {
       "label": "renderStep()",
       "file_type": "code",
       "source_file": "wwwroot/js/greedy.js",
-      "source_location": "L152",
+      "source_location": "L170",
       "id": "js_greedy_renderstep",
       "community": 6,
       "norm_label": "renderstep()"
@@ -1816,7 +1888,7 @@
       "label": "renderItem()",
       "file_type": "code",
       "source_file": "wwwroot/js/greedy.js",
-      "source_location": "L160",
+      "source_location": "L178",
       "id": "js_greedy_renderitem",
       "community": 6,
       "norm_label": "renderitem()"
@@ -1825,7 +1897,7 @@
       "label": "renderLog()",
       "file_type": "code",
       "source_file": "wwwroot/js/greedy.js",
-      "source_location": "L168",
+      "source_location": "L186",
       "id": "js_greedy_renderlog",
       "community": 6,
       "norm_label": "renderlog()"
@@ -1834,7 +1906,7 @@
       "label": "runActivity()",
       "file_type": "code",
       "source_file": "wwwroot/js/greedy.js",
-      "source_location": "L175",
+      "source_location": "L193",
       "id": "js_greedy_runactivity",
       "community": 6,
       "norm_label": "runactivity()"
@@ -1843,7 +1915,7 @@
       "label": "runInterval()",
       "file_type": "code",
       "source_file": "wwwroot/js/greedy.js",
-      "source_location": "L203",
+      "source_location": "L224",
       "id": "js_greedy_runinterval",
       "community": 6,
       "norm_label": "runinterval()"
@@ -1852,7 +1924,7 @@
       "label": "runFractional()",
       "file_type": "code",
       "source_file": "wwwroot/js/greedy.js",
-      "source_location": "L230",
+      "source_location": "L254",
       "id": "js_greedy_runfractional",
       "community": 6,
       "norm_label": "runfractional()"
@@ -1861,7 +1933,7 @@
       "label": "runJobs()",
       "file_type": "code",
       "source_file": "wwwroot/js/greedy.js",
-      "source_location": "L266",
+      "source_location": "L290",
       "id": "js_greedy_runjobs",
       "community": 6,
       "norm_label": "runjobs()"
@@ -1870,7 +1942,7 @@
       "label": "runSetcover()",
       "file_type": "code",
       "source_file": "wwwroot/js/greedy.js",
-      "source_location": "L294",
+      "source_location": "L318",
       "id": "js_greedy_runsetcover",
       "community": 6,
       "norm_label": "runsetcover()"
@@ -1879,7 +1951,7 @@
       "label": "runHuffman()",
       "file_type": "code",
       "source_file": "wwwroot/js/greedy.js",
-      "source_location": "L320",
+      "source_location": "L349",
       "id": "js_greedy_runhuffman",
       "community": 6,
       "norm_label": "runhuffman()"
@@ -1888,7 +1960,7 @@
       "label": "RUNNERS",
       "file_type": "code",
       "source_file": "wwwroot/js/greedy.js",
-      "source_location": "L341",
+      "source_location": "L370",
       "id": "js_greedy_runners",
       "community": 6,
       "norm_label": "runners"
@@ -1897,7 +1969,7 @@
       "label": "delay()",
       "file_type": "code",
       "source_file": "wwwroot/js/greedy.js",
-      "source_location": "L350",
+      "source_location": "L379",
       "id": "js_greedy_delay",
       "community": 6,
       "norm_label": "delay()"
@@ -1906,7 +1978,7 @@
       "label": "syncPlay()",
       "file_type": "code",
       "source_file": "wwwroot/js/greedy.js",
-      "source_location": "L354",
+      "source_location": "L383",
       "id": "js_greedy_syncplay",
       "community": 6,
       "norm_label": "syncplay()"
@@ -1915,7 +1987,7 @@
       "label": "pause()",
       "file_type": "code",
       "source_file": "wwwroot/js/greedy.js",
-      "source_location": "L355",
+      "source_location": "L384",
       "id": "js_greedy_pause",
       "community": 6,
       "norm_label": "pause()"
@@ -1924,7 +1996,7 @@
       "label": "advance()",
       "file_type": "code",
       "source_file": "wwwroot/js/greedy.js",
-      "source_location": "L361",
+      "source_location": "L390",
       "id": "js_greedy_advance",
       "community": 6,
       "norm_label": "advance()"
@@ -1933,7 +2005,7 @@
       "label": "play()",
       "file_type": "code",
       "source_file": "wwwroot/js/greedy.js",
-      "source_location": "L370",
+      "source_location": "L399",
       "id": "js_greedy_play",
       "community": 6,
       "norm_label": "play()"
@@ -1984,10 +2056,64 @@
       "norm_label": "edgekey()"
     },
     {
-      "label": "sizeOption()",
+      "label": "shouldRandomize()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
       "source_location": "L8",
+      "id": "js_algorithm_core_shouldrandomize",
+      "community": 2,
+      "norm_label": "shouldrandomize()"
+    },
+    {
+      "label": "rngOf()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L9",
+      "id": "js_algorithm_core_rngof",
+      "community": 2,
+      "norm_label": "rngof()"
+    },
+    {
+      "label": "randInt()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L10",
+      "id": "js_algorithm_core_randint",
+      "community": 2,
+      "norm_label": "randint()"
+    },
+    {
+      "label": "shuffle()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L11",
+      "id": "js_algorithm_core_shuffle",
+      "community": 2,
+      "norm_label": "shuffle()"
+    },
+    {
+      "label": "uniqueNumbers()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L19",
+      "id": "js_algorithm_core_uniquenumbers",
+      "community": 2,
+      "norm_label": "uniquenumbers()"
+    },
+    {
+      "label": "randomLetters()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L24",
+      "id": "js_algorithm_core_randomletters",
+      "community": 2,
+      "norm_label": "randomletters()"
+    },
+    {
+      "label": "sizeOption()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L25",
       "id": "js_algorithm_core_sizeoption",
       "community": 2,
       "norm_label": "sizeoption()"
@@ -1996,7 +2122,7 @@
       "label": "sizedKeys()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L12",
+      "source_location": "L29",
       "id": "js_algorithm_core_sizedkeys",
       "community": 2,
       "norm_label": "sizedkeys()"
@@ -2005,7 +2131,7 @@
       "label": "sortingStep()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L22",
+      "source_location": "L39",
       "id": "js_algorithm_core_sortingstep",
       "community": 2,
       "norm_label": "sortingstep()"
@@ -2014,7 +2140,7 @@
       "label": "runSort()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L26",
+      "source_location": "L43",
       "id": "js_algorithm_core_runsort",
       "community": 2,
       "norm_label": "runsort()"
@@ -2023,7 +2149,7 @@
       "label": "dp",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L209",
+      "source_location": "L226",
       "id": "js_algorithm_core_dp",
       "community": 2,
       "norm_label": "dp"
@@ -2032,7 +2158,7 @@
       "label": "runDp()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L289",
+      "source_location": "L326",
       "id": "js_algorithm_core_rundp",
       "community": 2,
       "norm_label": "rundp()"
@@ -2041,7 +2167,7 @@
       "label": "item()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L294",
+      "source_location": "L331",
       "id": "js_algorithm_core_item",
       "community": 2,
       "norm_label": "item()"
@@ -2050,7 +2176,7 @@
       "label": "snapshot()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L295",
+      "source_location": "L332",
       "id": "js_algorithm_core_snapshot",
       "community": 2,
       "norm_label": "snapshot()"
@@ -2059,7 +2185,7 @@
       "label": "runGreedy()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L297",
+      "source_location": "L334",
       "id": "js_algorithm_core_rungreedy",
       "community": 2,
       "norm_label": "rungreedy()"
@@ -2068,7 +2194,7 @@
       "label": "graphSamples",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L393",
+      "source_location": "L443",
       "id": "js_algorithm_core_graphsamples",
       "community": 2,
       "norm_label": "graphsamples"
@@ -2077,16 +2203,25 @@
       "label": "edgeExists()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L401",
+      "source_location": "L451",
       "id": "js_algorithm_core_edgeexists",
       "community": 2,
       "norm_label": "edgeexists()"
     },
     {
+      "label": "randomGraphSample()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L454",
+      "id": "js_algorithm_core_randomgraphsample",
+      "community": 2,
+      "norm_label": "randomgraphsample()"
+    },
+    {
       "label": "resizedGraphSample()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L404",
+      "source_location": "L491",
       "id": "js_algorithm_core_resizedgraphsample",
       "community": 2,
       "norm_label": "resizedgraphsample()"
@@ -2095,7 +2230,7 @@
       "label": "graphFrom()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L423",
+      "source_location": "L511",
       "id": "js_algorithm_core_graphfrom",
       "community": 2,
       "norm_label": "graphfrom()"
@@ -2104,7 +2239,7 @@
       "label": "graphNeighbors()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L427",
+      "source_location": "L515",
       "id": "js_algorithm_core_graphneighbors",
       "community": 2,
       "norm_label": "graphneighbors()"
@@ -2113,7 +2248,7 @@
       "label": "dsu()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L435",
+      "source_location": "L523",
       "id": "js_algorithm_core_dsu",
       "community": 2,
       "norm_label": "dsu()"
@@ -2122,7 +2257,7 @@
       "label": "reconstruct()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L449",
+      "source_location": "L537",
       "id": "js_algorithm_core_reconstruct",
       "community": 2,
       "norm_label": "reconstruct()"
@@ -2131,7 +2266,7 @@
       "label": "runGraph()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L463",
+      "source_location": "L551",
       "id": "js_algorithm_core_rungraph",
       "community": 2,
       "norm_label": "rungraph()"
@@ -2140,7 +2275,7 @@
       "label": "hashPriority()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L562",
+      "source_location": "L650",
       "id": "js_algorithm_core_hashpriority",
       "community": 2,
       "norm_label": "hashpriority()"
@@ -2149,7 +2284,7 @@
       "label": "insertBst()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L563",
+      "source_location": "L651",
       "id": "js_algorithm_core_insertbst",
       "community": 2,
       "norm_label": "insertbst()"
@@ -2158,7 +2293,7 @@
       "label": "height()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L569",
+      "source_location": "L657",
       "id": "js_algorithm_core_height",
       "community": 2,
       "norm_label": "height()"
@@ -2167,7 +2302,7 @@
       "label": "rotateRight()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L570",
+      "source_location": "L658",
       "id": "js_algorithm_core_rotateright",
       "community": 2,
       "norm_label": "rotateright()"
@@ -2176,7 +2311,7 @@
       "label": "rotateLeft()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L571",
+      "source_location": "L659",
       "id": "js_algorithm_core_rotateleft",
       "community": 2,
       "norm_label": "rotateleft()"
@@ -2185,7 +2320,7 @@
       "label": "insertAvl()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L572",
+      "source_location": "L660",
       "id": "js_algorithm_core_insertavl",
       "community": 2,
       "norm_label": "insertavl()"
@@ -2194,7 +2329,7 @@
       "label": "isRed()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L586",
+      "source_location": "L674",
       "id": "js_algorithm_core_isred",
       "community": 2,
       "norm_label": "isred()"
@@ -2203,7 +2338,7 @@
       "label": "rbRotateLeft()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L587",
+      "source_location": "L675",
       "id": "js_algorithm_core_rbrotateleft",
       "community": 2,
       "norm_label": "rbrotateleft()"
@@ -2212,7 +2347,7 @@
       "label": "rbRotateRight()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L588",
+      "source_location": "L676",
       "id": "js_algorithm_core_rbrotateright",
       "community": 2,
       "norm_label": "rbrotateright()"
@@ -2221,7 +2356,7 @@
       "label": "flipColors()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L589",
+      "source_location": "L677",
       "id": "js_algorithm_core_flipcolors",
       "community": 2,
       "norm_label": "flipcolors()"
@@ -2230,7 +2365,7 @@
       "label": "insertRb()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L590",
+      "source_location": "L678",
       "id": "js_algorithm_core_insertrb",
       "community": 2,
       "norm_label": "insertrb()"
@@ -2239,7 +2374,7 @@
       "label": "insertTreap()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L599",
+      "source_location": "L687",
       "id": "js_algorithm_core_inserttreap",
       "community": 2,
       "norm_label": "inserttreap()"
@@ -2248,7 +2383,7 @@
       "label": "splay()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L605",
+      "source_location": "L693",
       "id": "js_algorithm_core_splay",
       "community": 2,
       "norm_label": "splay()"
@@ -2257,7 +2392,7 @@
       "label": "removeKey()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L618",
+      "source_location": "L706",
       "id": "js_algorithm_core_removekey",
       "community": 2,
       "norm_label": "removekey()"
@@ -2266,7 +2401,7 @@
       "label": "buildBinary()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L619",
+      "source_location": "L707",
       "id": "js_algorithm_core_buildbinary",
       "community": 2,
       "norm_label": "buildbinary()"
@@ -2275,7 +2410,7 @@
       "label": "buildMultiway()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L630",
+      "source_location": "L718",
       "id": "js_algorithm_core_buildmultiway",
       "community": 2,
       "norm_label": "buildmultiway()"
@@ -2284,7 +2419,7 @@
       "label": "createTreeSession()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L650",
+      "source_location": "L738",
       "id": "js_algorithm_core_createtreesession",
       "community": 2,
       "norm_label": "createtreesession()"
@@ -2293,7 +2428,7 @@
       "label": "treeInvariants()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L700",
+      "source_location": "L790",
       "id": "js_algorithm_core_treeinvariants",
       "community": 2,
       "norm_label": "treeinvariants()"
@@ -2302,7 +2437,7 @@
       "label": "runTopic()",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L708",
+      "source_location": "L798",
       "id": "js_algorithm_core_runtopic",
       "community": 2,
       "norm_label": "runtopic()"
@@ -2311,7 +2446,7 @@
       "label": "AlgorithmCore",
       "file_type": "code",
       "source_file": "wwwroot/js/algorithm-core.js",
-      "source_location": "L785",
+      "source_location": "L948",
       "id": "js_algorithm_core_algorithmcore",
       "community": 2,
       "norm_label": "algorithmcore"
@@ -2392,7 +2527,7 @@
       "label": "makeTable()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L140",
+      "source_location": "L142",
       "id": "js_dynamic_programming_maketable",
       "community": 5,
       "norm_label": "maketable()"
@@ -2401,7 +2536,7 @@
       "label": "cloneRows()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L143",
+      "source_location": "L145",
       "id": "js_dynamic_programming_clonerows",
       "community": 5,
       "norm_label": "clonerows()"
@@ -2410,7 +2545,7 @@
       "label": "emptyRows()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L144",
+      "source_location": "L146",
       "id": "js_dynamic_programming_emptyrows",
       "community": 5,
       "norm_label": "emptyrows()"
@@ -2419,7 +2554,7 @@
       "label": "tableStep()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L145",
+      "source_location": "L147",
       "id": "js_dynamic_programming_tablestep",
       "community": 5,
       "norm_label": "tablestep()"
@@ -2428,16 +2563,43 @@
       "label": "keyOf()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L146",
+      "source_location": "L148",
       "id": "js_dynamic_programming_keyof",
       "community": 5,
       "norm_label": "keyof()"
     },
     {
+      "label": "resultOf()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L149",
+      "id": "js_dynamic_programming_resultof",
+      "community": 5,
+      "norm_label": "resultof()"
+    },
+    {
+      "label": "updateExample()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L150",
+      "id": "js_dynamic_programming_updateexample",
+      "community": 5,
+      "norm_label": "updateexample()"
+    },
+    {
+      "label": "coreDp()",
+      "file_type": "code",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L155",
+      "id": "js_dynamic_programming_coredp",
+      "community": 5,
+      "norm_label": "coredp()"
+    },
+    {
       "label": "renderStep()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L148",
+      "source_location": "L159",
       "id": "js_dynamic_programming_renderstep",
       "community": 5,
       "norm_label": "renderstep()"
@@ -2446,7 +2608,7 @@
       "label": "renderTable()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L156",
+      "source_location": "L167",
       "id": "js_dynamic_programming_rendertable",
       "community": 5,
       "norm_label": "rendertable()"
@@ -2455,7 +2617,7 @@
       "label": "renderLog()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L177",
+      "source_location": "L188",
       "id": "js_dynamic_programming_renderlog",
       "community": 5,
       "norm_label": "renderlog()"
@@ -2464,7 +2626,7 @@
       "label": "runFib()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L184",
+      "source_location": "L195",
       "id": "js_dynamic_programming_runfib",
       "community": 5,
       "norm_label": "runfib()"
@@ -2473,7 +2635,7 @@
       "label": "runCoin()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L213",
+      "source_location": "L225",
       "id": "js_dynamic_programming_runcoin",
       "community": 5,
       "norm_label": "runcoin()"
@@ -2482,7 +2644,7 @@
       "label": "runKnapsack()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L233",
+      "source_location": "L246",
       "id": "js_dynamic_programming_runknapsack",
       "community": 5,
       "norm_label": "runknapsack()"
@@ -2491,7 +2653,7 @@
       "label": "runLcs()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L255",
+      "source_location": "L269",
       "id": "js_dynamic_programming_runlcs",
       "community": 5,
       "norm_label": "runlcs()"
@@ -2500,7 +2662,7 @@
       "label": "runEdit()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L271",
+      "source_location": "L286",
       "id": "js_dynamic_programming_runedit",
       "community": 5,
       "norm_label": "runedit()"
@@ -2509,7 +2671,7 @@
       "label": "runMatrix()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L290",
+      "source_location": "L306",
       "id": "js_dynamic_programming_runmatrix",
       "community": 5,
       "norm_label": "runmatrix()"
@@ -2518,7 +2680,7 @@
       "label": "runLis()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L316",
+      "source_location": "L333",
       "id": "js_dynamic_programming_runlis",
       "community": 5,
       "norm_label": "runlis()"
@@ -2527,7 +2689,7 @@
       "label": "RUNNERS",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L333",
+      "source_location": "L351",
       "id": "js_dynamic_programming_runners",
       "community": 5,
       "norm_label": "runners"
@@ -2536,7 +2698,7 @@
       "label": "delay()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L335",
+      "source_location": "L353",
       "id": "js_dynamic_programming_delay",
       "community": 5,
       "norm_label": "delay()"
@@ -2545,7 +2707,7 @@
       "label": "syncPlay()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L339",
+      "source_location": "L357",
       "id": "js_dynamic_programming_syncplay",
       "community": 5,
       "norm_label": "syncplay()"
@@ -2554,7 +2716,7 @@
       "label": "pause()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L340",
+      "source_location": "L358",
       "id": "js_dynamic_programming_pause",
       "community": 5,
       "norm_label": "pause()"
@@ -2563,7 +2725,7 @@
       "label": "advance()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L346",
+      "source_location": "L364",
       "id": "js_dynamic_programming_advance",
       "community": 5,
       "norm_label": "advance()"
@@ -2572,7 +2734,7 @@
       "label": "play()",
       "file_type": "code",
       "source_file": "wwwroot/js/dynamic-programming.js",
-      "source_location": "L355",
+      "source_location": "L373",
       "id": "js_dynamic_programming_play",
       "community": 5,
       "norm_label": "play()"
@@ -2803,10 +2965,19 @@
       "norm_label": "treapcheck()"
     },
     {
+      "label": "seeded()",
+      "file_type": "code",
+      "source_file": "test/algorithm-core.test.js",
+      "source_location": "L49",
+      "id": "test_algorithm_core_test_seeded",
+      "community": 10,
+      "norm_label": "seeded()"
+    },
+    {
       "label": "expected",
       "file_type": "code",
       "source_file": "test/algorithm-core.test.js",
-      "source_location": "L50",
+      "source_location": "L58",
       "id": "test_algorithm_core_test_expected",
       "community": 10,
       "norm_label": "expected"
@@ -2815,7 +2986,7 @@
       "label": "result",
       "file_type": "code",
       "source_file": "test/algorithm-core.test.js",
-      "source_location": "L52",
+      "source_location": "L60",
       "id": "test_algorithm_core_test_result",
       "community": 10,
       "norm_label": "result"
@@ -2824,7 +2995,7 @@
       "label": "cycleGraph",
       "file_type": "code",
       "source_file": "test/algorithm-core.test.js",
-      "source_location": "L83",
+      "source_location": "L91",
       "id": "test_algorithm_core_test_cyclegraph",
       "community": 10,
       "norm_label": "cyclegraph"
@@ -2833,7 +3004,7 @@
       "label": "session",
       "file_type": "code",
       "source_file": "test/algorithm-core.test.js",
-      "source_location": "L92",
+      "source_location": "L100",
       "id": "test_algorithm_core_test_session",
       "community": 10,
       "norm_label": "session"
@@ -2842,7 +3013,7 @@
       "label": "snap",
       "file_type": "code",
       "source_file": "test/algorithm-core.test.js",
-      "source_location": "L95",
+      "source_location": "L103",
       "id": "test_algorithm_core_test_snap",
       "community": 10,
       "norm_label": "snap"
@@ -2851,7 +3022,7 @@
       "label": "keys",
       "file_type": "code",
       "source_file": "test/algorithm-core.test.js",
-      "source_location": "L113",
+      "source_location": "L121",
       "id": "test_algorithm_core_test_keys",
       "community": 10,
       "norm_label": "keys"
@@ -2860,7 +3031,7 @@
       "label": "fib",
       "file_type": "code",
       "source_file": "test/algorithm-core.test.js",
-      "source_location": "L129",
+      "source_location": "L137",
       "id": "test_algorithm_core_test_fib",
       "community": 10,
       "norm_label": "fib"
@@ -2869,7 +3040,7 @@
       "label": "lis",
       "file_type": "code",
       "source_file": "test/algorithm-core.test.js",
-      "source_location": "L132",
+      "source_location": "L140",
       "id": "test_algorithm_core_test_lis",
       "community": 10,
       "norm_label": "lis"
@@ -2878,7 +3049,7 @@
       "label": "activity",
       "file_type": "code",
       "source_file": "test/algorithm-core.test.js",
-      "source_location": "L135",
+      "source_location": "L143",
       "id": "test_algorithm_core_test_activity",
       "community": 10,
       "norm_label": "activity"
@@ -2887,7 +3058,7 @@
       "label": "graph",
       "file_type": "code",
       "source_file": "test/algorithm-core.test.js",
-      "source_location": "L138",
+      "source_location": "L146",
       "id": "test_algorithm_core_test_graph",
       "community": 10,
       "norm_label": "graph"
@@ -2896,7 +3067,7 @@
       "label": "tree",
       "file_type": "code",
       "source_file": "test/algorithm-core.test.js",
-      "source_location": "L142",
+      "source_location": "L150",
       "id": "test_algorithm_core_test_tree",
       "community": 10,
       "norm_label": "tree"
@@ -2905,10 +3076,55 @@
       "label": "topic",
       "file_type": "code",
       "source_file": "test/algorithm-core.test.js",
-      "source_location": "L145",
+      "source_location": "L153",
       "id": "test_algorithm_core_test_topic",
       "community": 10,
       "norm_label": "topic"
+    },
+    {
+      "label": "coin",
+      "file_type": "code",
+      "source_file": "test/algorithm-core.test.js",
+      "source_location": "L158",
+      "id": "test_algorithm_core_test_coin",
+      "community": 10,
+      "norm_label": "coin"
+    },
+    {
+      "label": "huffman",
+      "file_type": "code",
+      "source_file": "test/algorithm-core.test.js",
+      "source_location": "L167",
+      "id": "test_algorithm_core_test_huffman",
+      "community": 10,
+      "norm_label": "huffman"
+    },
+    {
+      "label": "treeSnap",
+      "file_type": "code",
+      "source_file": "test/algorithm-core.test.js",
+      "source_location": "L172",
+      "id": "test_algorithm_core_test_treesnap",
+      "community": 10,
+      "norm_label": "treesnap"
+    },
+    {
+      "label": "negativeGraph",
+      "file_type": "code",
+      "source_file": "test/algorithm-core.test.js",
+      "source_location": "L183",
+      "id": "test_algorithm_core_test_negativegraph",
+      "community": 10,
+      "norm_label": "negativegraph"
+    },
+    {
+      "label": "values",
+      "file_type": "code",
+      "source_file": "test/algorithm-core.test.js",
+      "source_location": "L187",
+      "id": "test_algorithm_core_test_values",
+      "community": 10,
+      "norm_label": "values"
     },
     {
       "label": "ErrorViewModel.cs",
@@ -5085,9 +5301,9 @@
       "source_file": "wwwroot/js/search-trees.js",
       "source_location": "L102",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "wwwroot_js_search_trees_js",
-      "target": "js_search_trees_treesize",
-      "confidence_score": 1.0
+      "target": "js_search_trees_treesize"
     },
     {
       "relation": "contains",
@@ -5095,9 +5311,19 @@
       "source_file": "wwwroot/js/search-trees.js",
       "source_location": "L105",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "wwwroot_js_search_trees_js",
-      "target": "js_search_trees_sizedkeys",
-      "confidence_score": 1.0
+      "target": "js_search_trees_sizedkeys"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/search-trees.js",
+      "source_location": "L114",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_search_trees_js",
+      "target": "js_search_trees_randomkeys"
     },
     {
       "relation": "contains",
@@ -5316,9 +5542,9 @@
       "source_file": "wwwroot/js/search-trees.js",
       "source_location": "L335",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_search_trees_createmodel",
-      "target": "js_search_trees_treesize",
-      "confidence_score": 1.0
+      "target": "js_search_trees_treesize"
     },
     {
       "relation": "calls",
@@ -5327,9 +5553,20 @@
       "source_file": "wwwroot/js/search-trees.js",
       "source_location": "L339",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_search_trees_createmodel",
-      "target": "js_search_trees_sizedkeys",
-      "confidence_score": 1.0
+      "target": "js_search_trees_sizedkeys"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/search-trees.js",
+      "source_location": "L344",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_search_trees_createmodel",
+      "target": "js_search_trees_randomkeys"
     },
     {
       "relation": "method",
@@ -6191,9 +6428,9 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L177",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "wwwroot_js_graphs_js",
-      "target": "js_graphs_graphsize",
-      "confidence_score": 1.0
+      "target": "js_graphs_graphsize"
     },
     {
       "relation": "contains",
@@ -6201,9 +6438,19 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L180",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "wwwroot_js_graphs_js",
-      "target": "js_graphs_nodelabel",
-      "confidence_score": 1.0
+      "target": "js_graphs_randint"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/graphs.js",
+      "source_location": "L180",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_graphs_js",
+      "target": "js_graphs_nodelabel"
     },
     {
       "relation": "contains",
@@ -6211,9 +6458,19 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L183",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "wwwroot_js_graphs_js",
-      "target": "js_graphs_generatednode",
-      "confidence_score": 1.0
+      "target": "js_graphs_generatednode"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/graphs.js",
+      "source_location": "L190",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_graphs_js",
+      "target": "js_graphs_randomizednode"
     },
     {
       "relation": "contains",
@@ -6221,9 +6478,9 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L187",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "wwwroot_js_graphs_js",
-      "target": "js_graphs_hasedge",
-      "confidence_score": 1.0
+      "target": "js_graphs_hasedge"
     },
     {
       "relation": "contains",
@@ -6231,9 +6488,9 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L192",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "wwwroot_js_graphs_js",
-      "target": "js_graphs_resizegraphsample",
-      "confidence_score": 1.0
+      "target": "js_graphs_resizegraphsample"
     },
     {
       "relation": "contains",
@@ -6321,9 +6578,9 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L298",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "wwwroot_js_graphs_js",
-      "target": "js_graphs_rebuildgraph",
-      "confidence_score": 1.0
+      "target": "js_graphs_rebuildgraph"
     },
     {
       "relation": "contains",
@@ -6562,9 +6819,20 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L185",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_graphs_generatednode",
-      "target": "js_graphs_n",
-      "confidence_score": 1.0
+      "target": "js_graphs_n"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/graphs.js",
+      "source_location": "L192",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_graphs_randomizednode",
+      "target": "js_graphs_n"
     },
     {
       "relation": "calls",
@@ -6573,9 +6841,9 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L207",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_graphs_resizegraphsample",
-      "target": "js_graphs_e",
-      "confidence_score": 1.0
+      "target": "js_graphs_e"
     },
     {
       "relation": "calls",
@@ -6705,9 +6973,9 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L265",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_graphs_opengraph",
-      "target": "js_graphs_graphsize",
-      "confidence_score": 1.0
+      "target": "js_graphs_graphsize"
     },
     {
       "relation": "calls",
@@ -6716,9 +6984,31 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L302",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_graphs_rebuildgraph",
-      "target": "js_graphs_graphsize",
-      "confidence_score": 1.0
+      "target": "js_graphs_graphsize"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/graphs.js",
+      "source_location": "L192",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_graphs_randomizednode",
+      "target": "js_graphs_randint"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/graphs.js",
+      "source_location": "L222",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_graphs_resizegraphsample",
+      "target": "js_graphs_randint"
     },
     {
       "relation": "calls",
@@ -6727,9 +7017,9 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L185",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_graphs_generatednode",
-      "target": "js_graphs_nodelabel",
-      "confidence_score": 1.0
+      "target": "js_graphs_nodelabel"
     },
     {
       "relation": "calls",
@@ -6738,9 +7028,20 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L196",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_graphs_resizegraphsample",
-      "target": "js_graphs_nodelabel",
-      "confidence_score": 1.0
+      "target": "js_graphs_nodelabel"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/graphs.js",
+      "source_location": "L191",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_graphs_randomizednode",
+      "target": "js_graphs_generatednode"
     },
     {
       "relation": "calls",
@@ -6749,9 +7050,9 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L198",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_graphs_resizegraphsample",
-      "target": "js_graphs_generatednode",
-      "confidence_score": 1.0
+      "target": "js_graphs_generatednode"
     },
     {
       "relation": "calls",
@@ -6760,9 +7061,9 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L207",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_graphs_resizegraphsample",
-      "target": "js_graphs_hasedge",
-      "confidence_score": 1.0
+      "target": "js_graphs_hasedge"
     },
     {
       "relation": "calls",
@@ -6771,9 +7072,9 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L265",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_graphs_opengraph",
-      "target": "js_graphs_resizegraphsample",
-      "confidence_score": 1.0
+      "target": "js_graphs_resizegraphsample"
     },
     {
       "relation": "calls",
@@ -6782,9 +7083,9 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L302",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_graphs_rebuildgraph",
-      "target": "js_graphs_resizegraphsample",
-      "confidence_score": 1.0
+      "target": "js_graphs_resizegraphsample"
     },
     {
       "relation": "calls",
@@ -6804,9 +7105,9 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L304",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_graphs_rebuildgraph",
-      "target": "js_graphs_nodeids",
-      "confidence_score": 1.0
+      "target": "js_graphs_nodeids"
     },
     {
       "relation": "calls",
@@ -7156,9 +7457,9 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L303",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_graphs_rebuildgraph",
-      "target": "js_graphs_fillselectors",
-      "confidence_score": 1.0
+      "target": "js_graphs_fillselectors"
     },
     {
       "relation": "calls",
@@ -7189,9 +7490,9 @@
       "source_file": "wwwroot/js/graphs.js",
       "source_location": "L307",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_graphs_rebuildgraph",
-      "target": "js_graphs_buildsteps",
-      "confidence_score": 1.0
+      "target": "js_graphs_buildsteps"
     },
     {
       "relation": "calls",
@@ -7403,9 +7704,9 @@
       "source_file": "wwwroot/js/textbook-sections.js",
       "source_location": "L103",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "wwwroot_js_textbook_sections_js",
-      "target": "js_textbook_sections_topicitemcount",
-      "confidence_score": 1.0
+      "target": "js_textbook_sections_topicitemcount"
     },
     {
       "relation": "contains",
@@ -7436,6 +7737,16 @@
       "confidence_score": 1.0,
       "source": "wwwroot_js_textbook_sections_js",
       "target": "js_textbook_sections_buildsteps"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/textbook-sections.js",
+      "source_location": "L195",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_textbook_sections_js",
+      "target": "js_textbook_sections_formatanswer"
     },
     {
       "relation": "contains",
@@ -7534,9 +7845,9 @@
       "source_file": "wwwroot/js/textbook-sections.js",
       "source_location": "L154",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_textbook_sections_buildsteps",
-      "target": "js_textbook_sections_topicitemcount",
-      "confidence_score": 1.0
+      "target": "js_textbook_sections_topicitemcount"
     },
     {
       "relation": "calls",
@@ -7559,6 +7870,17 @@
       "confidence_score": 1.0,
       "source": "js_textbook_sections_buildsteps",
       "target": "js_textbook_sections_pause"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/textbook-sections.js",
+      "source_location": "L171",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_textbook_sections_buildsteps",
+      "target": "js_textbook_sections_formatanswer"
     },
     {
       "relation": "calls",
@@ -7684,9 +8006,9 @@
       "source_file": "wwwroot/js/greedy.js",
       "source_location": "L76",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "wwwroot_js_greedy_js",
-      "target": "js_greedy_greedy_default_sizes",
-      "confidence_score": 1.0
+      "target": "js_greedy_greedy_default_sizes"
     },
     {
       "relation": "contains",
@@ -7694,9 +8016,9 @@
       "source_file": "wwwroot/js/greedy.js",
       "source_location": "L85",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "wwwroot_js_greedy_js",
-      "target": "js_greedy_itemcount",
-      "confidence_score": 1.0
+      "target": "js_greedy_itemcount"
     },
     {
       "relation": "contains",
@@ -7747,6 +8069,46 @@
       "confidence_score": 1.0,
       "source": "wwwroot_js_greedy_js",
       "target": "js_greedy_item"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": "L153",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_greedy_js",
+      "target": "js_greedy_resultof"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": "L154",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_greedy_js",
+      "target": "js_greedy_updateresult"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": "L158",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_greedy_js",
+      "target": "js_greedy_randint"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": "L161",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_greedy_js",
+      "target": "js_greedy_shuffle"
     },
     {
       "relation": "contains",
@@ -7905,9 +8267,9 @@
       "source_file": "wwwroot/js/greedy.js",
       "source_location": "L139",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_greedy_buildsteps",
-      "target": "js_greedy_itemcount",
-      "confidence_score": 1.0
+      "target": "js_greedy_itemcount"
     },
     {
       "relation": "calls",
@@ -7930,6 +8292,17 @@
       "confidence_score": 1.0,
       "source": "js_greedy_buildsteps",
       "target": "js_greedy_pause"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": "L141",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_greedy_buildsteps",
+      "target": "js_greedy_updateresult"
     },
     {
       "relation": "calls",
@@ -8007,6 +8380,94 @@
       "confidence_score": 1.0,
       "source": "js_greedy_runhuffman",
       "target": "js_greedy_snapshot"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": "L221",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_greedy_runactivity",
+      "target": "js_greedy_resultof"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": "L251",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_greedy_runinterval",
+      "target": "js_greedy_resultof"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": "L287",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_greedy_runfractional",
+      "target": "js_greedy_resultof"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": "L315",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_greedy_runjobs",
+      "target": "js_greedy_resultof"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": "L346",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_greedy_runsetcover",
+      "target": "js_greedy_resultof"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": "L367",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_greedy_runhuffman",
+      "target": "js_greedy_resultof"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": "L164",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_greedy_shuffle",
+      "target": "js_greedy_randint"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/greedy.js",
+      "source_location": "L255",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_greedy_runfractional",
+      "target": "js_greedy_randint"
     },
     {
       "relation": "calls",
@@ -8120,9 +8581,69 @@
       "source_file": "wwwroot/js/algorithm-core.js",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "wwwroot_js_algorithm_core_js",
-      "target": "js_algorithm_core_sizeoption",
-      "confidence_score": 1.0
+      "target": "js_algorithm_core_shouldrandomize"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_algorithm_core_js",
+      "target": "js_algorithm_core_rngof"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_algorithm_core_js",
+      "target": "js_algorithm_core_randint"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_algorithm_core_js",
+      "target": "js_algorithm_core_shuffle"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_algorithm_core_js",
+      "target": "js_algorithm_core_uniquenumbers"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_algorithm_core_js",
+      "target": "js_algorithm_core_randomletters"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_algorithm_core_js",
+      "target": "js_algorithm_core_sizeoption"
     },
     {
       "relation": "contains",
@@ -8130,9 +8651,9 @@
       "source_file": "wwwroot/js/algorithm-core.js",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "wwwroot_js_algorithm_core_js",
-      "target": "js_algorithm_core_sizedkeys",
-      "confidence_score": 1.0
+      "target": "js_algorithm_core_sizedkeys"
     },
     {
       "relation": "contains",
@@ -8220,9 +8741,19 @@
       "source_file": "wwwroot/js/algorithm-core.js",
       "source_location": "L401",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "wwwroot_js_algorithm_core_js",
-      "target": "js_algorithm_core_edgeexists",
-      "confidence_score": 1.0
+      "target": "js_algorithm_core_edgeexists"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L454",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_algorithm_core_js",
+      "target": "js_algorithm_core_randomgraphsample"
     },
     {
       "relation": "contains",
@@ -8230,9 +8761,9 @@
       "source_file": "wwwroot/js/algorithm-core.js",
       "source_location": "L404",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "wwwroot_js_algorithm_core_js",
-      "target": "js_algorithm_core_resizedgraphsample",
-      "confidence_score": 1.0
+      "target": "js_algorithm_core_resizedgraphsample"
     },
     {
       "relation": "contains",
@@ -8511,11 +9042,33 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L457",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_randomgraphsample",
+      "target": "js_algorithm_core_range"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
       "source_location": "L407",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_algorithm_core_resizedgraphsample",
-      "target": "js_algorithm_core_range",
-      "confidence_score": 1.0
+      "target": "js_algorithm_core_range"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L833",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_runtopic",
+      "target": "js_algorithm_core_range"
     },
     {
       "relation": "calls",
@@ -8526,6 +9079,17 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "js_algorithm_core_buildmultiway",
+      "target": "js_algorithm_core_sorted"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L747",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_createtreesession",
       "target": "js_algorithm_core_sorted"
     },
     {
@@ -8566,11 +9130,209 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L336",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_rungreedy",
+      "target": "js_algorithm_core_shouldrandomize"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L492",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_resizedgraphsample",
+      "target": "js_algorithm_core_shouldrandomize"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L745",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_createtreesession",
+      "target": "js_algorithm_core_shouldrandomize"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L800",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_runtopic",
+      "target": "js_algorithm_core_shouldrandomize"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L335",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_rungreedy",
+      "target": "js_algorithm_core_rngof"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L455",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_randomgraphsample",
+      "target": "js_algorithm_core_rngof"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L744",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_createtreesession",
+      "target": "js_algorithm_core_rngof"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L799",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_runtopic",
+      "target": "js_algorithm_core_rngof"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_shuffle",
+      "target": "js_algorithm_core_randint"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_uniquenumbers",
+      "target": "js_algorithm_core_randint"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L384",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_rungreedy",
+      "target": "js_algorithm_core_randint"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L477",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_randomgraphsample",
+      "target": "js_algorithm_core_randint"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L816",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_runtopic",
+      "target": "js_algorithm_core_randint"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L859",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_runtopic",
+      "target": "js_algorithm_core_shuffle"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L747",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_createtreesession",
+      "target": "js_algorithm_core_uniquenumbers"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L812",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_runtopic",
+      "target": "js_algorithm_core_uniquenumbers"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L880",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_runtopic",
+      "target": "js_algorithm_core_randomletters"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
       "source_location": "L299",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_algorithm_core_rungreedy",
-      "target": "js_algorithm_core_sizeoption",
-      "confidence_score": 1.0
+      "target": "js_algorithm_core_sizeoption"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L456",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_randomgraphsample",
+      "target": "js_algorithm_core_sizeoption"
     },
     {
       "relation": "calls",
@@ -8579,9 +9341,9 @@
       "source_file": "wwwroot/js/algorithm-core.js",
       "source_location": "L406",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_algorithm_core_resizedgraphsample",
-      "target": "js_algorithm_core_sizeoption",
-      "confidence_score": 1.0
+      "target": "js_algorithm_core_sizeoption"
     },
     {
       "relation": "calls",
@@ -8590,9 +9352,9 @@
       "source_file": "wwwroot/js/algorithm-core.js",
       "source_location": "L655",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_algorithm_core_createtreesession",
-      "target": "js_algorithm_core_sizeoption",
-      "confidence_score": 1.0
+      "target": "js_algorithm_core_sizeoption"
     },
     {
       "relation": "calls",
@@ -8601,9 +9363,9 @@
       "source_file": "wwwroot/js/algorithm-core.js",
       "source_location": "L709",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_algorithm_core_runtopic",
-      "target": "js_algorithm_core_sizeoption",
-      "confidence_score": 1.0
+      "target": "js_algorithm_core_sizeoption"
     },
     {
       "relation": "calls",
@@ -8612,9 +9374,9 @@
       "source_file": "wwwroot/js/algorithm-core.js",
       "source_location": "L657",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_algorithm_core_createtreesession",
-      "target": "js_algorithm_core_sizedkeys",
-      "confidence_score": 1.0
+      "target": "js_algorithm_core_sizedkeys"
     },
     {
       "relation": "calls",
@@ -8656,9 +9418,20 @@
       "source_file": "wwwroot/js/algorithm-core.js",
       "source_location": "L413",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_algorithm_core_resizedgraphsample",
-      "target": "js_algorithm_core_edgeexists",
-      "confidence_score": 1.0
+      "target": "js_algorithm_core_edgeexists"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/algorithm-core.js",
+      "source_location": "L492",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_algorithm_core_resizedgraphsample",
+      "target": "js_algorithm_core_randomgraphsample"
     },
     {
       "relation": "calls",
@@ -8667,9 +9440,9 @@
       "source_file": "wwwroot/js/algorithm-core.js",
       "source_location": "L424",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_algorithm_core_graphfrom",
-      "target": "js_algorithm_core_resizedgraphsample",
-      "confidence_score": 1.0
+      "target": "js_algorithm_core_resizedgraphsample"
     },
     {
       "relation": "calls",
@@ -8960,9 +9733,9 @@
       "source_file": "wwwroot/js/dynamic-programming.js",
       "source_location": "L83",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "wwwroot_js_dynamic_programming_js",
-      "target": "js_dynamic_programming_problemsize",
-      "confidence_score": 1.0
+      "target": "js_dynamic_programming_problemsize"
     },
     {
       "relation": "contains",
@@ -9043,6 +9816,36 @@
       "confidence_score": 1.0,
       "source": "wwwroot_js_dynamic_programming_js",
       "target": "js_dynamic_programming_keyof"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L149",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_dynamic_programming_js",
+      "target": "js_dynamic_programming_resultof"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L150",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_dynamic_programming_js",
+      "target": "js_dynamic_programming_updateexample"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L155",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "wwwroot_js_dynamic_programming_js",
+      "target": "js_dynamic_programming_coredp"
     },
     {
       "relation": "contains",
@@ -9211,9 +10014,9 @@
       "source_file": "wwwroot/js/dynamic-programming.js",
       "source_location": "L135",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_dynamic_programming_buildsteps",
-      "target": "js_dynamic_programming_problemsize",
-      "confidence_score": 1.0
+      "target": "js_dynamic_programming_problemsize"
     },
     {
       "relation": "calls",
@@ -9236,6 +10039,17 @@
       "confidence_score": 1.0,
       "source": "js_dynamic_programming_buildsteps",
       "target": "js_dynamic_programming_pause"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L137",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_dynamic_programming_buildsteps",
+      "target": "js_dynamic_programming_updateexample"
     },
     {
       "relation": "calls",
@@ -9445,6 +10259,149 @@
       "confidence_score": 1.0,
       "source": "js_dynamic_programming_runlis",
       "target": "js_dynamic_programming_tablestep"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L206",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_dynamic_programming_runfib",
+      "target": "js_dynamic_programming_resultof"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L243",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_dynamic_programming_runcoin",
+      "target": "js_dynamic_programming_resultof"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L266",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_dynamic_programming_runknapsack",
+      "target": "js_dynamic_programming_resultof"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L283",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_dynamic_programming_runlcs",
+      "target": "js_dynamic_programming_resultof"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L303",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_dynamic_programming_runedit",
+      "target": "js_dynamic_programming_resultof"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L330",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_dynamic_programming_runmatrix",
+      "target": "js_dynamic_programming_resultof"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L348",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_dynamic_programming_runlis",
+      "target": "js_dynamic_programming_resultof"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L226",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_dynamic_programming_runcoin",
+      "target": "js_dynamic_programming_coredp"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L247",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_dynamic_programming_runknapsack",
+      "target": "js_dynamic_programming_coredp"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L270",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_dynamic_programming_runlcs",
+      "target": "js_dynamic_programming_coredp"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L287",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_dynamic_programming_runedit",
+      "target": "js_dynamic_programming_coredp"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L307",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_dynamic_programming_runmatrix",
+      "target": "js_dynamic_programming_coredp"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "wwwroot/js/dynamic-programming.js",
+      "source_location": "L334",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_dynamic_programming_runlis",
+      "target": "js_dynamic_programming_coredp"
     },
     {
       "relation": "calls",
@@ -9757,6 +10714,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "test/algorithm-core.test.js",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "test_algorithm_core_test_js",
+      "target": "test_algorithm_core_test_seeded"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test/algorithm-core.test.js",
       "source_location": "L50",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -9819,9 +10786,9 @@
       "source_file": "test/algorithm-core.test.js",
       "source_location": "L129",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_algorithm_core_test_js",
-      "target": "test_algorithm_core_test_fib",
-      "confidence_score": 1.0
+      "target": "test_algorithm_core_test_fib"
     },
     {
       "relation": "contains",
@@ -9829,9 +10796,9 @@
       "source_file": "test/algorithm-core.test.js",
       "source_location": "L132",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_algorithm_core_test_js",
-      "target": "test_algorithm_core_test_lis",
-      "confidence_score": 1.0
+      "target": "test_algorithm_core_test_lis"
     },
     {
       "relation": "contains",
@@ -9839,9 +10806,9 @@
       "source_file": "test/algorithm-core.test.js",
       "source_location": "L135",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_algorithm_core_test_js",
-      "target": "test_algorithm_core_test_activity",
-      "confidence_score": 1.0
+      "target": "test_algorithm_core_test_activity"
     },
     {
       "relation": "contains",
@@ -9849,9 +10816,9 @@
       "source_file": "test/algorithm-core.test.js",
       "source_location": "L138",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_algorithm_core_test_js",
-      "target": "test_algorithm_core_test_graph",
-      "confidence_score": 1.0
+      "target": "test_algorithm_core_test_graph"
     },
     {
       "relation": "contains",
@@ -9859,9 +10826,9 @@
       "source_file": "test/algorithm-core.test.js",
       "source_location": "L142",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_algorithm_core_test_js",
-      "target": "test_algorithm_core_test_tree",
-      "confidence_score": 1.0
+      "target": "test_algorithm_core_test_tree"
     },
     {
       "relation": "contains",
@@ -9869,9 +10836,59 @@
       "source_file": "test/algorithm-core.test.js",
       "source_location": "L145",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_algorithm_core_test_js",
-      "target": "test_algorithm_core_test_topic",
+      "target": "test_algorithm_core_test_topic"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test/algorithm-core.test.js",
+      "source_location": "L158",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "test_algorithm_core_test_js",
+      "target": "test_algorithm_core_test_coin"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test/algorithm-core.test.js",
+      "source_location": "L167",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "test_algorithm_core_test_js",
+      "target": "test_algorithm_core_test_huffman"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test/algorithm-core.test.js",
+      "source_location": "L172",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "test_algorithm_core_test_js",
+      "target": "test_algorithm_core_test_treesnap"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test/algorithm-core.test.js",
+      "source_location": "L183",
+      "weight": 1.0,
+      "source": "test_algorithm_core_test_js",
+      "target": "test_algorithm_core_test_negativegraph",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test/algorithm-core.test.js",
+      "source_location": "L184",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "test_algorithm_core_test_js",
+      "target": "test_algorithm_core_test_values"
     },
     {
       "relation": "contains",
@@ -11467,5 +12484,5 @@
       "source_file": "test/algorithm-core.test.js"
     }
   ],
-  "built_at_commit": "8aed07b9797c66c17558fdaa42f6335ebb20e816"
+  "built_at_commit": "65fe7cb69c6cbdab5ec944dfb9de2092d8cae015"
 }

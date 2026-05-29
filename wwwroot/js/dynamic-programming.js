@@ -132,7 +132,9 @@ function openDp(key) {
 function buildSteps() {
     pause();
     refs.log.innerHTML = '';
-    steps = (RUNNERS[currentKey] || runFib)(problemSize());
+    const result = (RUNNERS[currentKey] || runFib)(problemSize(), { randomize: true });
+    steps = Array.isArray(result) ? result : result.steps;
+    updateExample(result);
     stepIndex = 0;
     renderStep(steps[0]);
 }
@@ -144,6 +146,15 @@ function cloneRows(rows) { return rows.map(row => [...row]); }
 function emptyRows(r, c, fill = '') { return Array.from({ length: r }, () => Array(c).fill(fill)); }
 function tableStep(message, table) { return { message, table }; }
 function keyOf(r, c) { return `${r}:${c}`; }
+function resultOf(steps, example, answer) { return { steps, example, answer }; }
+function updateExample(result) {
+    if (!result || Array.isArray(result)) return;
+    document.getElementById('dp-cp-example').textContent = result.example;
+    document.getElementById('dp-cp-answer').textContent = result.answer;
+}
+function coreDp(key, size, options) {
+    return globalThis.AlgorithmCore ? globalThis.AlgorithmCore.dp.run(key, { size, randomize: !!(options && options.randomize) }) : null;
+}
 
 function renderStep(item) {
     refs.status.textContent = item.message;
@@ -185,13 +196,14 @@ function runFib(size = 8) {
     if (globalThis.AlgorithmCore) {
         const core = globalThis.AlgorithmCore.dp.run('fib', { size });
         const labels = [...Array(core.steps[0].state.memo.length).keys()];
-        return core.steps.map(step => {
+        const mapped = core.steps.map(step => {
             const rows = [step.state.memo.map(v => v ?? ''), step.state.tab.map(v => v ?? '')];
             const done = [];
             rows.forEach((row, r) => row.forEach((value, c) => { if (value !== '') done.push([r, c]); }));
             const active = step.state.active.flatMap(i => [[0, i], [1, i]]);
             return tableStep(step.message, makeTable(rows, ['memo', 'tab'], labels, 'Memoization caches recursive calls; tabulation fills states bottom-up.', active, done));
         });
+        return resultOf(mapped, `n = ${size}`, core.answer);
     }
     const n = size;
     const rows = [Array(n + 1).fill(''), Array(n + 1).fill('')];
@@ -207,11 +219,12 @@ function runFib(size = 8) {
         done.push([0,i], [1,i]);
         out.push(tableStep(`Fill F(${i}) = F(${i - 1}) + F(${i - 2}) = ${rows[1][i]}`, makeTable(rows, ['memo', 'tab'], [...Array(n + 1).keys()], 'Memoization and tabulation converge to the same cached values.', [[0,i],[1,i]], [...done])));
     }
-    return out;
+    return resultOf(out, `n = ${n}`, rows[1][n]);
 }
 
-function runCoin(size = 8) {
-    const coins = [1, 2, 5], amount = size + 3;
+function runCoin(size = 8, options = {}) {
+    const core = coreDp('coin', size, options);
+    const coins = core ? core.coins : [1, 2, 5], amount = core ? core.table.length - 1 : size + 3;
     const dp = Array(amount + 1).fill('∞');
     const done = [];
     const out = [];
@@ -227,14 +240,15 @@ function runCoin(size = 8) {
         done.push([0,a]);
         out.push(tableStep(`Best for amount ${a} is ${dp[a]}`, makeTable([dp], ['min coins'], [...Array(amount + 1).keys()], 'Each amount reuses earlier optimal amounts.', [[0,a]], [...done])));
     }
-    return out;
+    return resultOf(out, `coins ${coins.join(', ')}; amount ${amount}`, dp[amount]);
 }
 
-function runKnapsack(size = 8) {
+function runKnapsack(size = 8, options = {}) {
+    const core = coreDp('knapsack', size, options);
     const baseItems = [{ w: 1, v: 1 }, { w: 3, v: 4 }, { w: 4, v: 5 }, { w: 5, v: 7 }, { w: 2, v: 3 }, { w: 6, v: 9 }, { w: 7, v: 10 }];
     const itemCount = Math.max(3, Math.min(baseItems.length, Math.round(size / 2)));
-    const items = baseItems.slice(0, itemCount);
-    const cap = Math.max(4, size - 1);
+    const items = core ? core.items : baseItems.slice(0, itemCount);
+    const cap = core ? core.cap : Math.max(4, size - 1);
     const rows = emptyRows(items.length + 1, cap + 1, 0);
     const done = [];
     const rowLabels = ['0 items', ...items.map((_, i) => `i${i + 1}`)];
@@ -249,12 +263,13 @@ function runKnapsack(size = 8) {
             out.push(tableStep(`Item ${i}, capacity ${w}: max(skip ${skip}, take ${take === -Infinity ? 'n/a' : take}) = ${rows[i][w]}`, makeTable(rows, rowLabels, [...Array(cap + 1).keys()], 'Rows are item prefixes; columns are capacities.', [[i,w]], [...done])));
         }
     }
-    return out;
+    return resultOf(out, `capacity ${cap}; ${items.length} items`, rows[items.length][cap]);
 }
 
-function runLcs(size = 8) {
-    const x = 'ABCBDABXYZPQ'.slice(0, Math.min(size, 12));
-    const y = 'BDCABAZYXPQ'.slice(0, Math.min(Math.max(4, size - 1), 11));
+function runLcs(size = 8, options = {}) {
+    const core = coreDp('lcs', size, options);
+    const x = core ? core.x : 'ABCBDABXYZPQ'.slice(0, Math.min(size, 12));
+    const y = core ? core.y : 'BDCABAZYXPQ'.slice(0, Math.min(Math.max(4, size - 1), 11));
     const rows = emptyRows(x.length + 1, y.length + 1, 0);
     const done = [];
     const out = [tableStep('Initialize empty-prefix row and column to 0', makeTable(rows, ['-', ...x], ['-', ...y], 'dp[i][j] is LCS length for prefixes x[0..i) and y[0..j).', [], done))];
@@ -265,12 +280,13 @@ function runLcs(size = 8) {
             out.push(tableStep(`${x[i - 1]} vs ${y[j - 1]} -> dp[${i}][${j}] = ${rows[i][j]}`, makeTable(rows, ['-', ...x], ['-', ...y], 'Matches extend diagonally; mismatches copy the best neighbor.', [[i,j]], [...done])));
         }
     }
-    return out;
+    return resultOf(out, `${x} vs ${y}`, rows[x.length][y.length]);
 }
 
-function runEdit(size = 8) {
-    const a = 'kittenfold'.slice(0, Math.min(size, 10));
-    const b = 'sittingpad'.slice(0, Math.min(Math.max(4, size + 1), 10));
+function runEdit(size = 8, options = {}) {
+    const core = coreDp('edit', size, options);
+    const a = core ? core.a : 'kittenfold'.slice(0, Math.min(size, 10));
+    const b = core ? core.b : 'sittingpad'.slice(0, Math.min(Math.max(4, size + 1), 10));
     const rows = emptyRows(a.length + 1, b.length + 1, 0);
     const done = [];
     for (let i = 0; i <= a.length; i++) rows[i][0] = i;
@@ -284,11 +300,12 @@ function runEdit(size = 8) {
             out.push(tableStep(`${a[i - 1]} -> ${b[j - 1]} costs ${cost}; cell = ${rows[i][j]}`, makeTable(rows, ['-', ...a], ['-', ...b], 'Choose delete, insert, or substitute/match.', [[i,j]], [...done])));
         }
     }
-    return out;
+    return resultOf(out, `${a} -> ${b}`, rows[a.length][b.length]);
 }
 
-function runMatrix(size = 8) {
-    const p = [10, 30, 5, 60, 12, 24, 8, 16].slice(0, Math.max(4, Math.min(8, Math.round(size / 2))));
+function runMatrix(size = 8, options = {}) {
+    const core = coreDp('matrix', size, options);
+    const p = core ? core.dimensions : [10, 30, 5, 60, 12, 24, 8, 16].slice(0, Math.max(4, Math.min(8, Math.round(size / 2))));
     const n = p.length - 1;
     const rows = emptyRows(n, n, '');
     const done = [];
@@ -310,12 +327,13 @@ function runMatrix(size = 8) {
             out.push(tableStep(`Best cost for A${i + 1}..A${j + 1} is ${best}`, makeTable(rows, labels, labels, 'Upper triangle stores interval costs.', [[i,j]], [...done])));
         }
     }
-    return out;
+    return resultOf(out, `dimensions ${p.join(' x ')}`, rows[0][n - 1]);
 }
 
-function runLis(size = 8) {
+function runLis(size = 8, options = {}) {
+    const core = coreDp('lis', size, options);
     const base = [10, 9, 2, 5, 3, 7, 101, 18, 22, 6, 31, 4, 45, 11];
-    const arr = base.slice(0, size);
+    const arr = core ? core.input : base.slice(0, size);
     const dp = Array(arr.length).fill('');
     const done = [];
     const out = [tableStep('Each position starts as a subsequence of length 1', makeTable([arr, dp], ['value', 'LIS'], arr.map((_, i) => i), 'dp[i] is best increasing subsequence ending at i.', [], done))];
@@ -327,7 +345,7 @@ function runLis(size = 8) {
         done.push([1,i]);
         out.push(tableStep(`Best subsequence ending at ${arr[i]} has length ${dp[i]}`, makeTable([arr, dp], ['value', 'LIS'], arr.map((_, k) => k), 'Look left for smaller values and extend the best one.', [[0,i],[1,i]], [...done])));
     }
-    return out;
+    return resultOf(out, arr.join(', '), Math.max(...dp));
 }
 
 const RUNNERS = { fib: runFib, coin: runCoin, knapsack: runKnapsack, lcs: runLcs, edit: runEdit, matrix: runMatrix, lis: runLis };

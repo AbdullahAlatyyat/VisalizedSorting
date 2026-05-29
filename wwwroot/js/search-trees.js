@@ -111,6 +111,11 @@ function sizedKeys(source, size, step = 7) {
     }
     return keys;
 }
+function randomKeys(size, min = 5, max = 250) {
+    const keys = new Set();
+    while (keys.size < size && keys.size < max - min + 1) keys.add(Math.floor(Math.random() * (max - min + 1)) + min);
+    return [...keys];
+}
 
 class BinaryModel {
     constructor(keys = []) {
@@ -333,12 +338,12 @@ function openTree(key) {
 
 function createModel(key) {
     const size = treeSize();
-    if (globalThis.AlgorithmCore) return globalThis.AlgorithmCore.trees.createSession(key, { size });
+    if (globalThis.AlgorithmCore) return globalThis.AlgorithmCore.trees.createSession(key, { size, randomize: true });
     if (['twoThree', 'twoThreeFour', 'btree', 'bplus'].includes(key)) {
         const maxKeys = key === 'btree' || key === 'bplus' ? 5 : 3;
-        return new MultiwayModel(sizedKeys(MULTIWAY_KEYS, size, 10), maxKeys);
+        return new MultiwayModel(randomKeys(size), maxKeys);
     }
-    return new BinaryModel(sizedKeys(DEFAULT_KEYS, size));
+    return new BinaryModel(randomKeys(size));
 }
 
 function setSteps(nextSteps) {
